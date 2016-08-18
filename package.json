@@ -1,0 +1,17 @@
+{
+  "name": "codecab",
+  "version": "0.0.1-alpha.1",
+  "description": "code.cab standard library",
+  "keywords": ["codecab", "code.cab"],
+  "homepage": "http://code.cab",
+  "license": "MIT",
+  "files": [
+      "bin"
+  ],
+  "main": "bin/index.js",
+  "repository": "https://github.com/code-cab/codecab",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
