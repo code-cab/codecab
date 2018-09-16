@@ -62,3 +62,4 @@
     "build-linux": "npm run clean && npm run typescriptlib && npm run browserify-linux"
   }
 }
+
