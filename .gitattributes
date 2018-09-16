@@ -1,0 +1,19 @@
+# Overriding an individual developer's core.autocrlf setting to ensure consistent handling of whitespace.
+* -text
+*.txt text
+*.gradle text
+*.java text
+*.json text
+*.properties text
+*.bat text
+*.xml text
+*.html text
+*.js text
+*.css text
+*.less text
+*.svg text
+*.cs text
+*.csproj text
+*.csproj.user text
+
+

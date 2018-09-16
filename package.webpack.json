@@ -1,0 +1,36 @@
+{
+  "name": "codecab",
+  "version": "2.0.0",
+  "author": "Maarten Krijgsman",
+  "main": "src/codecab.js",
+  "dependencies": {
+    "json-loader": "^0.5.7",
+    "bit-twiddle": "^1.0.2",
+    "earcut": "^2.0.7",
+    "eventemitter3": "^2.0.0",
+    "ismobilejs": "^0.4.0",
+    "object-assign": "^4.0.1",
+    "pixi-gl-core": "^1.1.4",
+    "remove-array-items": "^1.0.0",
+    "resource-loader": "^2.1.1"
+  },
+  "devDependencies": {
+    "webpack": "^3.10.0",
+    "rimraf": "^2.6.2",
+    "typescript": "^2.6.2",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "webpack-livereload-plugin": "^1.0.0",
+    "brfs": "^1.4.3",
+    "transform-loader": "^0.2.4"
+  },
+  "scripts": {
+    "test": "scripts/build",
+    "clean": "rimraf build generate && mkdir generate && mkdir generate/lib && mkdir build",
+    "typescriptlib": "tsc lib/ts/turbulenz/index.ts --module ES2015 --outDir generate/lib",
+    "browserify": "browserify src/index.js -o build/codecab.js -t [ brfs-babel ] -t [ babelify --presets [ env ] ]",
+    "watch": "webpack --config webpack.config.dev.js --watch",
+    "build": "webpack --config webpack.config.dev.js"
+  }
+}

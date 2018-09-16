@@ -1,3 +1,8 @@
-.idea/
-.npmrc
-node_modules/
+.git/
+/.idea/
+/node_modules/
+/generate/
+**/*.rdb
+**/*.old
+/build/*
+
