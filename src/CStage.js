@@ -17,7 +17,7 @@ import CPoint from './CPoint';
 import CRect from './CRect';
 
 // TODO, make generic
-const MOUSE_EVENTS = ['click', 'mousedown', 'mouseup', 'pointerdown', 'pointermove', 'pointerup'];
+const MOUSE_EVENTS = ['click', 'mousedown', 'mouseup', 'mousemove', 'pointerdown', 'pointermove', 'pointerup'];
 
 PIXI.utils.skipHello();
 

@@ -14,7 +14,7 @@ import {loadAndTraceResource} from './tracer/resource_loader';
 import {deg2rad, rad2deg, rangeDeg} from './misc/math';
 import {ASSERT} from './misc/util';
 
-const MOUSE_EVENTS = ['click', 'mousedown', 'mouseup', 'pointerdown'];
+const MOUSE_EVENTS = ['click', 'mousedown', 'mouseup', 'mousemove', 'pointerdown', 'pointermove', 'pointerup'];
 
 const ROTATING_STYLE_FN = {
     'none': function(degrees) {/* ignore */},

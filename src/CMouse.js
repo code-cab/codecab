@@ -13,7 +13,7 @@ export default class CMouse extends CObject {
         this.id = 'mouse';
         this.stage = CStage.get();
         this.stage._stageContainer.interactive = true;
-        this.stage._stageContainer.on('mousemove', event => {
+        this.stage._stageContainer.on('pointermove', event => {
             this._lastPosition = event.data.global;
         });
     }

@@ -220,7 +220,7 @@ export default class CPhysicsCtrl extends CController {
 
             let draggingConstraint;
 
-            this.target.on('mousedown', (event) => {
+            this.target.on('pointerdown', (event) => {
                 if (draggingConstraint || !this._draggingEnabled) return;
                 if (event && event.data && event.data.sprites) {
                     let sprite = event.data.sprites.find(s => s.body.type === 'dynamic');
@@ -238,7 +238,7 @@ export default class CPhysicsCtrl extends CController {
                 }
             });
 
-            this.target.on('mouseup', (event) => {
+            this.target.on('pointerup', (event) => {
                 if (draggingConstraint) {
                     this.world.removeConstraint(draggingConstraint);
                     draggingConstraint = undefined;

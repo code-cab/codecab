@@ -216,15 +216,19 @@ export default class CChildObject extends CObject {
         on('rightdown', callback);
     }
 
-    onMouseDown(callback) {
+    /**
+     * Use pointerevents instead of mouseevents for better mobile support
+     * @param callback
+     */
+    onPointerDown(callback) {
         this.on('pointerdown', callback);
     }
 
-    onMouseUp(callback) {
+    onPointerUp(callback) {
         this.on('pointerup', callback);
     }
 
-    onMouseMove(callback) {
+    onPointerMove(callback) {
         this.on('pointermove', callback);
     }
 
