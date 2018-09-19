@@ -186,6 +186,7 @@ export default class CChildObject extends CObject {
         return CStage.get()._childrenContainer.getChildIndex(this.__pixiObject);
     }
 
+
     set order(index) {
         index = Math.max(Math.min(index, CStage.get()._childrenContainer.children.length - 1), 0);
         CStage.get()._childrenContainer.setChildIndex(this.__pixiObject, index);
