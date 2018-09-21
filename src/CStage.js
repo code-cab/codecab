@@ -284,6 +284,19 @@ export default class CStage extends CObject {
         }
     }
 
+    onPointerDown(callback) {
+        this.on('pointerdown', callback);
+    }
+
+    onPointerUp(callback) {
+        this.on('pointerup', callback);
+    }
+
+    onPointerMove(callback) {
+        this.on('pointermove', callback);
+    }
+
+
     isKeyPressed(key) {
         return this._keyManager.isKeyPressed(key);
     }
