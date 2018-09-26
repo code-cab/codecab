@@ -27,7 +27,7 @@ const DEFAULT_OPTIONS = {
     backgroundColor: 0x0ffffff,
     supportsTouchEvents: true,
     origin: 'center',
-    resolution: window.devicePixelRatio,
+    // resolution: window.devicePixelRatio,
 
     // Physics options
     pixelsPerMeter: 60,
