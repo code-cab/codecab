@@ -2,10 +2,18 @@ import {deg2rad, rad2deg} from './misc/math';
 
 const PI180 = Math.PI/180;
 export default class CMath {
+    /**
+     * Return whole integer between min and max, including max.
+     *
+     * @param min
+     * @param max
+     * @returns {number}
+     */
     static randomBetween(min, max) {
         min = Math.round(min);
         max = Math.round(max);
-        return Math.min(Math.floor(Math.random() * (max - min + 1)) + min, max);
+        let r = Math.random();
+        return Math.min(Math.floor(r * (max - min + 1)) + min, max);
     }
 
     static round(value) {
@@ -50,6 +58,10 @@ export default class CMath {
 
     static atan(value) {
         return Math.atan(value) / PI180;
+    }
+
+    static atan2(x, y) {
+        return Math.atan2(x, y) / PI180;
     }
 
     static ln(value) {

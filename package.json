@@ -1,10 +1,10 @@
 {
   "name": "codecab",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "author": "Maarten Krijgsman",
   "main": "src/index.js",
   "dependencies": {
-    "pixi.js": "4.7.1",
+    "pixi.js": "^4.8.3",
     "bit-twiddle": "^1.0.2",
     "colorsys": "^1.0.20",
     "earcut": "^2.0.7",
@@ -15,8 +15,9 @@
     "pixi-filters": "^2.6.0",
     "pixi-gl-core": "^1.1.4",
     "pixi-sound": "^2.0.1",
+    "webfontloader": "latest",
     "remove-array-items": "^1.0.0",
-    "resource-loader": "^2.1.1",
+    "resource-loader": "^2.2.2",
     "tween.js": "^16.6.0",
     "poly-to-pslg": "^1.0.1",
     "cdt2d": "^1.0.0",
@@ -62,4 +63,3 @@
     "build-linux": "npm run clean && npm run typescriptlib && npm run browserify-linux"
   }
 }
-

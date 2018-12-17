@@ -64,11 +64,11 @@ export default class CObject extends EventEmitter {
         super.on('start', callback);
     }
 
-    // Not needed anymore.
     onFrame(callback) {
         if (this._destroyed) return Promise.reject("Object is destroyed");
-        PIXI.ticker.shared.add(() => !this.__notStarted && callback.call(this), this, 0 /* UPDATE_PRIORITY.NORMAL */);
-        this._frameCallbacks.push(callback);
+        let cb = () => !this.__notStarted && !this._destroyed && callback.call(this);
+        PIXI.ticker.shared.add(cb, this, 0 /* UPDATE_PRIORITY.NORMAL */);
+        this._frameCallbacks.push(cb);
     }
 
     /**

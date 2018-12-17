@@ -9,7 +9,7 @@ import CTween from './CTween';
 import CanvasSprite from './misc/canvassprite';
 import KeyManager from './impl/stage-keymanager';
 
-import { loadAndTraceResource, init } from './tracer/resource_loader';
+import { loadAndTraceResource, init, loadWebFont } from './tracer/resource_loader';
 import {ASSERT} from './misc/util';
 import TWEEN from 'tween.js';
 
@@ -40,6 +40,7 @@ const DEFAULT_OPTIONS = {
 };
 
 var _instance;
+
 export default class CStage extends CObject {
     /**
      *
@@ -216,6 +217,16 @@ export default class CStage extends CObject {
         return loadAndTraceResource.call(this, resource, resourceUrl, options);
     }
 
+    /**
+     * Examples:
+     * loadWebFont('google', 'Montserrat:700');
+     * @param origin
+     * @param family
+     */
+    static loadFont(origin, family) {
+        loadWebFont(origin, family);
+    }
+
     destroy() {
         super.destroy();
         this._controllers.forEach(controller => controller.destroy());
@@ -290,6 +301,7 @@ export default class CStage extends CObject {
 
     onPointerUp(callback) {
         this.on('pointerup', callback);
+        this.on('pointerupoutside', callback);
     }
 
     onPointerMove(callback) {

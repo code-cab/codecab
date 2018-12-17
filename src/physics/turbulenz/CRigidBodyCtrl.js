@@ -256,6 +256,7 @@ export default class CRigidBody extends CController {
     get dynamicFriction() {
         return this._material.getDynamicFriction();
     }
+
     set rollingFriction(rollingFriction) {
         let m = this._material;
         this._material = CPhysicsCtrl.get().engine.createMaterial({
@@ -286,6 +287,7 @@ export default class CRigidBody extends CController {
     get density() {
         return this._material.getDensity();
     }
+
 
     set type(value) {
         ASSERT.isOneOf(['none', 'sensor', 'dynamic', 'kinematic', 'static'], value, 'type');
@@ -384,6 +386,21 @@ export default class CRigidBody extends CController {
         return this.isNone() ? this.target.rotation : rad2deg(this.rigidBody.getRotation());
     }
 
+    get mass() {
+        if (this.isNone()) return;
+        return this.rigidBody.getMass();
+    }
+
+    get areaInPixels() {
+        if (this.isNone()) return;
+        let area = 0;
+        for (let shape of this._rigidBody.shapes) {
+            area += shape.computeArea();
+        }
+        area *= CMath.square(CStage.get()._options.pixelsPerMeter);
+        return area;
+    }
+
     set collisionLayers(layers) {
         if (!Array.isArray(layers)) {
             layers = [layers];
@@ -405,6 +422,33 @@ export default class CRigidBody extends CController {
             -force * CMath.cos(direction)
         ];
         this._rigidBody.applyImpulse(impulse);
+    }
+
+    applyVelocity(velocity, direction) {
+        let currVel = this._rigidBody.getVelocity();
+        let mass = this.mass;
+        let changeX = velocity * CMath.sin(direction) - currVel[0];
+        let changeY = -velocity * CMath.cos(direction) - currVel[1];
+
+        this._rigidBody.applyImpulse([changeX * mass, changeY * mass]);
+    }
+
+    get velocity() {
+        let currVel = this._rigidBody.getVelocity();
+        return CMath.sqrt(CMath.square(currVel[0]), CMath.square(currVel[1]));
+    }
+
+    get velocityDirection() {
+        let currVel = this._rigidBody.getVelocity();
+        return CMath.atan2(currVel[0], -currVel[1]);
+    }
+
+    setForce(force, direction) {
+        let f = [
+            force * CMath.sin(direction),
+            -force * CMath.cos(direction)
+        ];
+        this._rigidBody.setForce(f);
     }
 
     // alignToCenterOfMass() {
@@ -439,6 +483,19 @@ export default class CRigidBody extends CController {
 
         showShapes.call(this);
 
+    }
+
+    destroy() {
+        super.destroy();
+        let world = CPhysicsCtrl.get().world;
+        if (this._bodyObject) {
+            this._bodyObject.destroy();
+            delete this._bodyObject;
+        }
+        if (this._rigidBody) {
+            world.removeRigidBody(this._rigidBody);
+            delete this._rigidBody;
+        }
     }
 }
 
@@ -531,7 +588,7 @@ function createOrRecreateBody(type) {
         for (let cs of this._customShapes) {
             let s = cs.clone();
             s.sensor = sensor;
-            s.material = material;
+            s.setMaterial(material);
             shapes.push(s);
         }
     } else if (this.target._pixiObject.texture &&
@@ -833,7 +890,7 @@ function translateShapes(x, y) {
 
 function getTouching(...targets) {
     if (this.isNone()) return;
-    if (!targets.length) targets = this.target.stage.sprites;
+    if (!targets || !targets.length) targets = this.target.stage.children;
     let utils = CPhysicsCtrl.get().collisionUtils;
     let shapes = this._rigidBody.shapes;
     let r = this._rigidBody.computeWorldBounds();
@@ -851,16 +908,23 @@ function getTouching(...targets) {
 
     let _isTouching = target => {
         if (!target || target === this.target) return false;
-        let targetShapes = target && target.body && !target.body.isNone() && target.body._rigidBody.shapes;
-        if (targetShapes) {
-            target.body._rigidBody.computeWorldBounds(rt);
+        let targetBody;
+        if (target instanceof CSprite) {
+            targetBody = target.body && !target.body.isNone() && target.body._rigidBody;
+        }
+        if (target instanceof CStage) {
+            targetBody = target && target.physics && target.physics._borderBody;
 
+        }
+
+        if (targetBody && targetBody.shapes) {
+            targetBody.computeWorldBounds(rt);
             if (!intersectRect(r, rt)) {
                 return false;
             }
             for (let si = 0; si < shapes.length; si += 1) {
-                for (let ti = 0; ti < targetShapes.length; ti += 1) {
-                    if (utils.intersects(shapes[si], targetShapes[ti])) {
+                for (let ti = 0; ti < targetBody.shapes.length; ti += 1) {
+                    if (utils.intersects(shapes[si], targetBody.shapes[ti])) {
                         return true;
                     }
                 }

@@ -307,7 +307,6 @@ export default class CSprite extends CChildObject {
         return controller;
     }
 
-
     on(eventName, callback) {
         if (MOUSE_EVENTS.indexOf(eventName) >= 0) {
             this.body._bindMouseEvent(eventName, callback);
@@ -365,6 +364,14 @@ export default class CSprite extends CChildObject {
     _renderCollisionBody() {
         _sprite.renderCollisionBody.call(this);
     }
+
+    destroy() {
+        super.destroy();
+        for (let controller of this._controllers) {
+            controller.destroy();
+        }
+    }
+
 }
 
 function setSource(value) {

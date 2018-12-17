@@ -4,6 +4,9 @@ import colorsys from 'colorsys';
 
 /**
  * Usage:
+ * new CText('
+ *
+ *
  * moveTo()
  * lineTo()
  * lineTo()
@@ -11,11 +14,11 @@ import colorsys from 'colorsys';
  * fill();
  */
 export default class CText extends CChildObject {
-    constructor(text, size) {
+    constructor(text, size, family) {
         super();
         this._pixiObject = new PIXI.Text(text, {
             fontSize: size || 16,
-            fontFamily: 'Arial',
+            fontFamily: family || 'Arial',
             fill: '#000000',
             align: 'center'
         });

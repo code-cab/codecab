@@ -79,6 +79,7 @@ export default class CChildObject extends CObject {
 
     goto(x, y) {
         this._position.set(x, y);
+        return this;
     }
 
     set width(value) {

@@ -1,8 +1,9 @@
 //import * as PIXI from '../../lib/es6/pixi.js/index';
 import * as PIXI from 'pixi.js';
 import TracerWorkers from '../tracer/TracerWorkers';
-import CStage from '../CStage';
-
+// import CStage from '../CStage';
+import WebFont from 'webfontloader';
+import {ASSERT} from '../misc/util';
 /**
  * Load and trace resources. Can be used before or after start.
  * When CodeCab is not yet started, the 'onStart' event will wait until all sources are loaded
@@ -19,6 +20,9 @@ var loaderRequestPending = false;
 var loadingResources = [];
 var duplicateCalbacks = {};
 var resourceOptions = {};
+
+const WEBFONT_ORIGINS = ['google'];
+let webfontConfig = {};
 TracerWorkers.startWorkers();
 
 
@@ -118,7 +122,10 @@ function init(stage, callback) {
 //    TracerWorkers.startWorkers();
     assetLoader.load(() => {
         loadingDone = true;
-        callback && callback();
+        // Check if webfonts may be loaded
+        doLoadWebFont(() => {
+            callback && callback();
+        });
     });
     // One extra in case there is nothing to load
     // setTimeout(function() {
@@ -155,8 +162,40 @@ function getResource(resourceUrl) {
     return assetLoader.resources[resourceUrl];
 }
 
+
+function doLoadWebFont(cb) {
+    if (Object.keys(webfontConfig).length === 0) {
+        cb();
+    } else {
+        webfontConfig.active = function() {
+            cb();
+        };
+        webfontConfig.inactive = function() {
+            console.error("Unable to load webfonts");
+            cb();
+        };
+        WebFont.load(webfontConfig);
+    }
+}
+
+function loadWebFont(origin, family) {
+    ASSERT.isOneOf(WEBFONT_ORIGINS, origin, 'origin');
+    if (started || loadingDone) {
+        throw new Error("CStage.loadWebFont can only be used before starting");
+    }
+    if (origin === 'google') {
+        if (!webfontConfig.google) {
+            webfontConfig.google = {
+                families: []
+            }
+        }
+        webfontConfig.google.families.push(family);
+    }
+}
+
 export {
     loadAndTraceResource,
+    loadWebFont,
     init,
     getResource
 }

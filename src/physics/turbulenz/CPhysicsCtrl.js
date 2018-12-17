@@ -45,6 +45,7 @@ export default class CPhysicsCtrl extends CController {
         // this._debugDraw.setPhysics2DViewport([0, 0, 500, 500]);
     }
 
+
     set __target(value) {
         super.__target = value;
         this.enableDragging = this._options.enableDragging;
@@ -92,28 +93,45 @@ export default class CPhysicsCtrl extends CController {
      *  box: add an edge around the corners
      *  bowl: add an edge at both sides and the bottom
      *  bottom: add an edge at the bottom
+     *  [bottom, left, right, top]: add edge at specific coordinates
      *
      * @param type
      */
     setBorder(type) {
         if (this._borderBody) this.world.removeRigidBody(this._borderBody);
 
+        const MIN = -20000;
+        const MAX = 20000;
+
         let thickness = 10;
 
         let rect = this.target.stageRect;
-        let top = rect.y / this.target._options.pixelsPerMeter;
-        let left = rect.x / this.target._options.pixelsPerMeter;
-        let bottom = (rect.y + rect.height) / this.target._options.pixelsPerMeter;
-        let right = (rect.x + rect.width) / this.target._options.pixelsPerMeter;
+        let top = rect.y;
+        let left = rect.x;
+        let bottom = (rect.y + rect.height);
+        let right = (rect.x + rect.width);
+
+        if (typeof type === 'object' ) {
+            bottom = type.bottom != undefined ? type.bottom : MAX;
+            left = type.left != undefined ? type.left : MIN;
+            top = type.top != undefined ? type.top : MIN;
+            right = type.right != undefined ? type.right : MAX;
+            type = 'box';
+        }
+
+        top /= this.target._options.pixelsPerMeter;
+        left /= this.target._options.pixelsPerMeter;
+        right /= this.target._options.pixelsPerMeter;
+        bottom /= this.target._options.pixelsPerMeter;
+
+
         // let bounds = CRect.createFromRect(this.target._app.screen);
         // bounds.applyTransform(this.target._stageContainer.localTransform);
         // bounds.applyTransform(this.transform);
         // let marginBounds = CRect.createFromRect(bounds);
         // marginBounds.pad(thickness);
 
-        const MIN = -20000;
-        const MAX = 20000;
-        
+
         switch (type) {
             case 'box':
                 this._borderBody = this.engine.createRigidBody({
