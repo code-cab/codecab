@@ -76,6 +76,10 @@ function init(stage, callback) {
         return;
     }
     assetLoader.use(function(resource, next) {
+        if (['png', 'svg'].indexOf(resource.extension) < 0) {
+            next();
+            return;
+        }
         let texture = PIXI.utils.TextureCache[resource.name];
         let options = resourceOptions[resource.name] || {};
         let baseTexture = texture.baseTexture;
