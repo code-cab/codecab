@@ -1,7 +1,7 @@
 CodeCab
 =======
 
-A powerfull ![Scratch](./doc-img/scratch-logo2.png) like __game engine__ but with physics, autotrace, text and graphics.
+A powerfull ![Scratch](https://raw.githubusercontent.com/code-cab/codecab/master/doc-img/scratch-logo2.png) like __game engine__ for JavaScript but with physics, autotrace, text and graphics.
 
 [CodeCab](https://code.cab) has a quick start online editor for learning JavaScript at [code.cab/ide.html](https://code.cab/ide.html).
 
@@ -9,7 +9,7 @@ A powerfull ![Scratch](./doc-img/scratch-logo2.png) like __game engine__ but wit
 Scratch vs CodeCab
 -----------
 
-![Scratch code 1](./doc-img/scratch-code1.png)
+![Scratch code 1](https://raw.githubusercontent.com/code-cab/codecab/master/doc-img/scratch-code1.png)
 
 ```javascript
 let stage = new CStage();
