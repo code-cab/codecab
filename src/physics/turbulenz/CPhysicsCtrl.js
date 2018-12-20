@@ -331,7 +331,7 @@ export default class CPhysicsCtrl extends CController {
         if (event.data) {
             event.data.sprites = [];
             bodies.forEach(b => {
-                if (b.userData && b.userData.target) {
+                if (b.userData && b.userData.target && !this.userData.__notStarted && this.userData.enable) {
                     event.data.sprites.push(b.userData.target);
                 }
             });
@@ -380,6 +380,7 @@ function updatePhysics(deltaSec) {
 
     while (this._startTimeMsec < this._endTimeMsec && performance.now() < endNow) {
         for (let body of bodies) {
+            if (body.userData && (body.userData.__notStarted || !body.userData.enable)) continue;
             body._update();
             body._prevSleeping = false;
         }
@@ -405,6 +406,7 @@ function updatePhysics(deltaSec) {
     }
     for (let i = 0; i < limit; i++) {
         let body = bodies[i];
+        if (body.userData && (body.userData.__notStarted || !body.userData.enable)) continue;
         body._update();
         if (body.userData) {
             body.userData._update();

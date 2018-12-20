@@ -170,11 +170,11 @@ export default class CChildObject extends CObject {
         }
     }
 
-    set visible(visible) {
-        this.__pixiObject.visible = !!visible;
+    set enable(enable) {
+        this.__pixiObject.visible = !!enable;
     }
 
-    get visible() {
+    get enable() {
         return !!this.__pixiObject.visible;
     }
 
