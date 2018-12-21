@@ -11,7 +11,10 @@ Scratch vs CodeCab
 
 ![Scratch code 1](https://raw.githubusercontent.com/code-cab/codecab/master/doc-img/scratch-code1.png)
 
+CodeCab equivalent:
 ```javascript
+import {CStage, CSprite} from 'codecab';
+
 let stage = new CStage();
 
 let cat = new CSprite('cat.png');
@@ -27,4 +30,4 @@ cat.onStart(async function() {
 });
 ```
 
-
+Check out [code.cab/ide.html](https://code.cab/ide.html) for more information how to move from ![Scratch](https://raw.githubusercontent.com/code-cab/codecab/master/doc-img/scratch-logo2.png) to JavaScript CodeCab

@@ -32,7 +32,8 @@ const DEFAULT_OPTIONS = {
     // Physics options
     pixelsPerMeter: 60,
     stepsPerSecond: 60,
-    gravity: [0, 10],
+    gravity: 10,
+    gravityDirection: 180,
     enableDragging: true,
     showShapes: false,
     showConstraints: false,
@@ -293,6 +294,10 @@ export default class CStage extends CObject {
         } else {
             super.off(eventName, callback);
         }
+    }
+
+    onClick(callback) {
+        this.on('click', callback);
     }
 
     onPointerDown(callback) {

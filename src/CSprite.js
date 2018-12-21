@@ -10,7 +10,7 @@ import CGraphics from './CGraphics';
 import * as _spriteText from './impl/sprite-text';
 import * as PIXI from 'pixi.js';
 
-import {loadAndTraceResource} from './tracer/resource_loader';
+import {loadAndTraceResource, traceTexture} from './tracer/resource_loader';
 import {deg2rad, rad2deg, rangeDeg} from './misc/math';
 import {ASSERT} from './misc/util';
 
@@ -366,10 +366,13 @@ export default class CSprite extends CChildObject {
     }
 
     destroy() {
-        super.destroy();
-        for (let controller of this._controllers) {
-            controller.destroy();
-        }
+        // Do async to avoid conflicts
+        setTimeout(() => {
+            for (let controller of this._controllers) {
+                controller.destroy();
+            }
+            super.destroy();
+        }, 0);
     }
 
 }
@@ -388,6 +391,25 @@ function setSource(value) {
         this.anchor.set(0, 0);
         this._body._sourceChanged();
         this.__doStart();
+        return;
+    }
+    if (value instanceof CPenCtrl) { // Let's be creative
+        this.anchor.set(0, 0);
+        let penCanvas = value._canvasSprite.texture.baseTexture.source;
+        let canvas = document.createElement('canvas');
+        canvas.width = penCanvas.width;
+        canvas.height = penCanvas.height;
+        let ctx = canvas.getContext('2d');
+        ctx.drawImage(penCanvas, 0, 0);
+        let texture = PIXI.Texture.fromCanvas(canvas);
+        traceTexture(texture, {}, (arrayOfVertices) => {
+            texture.baseTexture.arrayOfVertices = arrayOfVertices;
+            this._pixiObject = new PIXI.Sprite(texture);
+            this._pixiObject.updateTransform();
+            this.anchor.set(0.5, 0.5);
+            this._body._sourceChanged();
+            this.__doStart();
+        });
         return;
     }
     let values = value;

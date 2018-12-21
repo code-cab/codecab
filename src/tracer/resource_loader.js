@@ -65,6 +65,34 @@ function loadAndTraceResource(resourceName, resourceUrl, options) {
     });
 }
 
+function traceTexture(texture, options, callback) {
+    let baseTexture = texture.baseTexture;
+    if (baseTexture && baseTexture.source) {
+        options.tolerance = options.tolerance || 1.5;
+        options.limitSize = options.limitSize || 1000 * 1000;
+        options.noHoles = true;
+        let imgData = TracerWorkers.getImageData(baseTexture.source, options);
+        if (imgData) {
+            imgData.backgroundColor = 0.5;
+            imgData.options = options;
+            TracerWorkers.traceAndConvexify(imgData, (err, arrayOfVertices) => {
+                if (err) {
+                    console.warn(err);
+                }
+                if (arrayOfVertices) {
+                    callback(arrayOfVertices);
+                    return;
+                }
+                callback();
+            });
+        } else {
+            callback();
+        }
+    } else {
+        callback();
+    }
+}
+
 function init(stage, callback) {
     if (started || loadingDone) {
         console.warn("CStage has already been started");
@@ -83,29 +111,10 @@ function init(stage, callback) {
         let texture = PIXI.utils.TextureCache[resource.name];
         let options = resourceOptions[resource.name] || {};
         let baseTexture = texture.baseTexture;
-        if (baseTexture && baseTexture.source) {
-            options.tolerance = options.tolerance || 1.5;
-            options.limitSize = options.limitSize || 1000 * 1000;
-            options.noHoles = true;
-            let imgData = TracerWorkers.getImageData(baseTexture.source, options);
-            if (imgData) {
-                imgData.backgroundColor = 0.5;
-                imgData.options = options;
-                TracerWorkers.traceAndConvexify(imgData, (err, arrayOfVertices) => {
-                    if (err) {
-                        console.warn(err);
-                    }
-                    if (arrayOfVertices) {
-                        baseTexture.arrayOfVertices = arrayOfVertices;
-                    }
-                    next();
-                });
-            } else {
-                next();
-            }
-        } else {
+        traceTexture(texture, options, (arrayOfVertices) => {
+            if (baseTexture) baseTexture.arrayOfVertices = arrayOfVertices;
             next();
-        }
+        });
     });
     assetLoader.on('error', function(error, loader, resource) {
        error.message = 'Unable to load resource: ' + resource.name;
@@ -201,5 +210,6 @@ export {
     loadAndTraceResource,
     loadWebFont,
     init,
+    traceTexture,
     getResource
 }

@@ -20,6 +20,7 @@ export default class CPhysicsCtrl extends CController {
             throw new Error('CPhysicsCtrl already created. Only one instance is allowed. Reset previous instance first');
         }
         instance = this;
+
         this._options = options || {};
 
         this._engine = TURB.Physics2DDevice.create();
@@ -27,7 +28,16 @@ export default class CPhysicsCtrl extends CController {
         // this._options.velocityIterations = 100;
         // this._options.positionIterations = 100;
         // this._options.broadphase = this._engine.createSweepAndPruneBroadphase();
-        this._world  = this._engine.createWorld(this._options);
+        let o = {
+            broadphase: this._options.broadphase,
+            velocityIterations: this._options.velocityIterations,
+            positionIterations: this._options.positionIterations
+        };
+        o.gravity = [
+            this._options.gravity * CMath.sin(this._options.gravityDirection),
+            -this._options.gravity * CMath.cos(this._options.gravityDirection)
+        ];
+        this._world  = this._engine.createWorld(o);
         this._world.clear();
 
         // staticReferenceBody is used to attach something to the world.
@@ -331,7 +341,7 @@ export default class CPhysicsCtrl extends CController {
         if (event.data) {
             event.data.sprites = [];
             bodies.forEach(b => {
-                if (b.userData && b.userData.target && !this.userData.__notStarted && this.userData.enable) {
+                if (b.userData && b.userData.target && !b.userData.target.__notStarted && b.userData.target.enable) {
                     event.data.sprites.push(b.userData.target);
                 }
             });
@@ -380,7 +390,8 @@ function updatePhysics(deltaSec) {
 
     while (this._startTimeMsec < this._endTimeMsec && performance.now() < endNow) {
         for (let body of bodies) {
-            if (body.userData && (body.userData.__notStarted || !body.userData.enable)) continue;
+            if (body.userData && body.userData.target &&
+                (body.userData.target.__notStarted || body.userData.target._destroyed || !body.userData.target.enable)) continue;
             body._update();
             body._prevSleeping = false;
         }
@@ -406,7 +417,8 @@ function updatePhysics(deltaSec) {
     }
     for (let i = 0; i < limit; i++) {
         let body = bodies[i];
-        if (body.userData && (body.userData.__notStarted || !body.userData.enable)) continue;
+        if (body.userData && body.userData.target &&
+            (body.userData.target.__notStarted || body.userData.target._destroyed || !body.userData.target.enable)) continue;
         body._update();
         if (body.userData) {
             body.userData._update();

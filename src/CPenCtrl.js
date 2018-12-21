@@ -28,10 +28,6 @@ export default class CPenCtrl extends CController {
         this._canvasSprite.changed = true;
     }
 
-    stamp() {
-
-    }
-
     up() {
         this._isDown = false;
     }
@@ -136,7 +132,8 @@ export default class CPenCtrl extends CController {
                 width: this._canvasSprite.width,
                 height: this._canvasSprite.height,
                 view: this._canvasSprite.canvas,
-                clearBeforeRender: false
+                clearBeforeRender: false,
+                transparent: true
             })
         }
         this.target._pixiObject.updateTransform();

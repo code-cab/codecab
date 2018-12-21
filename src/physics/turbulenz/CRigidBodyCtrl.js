@@ -476,9 +476,6 @@ export default class CRigidBody extends CController {
             sprite.y = pos.y;
             this._target.emit('position', {x: sprite.x, y: sprite.y});
         }
-        // if (this._freezeRotation !== undefined) {
-        //     this.rigidBody.setRotation(this._freezeRotation);
-        // }
         sprite.rotation = this.rigidBody.getRotation();
 
         showShapes.call(this);
