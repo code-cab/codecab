@@ -135,13 +135,6 @@ export default class CPhysicsCtrl extends CController {
         bottom /= this.target._options.pixelsPerMeter;
 
 
-        // let bounds = CRect.createFromRect(this.target._app.screen);
-        // bounds.applyTransform(this.target._stageContainer.localTransform);
-        // bounds.applyTransform(this.transform);
-        // let marginBounds = CRect.createFromRect(bounds);
-        // marginBounds.pad(thickness);
-
-
         switch (type) {
             case 'box':
                 this._borderBody = this.engine.createRigidBody({

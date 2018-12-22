@@ -12,9 +12,8 @@ import * as PIXI from 'pixi.js';
 
 import {loadAndTraceResource, traceTexture} from './tracer/resource_loader';
 import {deg2rad, rad2deg, rangeDeg} from './misc/math';
-import {ASSERT} from './misc/util';
+import {ASSERT, MOUSE_EVENTS} from './misc/util';
 
-const MOUSE_EVENTS = ['click', 'mousedown', 'mouseup', 'mousemove', 'pointerdown', 'pointermove', 'pointerup'];
 
 const ROTATING_STYLE_FN = {
     'none': function(degrees) {/* ignore */},

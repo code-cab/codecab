@@ -211,11 +211,7 @@ export default class CChildObject extends CObject {
     }
 
     onClick(callback) {
-        this.on('pointerdown', callback);
-    }
-
-    onRightClick(callback) {
-        on('rightdown', callback);
+        this.on('click', callback);
     }
 
     /**
@@ -228,6 +224,7 @@ export default class CChildObject extends CObject {
 
     onPointerUp(callback) {
         this.on('pointerup', callback);
+        this.on('pointerupoutside', callback);
     }
 
     onPointerMove(callback) {

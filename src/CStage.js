@@ -10,15 +10,13 @@ import CanvasSprite from './misc/canvassprite';
 import KeyManager from './impl/stage-keymanager';
 
 import { loadAndTraceResource, init, loadWebFont } from './tracer/resource_loader';
-import {ASSERT} from './misc/util';
+import {ASSERT, MOUSE_EVENTS} from './misc/util';
 import TWEEN from 'tween.js';
 
 import CPoint from './CPoint';
 import CRect from './CRect';
 
-// TODO, make generic
-const MOUSE_EVENTS = ['click', 'mousedown', 'mouseup', 'mousemove', 'pointerdown', 'pointermove', 'pointerup'];
-
+// Sorry PIXI, too intrusive
 PIXI.utils.skipHello();
 
 const DEFAULT_OPTIONS = {
