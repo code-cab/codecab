@@ -22,8 +22,9 @@ __Contents__
       * [Resource loader](#3resourceloader)
 
 
-<a name="scratchapi"/>
-Scratch based API
+
+
+<a name="scratchapi"/> Scratch based API
 -----------
 
 When you're familiar with
@@ -56,12 +57,10 @@ Check out [code.cab/ide.html](https://code.cab/ide.html) to learn how to transla
 [ ![Scratch](https://raw.githubusercontent.com/code-cab/codecab/master/doc-img/scratch-logo2.png) ](https://scratch.mit.edu/)
 blocks to JavaScript code.
 
-<a name="features"/>
-CodeCab features
+<a name="features"/> CodeCab features
 ----
 
-<a name="3fast"/>
-### Fast graphics
+### <a name="3fast"/> Fast graphics
 
 CodeCab makes use of the high performance
 [ ![PixiJS](https://raw.githubusercontent.com/code-cab/codecab/master/doc-img/doc-img/pixijs-v4-logo-sml.png) ](http://www.pixijs.com/)
@@ -69,16 +68,16 @@ WebGL graphics library.
 The integration is transparent to allow direct usage of PIXI.JS when needed.
 
 
-<a name="3controllers"/>
-### Behaviour controllers
+
+### <a name="3controllers"/> Behaviour controllers
 
 Scratch has a lot of logic in one (Sprite) class. To avoid having huge JavaScript classes the logic is spread out
  over multiple _controller_ classes. As shown in the CodeCab example above we have a _CSprite.pen_ for
  the pen logic, _CSprite.sound_ controller for sound and _CSprite.body_ for physics.
 
 
-<a name="3physics"/>
-### Physics
+
+### <a name="3physics"/> Physics
 
 Wouldn't it be fun to have real Physics in Scratch?
 [ ![Scratch](https://raw.githubusercontent.com/code-cab/codecab/master/doc-img/scratch-logo2.png) ](https://scratch.mit.edu/)
@@ -135,8 +134,8 @@ sprite.onStart(function() {
 
 
 
-<a name="3autovectorize"/>
-### Auto vectorize
+
+### <a name="3autovectorize"/> Auto vectorize
 
 Physics and collision detection in JavaScript is only possible when the (vectorized) shape of an object
 is known. CodeCab automatically converts all used __PNG or SVG images with transparent background__ to vector shapes. For that a very fast algorithm is
@@ -170,18 +169,17 @@ penSprite.opacity = 0; // Make it invisible since we already have the pen layer
 #### Vectorize demo:
 - [Marbles](https://code.cab/u/demo/Marbles.html)
 
-<a name="3graphics"/>
-### Graphics
+
+### <a name="3graphics"/> Graphics
 
 TODO
 
-<a name="3text"/>
-### Text and Google font support
+
+### <a name="3text"/> Text and Google font support
 
 CodeCab has a separate CText class to display multi-line text.
 
-<a name="3events"/>
-### Events
+### <a name="3events"/> Events
 
 CodeCab supports all [PIXI.js events](http://pixijs.download/dev/docs/PIXI.interaction.InteractionManager.html).
 
@@ -213,8 +211,8 @@ enriched with extra information:
 | event.worldPoint.x <br> event.worldPoint.y | Physics coordinates of the event in meters |
 | event.data.sprites | Array of sprites related to the event. |
 
-<a name="3resourceloader"/>
-### Resource loader
+
+### <a name="3resourceloader"/> Resource loader
 
 CodeCab makes use of the PIXI resource loader. In the [CodeCab Editor](https://code.cab/ide.html)
 the required resources are automatically added to the resource loader and will be available when the _'start'_
