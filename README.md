@@ -79,8 +79,10 @@ Scratch has a lot of logic in one (Sprite) class. To avoid having huge JavaScrip
 
 ### <a name="3physics"/> Physics
 
-Wouldn't it be fun to have real Physics in Scratch?
+Wouldn't it be fun to have real Physics in
 [ ![Scratch](https://raw.githubusercontent.com/code-cab/codecab/master/doc-img/scratch-logo2.png) ](https://scratch.mit.edu/)
+?
+
 Gravity, collisions, motors and stuff like that?
 
 It available with CodeCab! Thanks to the fast
@@ -110,7 +112,7 @@ The physics world can be configured during creation of the CStage object. The ma
 
 Example:
 ```javascript
-let stage = new CState({
+let stage = new CStage({
     gravity: 5,
     pixelsPerMeter: 20,
     enableDragging: false
@@ -177,7 +179,21 @@ TODO
 
 ### <a name="3text"/> Text and Google font support
 
-CodeCab has a separate CText class to display multi-line text.
+CodeCab has a separate CText class to display multi-line text. And use Google web fonts immediately:
+
+Here is an example using [Google's Righteous font](https://fonts.google.com/specimen/Righteous):
+
+```javascript
+let stage = new CStage();
+
+CStage.loadFont('google', 'Righteous');
+
+let text = new CText("CodeCab", 150, 'Righteous');
+text.setLineColor(51, 54, 128);
+text.setFillColor(109, 184, 253);
+text.lineWidth = 40;
+```
+
 
 ### <a name="3events"/> Events
 

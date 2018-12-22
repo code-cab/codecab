@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CodeCab Example</title>
+</head>
+<body>
+    <script type="module">
+        import '../build/codecab-webpack.js';
+
+        CStage.load('cab', 'https://raw.githubusercontent.com/code-cab/codecab/master/doc-img/cab.png');
+
+        let stage = new CStage();
+
+        stage.onStart(async function() {
+            for (let i = 0; i <40; i += 1) {
+                let cab = new CSprite('cab');
+                cab.y = -stage.height/2 - 100;
+                cab.x = CMath.randomBetween(-300, 300);
+                cab.body.type = 'dynamic';
+                cab.body.elasticity = 0.9;
+                await stage.delay(0.5);
+            }
+        });
+
+    </script>
+</body>
+</html>

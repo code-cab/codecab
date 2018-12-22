@@ -1,6 +1,8 @@
 //import earcutWrapped from './earcut_wrapped';
 //import codecabTracerWrapped from './codecab_tracer_wrapped';
-var webworkify = require('webworkify');
+// var webworkify = require('webworkify');
+//var webworkify = require('../misc/workerloader');
+var codecabWorker = require('../../generate/codecab_worker');
 
 var numberOfWorkers = 1;
 var workers = [];
@@ -10,6 +12,16 @@ var queue = [];
 
 var url = module.URL || module.webkitURL;
 
+
+function createWorker() {
+    var URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
+    var blob = new Blob([atob(codecabWorker.default)], { type: 'text/javascript' });
+    var workerUrl = URL.createObjectURL(blob);
+    var worker = new Worker(workerUrl);
+    worker.objectURL = workerUrl;
+    return worker;
+
+}
 
 function appendFunction(fn) {
     return fn.toString()
@@ -130,7 +142,7 @@ export default class TracerWorkers {
         // }
 
         for (let i = 0; i < numberOfWorkers; i++) {
-            workers.push(webworkify(require('./codecab_tracer_worker')));
+            workers.push(createWorker());
             // workers.push(new Worker(URL.createObjectURL(blob)));
             workers[i].busy = false;
             workers[i].onmessage = workDone;

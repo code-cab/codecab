@@ -33,7 +33,8 @@ var INTERSECTION = 0x08;
 //  +---+---+---+
 var DIRS = [[0, -1], [-1, -1], [-1, 0], [-1, 1], [0, 1], [1, 1], [1, 0], [1, -1]];
 
-export function traceAndConvexify(imgData) {
+module.exports.traceAndConvexify = traceAndConvexify ;
+function traceAndConvexify(imgData) {
     imgData.data = createMask(imgData);
     var polys;
     //TEST
@@ -89,7 +90,8 @@ function hex2rgb(hex) {
 }
 
 // Create a mask
-export function createMask(imgData) {
+module.exports.createMask = createMask;
+function createMask(imgData) {
     var w = imgData.w,
         h = imgData.h,
         data = imgData.data,
@@ -118,7 +120,8 @@ export function createMask(imgData) {
 
 // Trace routine won't work on some single pixel patterns.
 // This function will avoid them by adding an extra pixel.
-export function avoidSinglePixels(imgData) {
+module.exports.avoidSinglePixels = avoidSinglePixels;
+function avoidSinglePixels(imgData) {
     var reset = [];
     var i,
         w = imgData.w,
@@ -175,7 +178,8 @@ export function avoidSinglePixels(imgData) {
 // and joined by an intersection line. The knowledge of an intersection
 // point here is very useful to create better simplified polys in the next
 // step.
-export function traceImage(imgData) {
+module.exports.traceImage = traceImage;
+function traceImage(imgData) {
     var i,
         w = imgData.w,
         h = imgData.h,
@@ -392,7 +396,8 @@ function findIntersectionOnLine(x, y, otherIndex, otherPoly, isDownwards) {
 // half the total poly length).
 // F.e. when the largest fitting line length is 43 the following lengths
 // will be tested: 32, 64, 48, 40, 44, 42, 43
-export function simplify(imgData, polys) {
+module.exports.simplify = simplify;
+function simplify(imgData, polys) {
     var z = imgData.simplifyZoom = 2;
     var s = new Date().getTime();
     var lw = imgData.w * z;
@@ -768,7 +773,8 @@ function calcLine(x0, y0, x1, y1, handler) {
 }
 
 
-export function triangulate(polys) {
+module.exports.triangulate = triangulate;
+function triangulate(polys) {
     // Reorder poygons for earcut
     var newPolys = [];
     var l, poly, polyAll, innerIndices, h, inner;
@@ -951,7 +957,8 @@ function makeClockwise(vect) {
 // Try to make convex polylines from triangles by merging triangles as long
 // as it stays a convex. Optimized by sorting all vertices by its x-coordinate.
 // Internally a vertrice linked list is used.
-export function trianglesToConvex(triangles) {
+module.exports.trianglesToConvex = trianglesToConvex;
+function trianglesToConvex(triangles) {
     var shapes = [];
     for (var l = 0; l < triangles.length; l++) {
         var line = triangles[l].poly;
@@ -973,7 +980,8 @@ export function trianglesToConvex(triangles) {
     return shapes;
 }
 
-export function convexToArray(convexLists, offset) {
+module.exports.convexToArray = convexToArray;
+function convexToArray(convexLists, offset) {
     var i, l, convexList, index, v, array,
         verticesLengthPos, shapeCount;
 
@@ -1012,7 +1020,8 @@ export function convexToArray(convexLists, offset) {
 }
 
 //TEST
-export function showTracedImage(imgData, polys, zoom) {
+module.exports.showTracedImage = showTracedImage;
+function showTracedImage(imgData, polys, zoom) {
     if (typeof document === 'undefined') return;
     
     var z = zoom || 5;
@@ -1073,7 +1082,8 @@ export function showTracedImage(imgData, polys, zoom) {
     document.body.appendChild(canvas);
 }
 
-export function showSimplified(imgData, polys, zoom) {
+module.exports.showSimplified = showSimplified;
+function showSimplified(imgData, polys, zoom) {
     if (typeof document === 'undefined') return;
     var z = (zoom || 1);
     var zl = z * imgData.simplifyZoom;
@@ -1146,7 +1156,8 @@ export function showSimplified(imgData, polys, zoom) {
     document.body.appendChild(canvas);
 }
 
-export function showVertices(vertices, w, h, z) {
+module.exports.showVertices = showVertices;
+function showVertices(vertices, w, h, z) {
     if (typeof document === 'undefined') return;
     var canvas = document.createElement('canvas');
 
@@ -1173,7 +1184,8 @@ export function showVertices(vertices, w, h, z) {
     }
     document.body.appendChild(canvas);
 }
-export function showConvex(shapes, w, h, z) {
+module.exports.showConvex = showConvex;
+function showConvex(shapes, w, h, z) {
     if (typeof document === 'undefined') return;
     var canvas = document.createElement('canvas');
 
@@ -1209,7 +1221,8 @@ export function showConvex(shapes, w, h, z) {
     document.body.appendChild(canvas);
 }
 
-export function showPhys2dShapes(shapes) {
+module.exports.showPhys2dShapes = showPhys2dShapes;
+function showPhys2dShapes(shapes) {
     if (typeof document === 'undefined') return;
     var canvas = document.createElement('canvas');
     canvas.width = 1000;

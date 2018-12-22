@@ -1,6 +1,6 @@
 {
   "name": "codecab",
-  "version": "2.1.6",
+  "version": "2.2.0",
   "author": "Maarten Krijgsman",
   "main": "src/index.js",
   "dependencies": {
@@ -22,7 +22,6 @@
     "poly-to-pslg": "^1.0.1",
     "cdt2d": "^1.0.0",
     "js-clipper": "^1.0.1",
-    "webworkify": "^1.5.0",
     "lucy-b2": "^1.0.1"
   },
   "devDependencies": {
@@ -47,19 +46,23 @@
     "watchify": "^3.9.0",
     "cpy-cli": "^2.0.0",
     "mocha": "^5.2.0",
-    "mochawesome": "^3.0.2"
+    "mochawesome": "^3.0.2",
+    "webpack": "^4.28.1",
+    "webpack-cli": "^3.1.2"
   },
   "scripts": {
     "test": "scripts/build",
-    "clean": "rimraf build && rimraf generate && mkdirp generate/lib && mkdirp build",
-    "typescriptlib.turbulenz": "tsc lib/ts/turbulenz/index.ts --module ES2015 --target ES2015 --outDir generate/lib",
-    "typescriptlib": "npm run typescriptlib.turbulenz",
+    "clean": "rimraf build && mkdirp build",
+    "generate.turbulenz": "tsc lib/ts/turbulenz/index.ts --module ES2015 --target ES2015 --outDir generate/lib",
+    "generate.worker": "node script/generate-worker.js",
+    "generate": "rimraf generate && mkdirp generate/lib && npm run generate.turbulenz && npm run generate.worker",
     "browserify": "browserify src/windowscope.js -o build/codecab-%npm_package_version%.js -t [ brfs-babel ] -t [ babelify ]",
     "browserify-linux": "browserify src/windowscope.js -o build/codecab-$npm_package_version.js -t [ brfs-babel ] -t [ babelify ]",
+    "webpack": "webpack",
     "watch": "watchify -p [ browserify-livereload --host 127.0.0.1 --port 1337 ] src/windowscope.js -o build/codecab.js --verbose -t [ brfs-babel ] -t [ babelify ]",
     "watch2ide": "watchify -p [ browserify-livereload --host 127.0.0.1 --port 1337 ] src/windowscope.js -o ../codecab-ide/build/codecab-%npm_package_version%.js --verbose -t [ brfs-babel ] -t [ babelify ]",
     "copy2ide": "cpy build/codecab-%npm_package_version%.js ../codecab-ide/build",
-    "build": "npm run clean && npm run typescriptlib && npm run browserify",
-    "build-linux": "npm run clean && npm run typescriptlib && npm run browserify-linux"
+    "build": "npm run clean && npm run browserify",
+    "build-linux": "npm run clean && npm run browserify-linux"
   }
 }

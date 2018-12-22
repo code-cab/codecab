@@ -1,6 +1,7 @@
 import CController from '../../CController';
 import CRect from '../../CRect';
 import CPoint from '../../CPoint';
+import CMath from "../../CMath";
 
 import * as TURB from '../../../generate/lib/turbulenz/physics2ddevice'
 import * as PIXI from 'pixi.js';
