@@ -1,7 +1,6 @@
 {
   "name": "codecab",
-  "version": "2.2.0",
-  "author": "Maarten Krijgsman",
+  "version": "2.2.1",
   "main": "src/index.js",
   "dependencies": {
     "pixi.js": "^4.8.3",
@@ -64,5 +63,32 @@
     "copy2ide": "cpy build/codecab-%npm_package_version%.js ../codecab-ide/build",
     "build": "npm run clean && npm run browserify",
     "build-linux": "npm run clean && npm run browserify-linux"
+  },
+  "author": {
+    "name": "Maarten Krijgsman"
+  },
+  "bugs": {
+      "url": "https://github.com/code-cab/codecab/issues"
+  },
+  "contributors": [{
+    "name": "Maarten Krijgsman",
+    "email": "maarten@code.cab"
+  }],
+  "description": "A simple but powerful Scratch-live game engine for JavaScript but with  physics, auto vectorize, tet and graphics",
+  "files": [
+    "generate/",
+    "src/",
+    ".babelrc",
+    "LICENSE",
+    "package.json",
+    "README.md",
+    "webpack.config.js"
+  ],
+  "homepage": "https://code.cab",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/code-cab/codecab.git"
   }
+
 }
