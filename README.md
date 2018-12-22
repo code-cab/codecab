@@ -63,7 +63,7 @@ blocks to JavaScript code.
 ### <a name="3fast"/> Fast graphics
 
 CodeCab makes use of the high performance
-[ ![PixiJS](https://raw.githubusercontent.com/code-cab/codecab/master/doc-img/doc-img/pixijs-v4-logo-sml.png) ](http://www.pixijs.com/)
+[ ![PixiJS](https://raw.githubusercontent.com/code-cab/codecab/master/doc-img/pixijs-v4-logo-sml.png) ](http://www.pixijs.com/)
 WebGL graphics library.
 The integration is transparent to allow direct usage of PIXI.JS when needed.
 
