@@ -2,7 +2,7 @@
 //import codecabTracerWrapped from './codecab_tracer_wrapped';
 // var webworkify = require('webworkify');
 //var webworkify = require('../misc/workerloader');
-var codecabWorker = require('../../generate/codecab_worker');
+var codecabWorker = require('../../generate/codecab-worker');
 
 var numberOfWorkers = 1;
 var workers = [];

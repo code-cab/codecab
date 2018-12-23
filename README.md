@@ -1,7 +1,7 @@
 CodeCab
 =======
 
-A simple but powerful
+A small but powerful
 [ ![Scratch](https://raw.githubusercontent.com/code-cab/codecab/master/doc-img/scratch-logo2.png) ](https://scratch.mit.edu/)
 -like __game engine__
 for JavaScript but with physics, auto vectorize, text and graphics.
@@ -36,8 +36,6 @@ CodeCab is the place to start.
 
 CodeCab equivalent:
 ```javascript
-import {CStage, CSprite} from 'codecab';
-
 let stage = new CStage();
 
 let cat = new CSprite('cat.png');

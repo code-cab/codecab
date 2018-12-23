@@ -1,6 +1,6 @@
 {
   "name": "codecab",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "main": "src/index.js",
   "dependencies": {
     "pixi.js": "^4.8.3",
@@ -53,7 +53,7 @@
     "test": "scripts/build",
     "clean": "rimraf build && mkdirp build",
     "generate.turbulenz": "tsc lib/ts/turbulenz/index.ts --module ES2015 --target ES2015 --outDir generate/lib",
-    "generate.worker": "node script/generate-worker.js",
+    "generate.worker": "browserify src/tracer/codecab_tracer_runner.js -o generate/codecab-worker.js -t [ brfs-babel ] -t [ babelify ] && node script/generate-worker.js",
     "generate": "rimraf generate && mkdirp generate/lib && npm run generate.turbulenz && npm run generate.worker",
     "browserify": "browserify src/windowscope.js -o build/codecab-%npm_package_version%.js -t [ brfs-babel ] -t [ babelify ]",
     "browserify-linux": "browserify src/windowscope.js -o build/codecab-$npm_package_version.js -t [ brfs-babel ] -t [ babelify ]",
@@ -75,9 +75,13 @@
     "email": "maarten@code.cab"
   }],
   "description": "A simple but powerful Scratch-live game engine for JavaScript but with  physics, auto vectorize, tet and graphics",
+  "keywords": [
+    "codecab", "physics", "game", "engine", "pixi", "pixijs", "scratch", "coding",
+    "physics", "gravity", "collision", "webgl", "svg", "ide"],
   "files": [
     "generate/",
     "src/",
+    "build/",
     ".babelrc",
     "LICENSE",
     "package.json",
