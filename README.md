@@ -87,7 +87,7 @@ It available with CodeCab! Thanks to the fast
 [ ![Turbulenz](https://raw.githubusercontent.com/code-cab/codecab/master/doc-img/turbulenz.png) ](http://biz.turbulenz.com/)
 physics library.
 
-Just set the Sprite body type to _'dynamic'_ and your sprite will be a fictim of gravity:
+Just set the Sprite body type to _'dynamic'_ and your sprite will be a victim of gravity:
 
 ```javascript
 let stage = new CStage();
@@ -96,7 +96,7 @@ let cab = new CSprite('cab.png');
 cab.body.type = 'dynamic';
 ```
 
-The physics world can be configured during creation of the CStage object. The main important options are:
+The physics world can be configured during creation of the CStage object. The physics related options are:
 
 | Option | Description |
 | --- | --- |
