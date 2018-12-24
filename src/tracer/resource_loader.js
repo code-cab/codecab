@@ -14,18 +14,25 @@ import {ASSERT} from '../misc/util';
  */
 var assetLoader = PIXI.loader;
 
-var loadingDone = false;
-var started = false;
-var loaderRequestPending = false;
-var loadingResources = [];
-var duplicateCalbacks = {};
-var resourceOptions = {};
+var loadingDone;
+var started;
+var loaderRequestPending;
+var loadingResources;
+var duplicateCalbacks;
+var resourceOptions;
 
 const WEBFONT_ORIGINS = ['google'];
 let webfontConfig = {};
 TracerWorkers.startWorkers();
 
-
+function reset() {
+    loadingDone = false;
+    started = false;
+    loaderRequestPending = false;
+    loadingResources = [];
+    duplicateCalbacks = {};
+    resourceOptions = {};
+}
 
 function loadAndTraceResource(resourceName, resourceUrl, options) {
     return new Promise(function (resolve, reject) {
@@ -210,6 +217,7 @@ export {
     loadAndTraceResource,
     loadWebFont,
     init,
+    reset,
     traceTexture,
     getResource
 }

@@ -9,7 +9,7 @@ import CTween from './CTween';
 import CanvasSprite from './misc/canvassprite';
 import KeyManager from './impl/stage-keymanager';
 
-import { loadAndTraceResource, init, loadWebFont } from './tracer/resource_loader';
+import { loadAndTraceResource, init, reset, loadWebFont } from './tracer/resource_loader';
 import {ASSERT, MOUSE_EVENTS} from './misc/util';
 import TWEEN from 'tween.js';
 
@@ -76,7 +76,7 @@ export default class CStage extends CObject {
         _instance = this;
         let self = this;
 
-        this._options = Object.assign(DEFAULT_OPTIONS, options || {});
+        this._options = Object.assign({}, Object.assign(DEFAULT_OPTIONS, options || {}));
         this._options.autoStart = false;
         this._options.sharedTicker = true;
         // Object.freeze(this._options);
@@ -205,13 +205,6 @@ export default class CStage extends CObject {
         }
     }
 
-    static reset() {
-        if (_instance) {
-            _instance._app.stop();
-            _instance = null;
-        }
-    }
-
     static load(resource, resourceUrl, options) {
         return loadAndTraceResource.call(this, resource, resourceUrl, options);
     }
@@ -227,9 +220,14 @@ export default class CStage extends CObject {
     }
 
     destroy() {
-        super.destroy();
         this._controllers.forEach(controller => controller.destroy());
+        super.destroy();
+        if (_instance) {
+            _instance._app.stop();
+            _instance = null;
+        }
         _instance = undefined;
+        reset();
     }
 
     get physics() {
