@@ -46,11 +46,11 @@
     "mocha": "^5.2.0",
     "webpack": "^4.28.1",
     "webpack-cli": "^3.1.2",
-    "electron": "^2.0.16",
-    "floss": "^2.1.5"
+    "electron": "^2.0.4",
+    "electron-mocha": "^6.0.4"
   },
   "scripts": {
-    "test": "floss --path test/index.js --debug",
+    "test": "electron-mocha --renderer ./test",
     "clean": "rimraf build && mkdirp build",
     "generate.turbulenz": "tsc lib/ts/turbulenz/index.ts --module ES2015 --target ES2015 --outDir generate/lib",
     "generate.worker": "browserify src/tracer/codecab_tracer_runner.js -o generate/codecab-worker.js -t [ brfs-babel ] -t [ babelify ] && node script/generate-worker.js",

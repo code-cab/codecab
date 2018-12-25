@@ -1,6 +1,8 @@
 'use strict';
 
-const testutil = require('./testutil');
+require('../build/codecab-' + process.env.npm_package_version);
+const expect = require('chai').expect;
+const testutil = require('./lib/testutil');
 const MockPointer = require('./lib/MockPointer');
 
 describe('CStage', function() {
@@ -10,7 +12,7 @@ describe('CStage', function() {
         stage.onStart(done);
     });
     it('should not autostart', async function() {
-        let stage = this.stage.new CStage({autoStart: false});
+        let stage = this.stage = new CStage({autoStart: false});
         testutil.delay(500);
         expect(stage._running).not.to.equal(true);
         await stage.start();
