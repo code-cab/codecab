@@ -47,7 +47,7 @@
     "mochawesome": "^3.0.2",
     "webpack": "^4.28.1",
     "webpack-cli": "^3.1.2",
-    "electron": "^4.0.0",
+    "electron": "1.4.15",
     "floss": "^2.1.5"
   },
   "scripts": {
