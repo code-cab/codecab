@@ -25,6 +25,7 @@ const DEFAULT_OPTIONS = {
     backgroundColor: 0x0ffffff,
     supportsTouchEvents: true,
     origin: 'center',
+    autoStart: true,
     // resolution: window.devicePixelRatio,
 
     // Physics options
@@ -77,9 +78,10 @@ export default class CStage extends CObject {
         let self = this;
 
         this._options = Object.assign({}, Object.assign(DEFAULT_OPTIONS, options || {}));
+
+        let autoStartCc = this._options.autoStart;
         this._options.autoStart = false;
         this._options.sharedTicker = true;
-        // Object.freeze(this._options);
 
         this._app = new PIXI.Application(this._options);
 
@@ -149,11 +151,9 @@ export default class CStage extends CObject {
 
         // Render once to set background
         this._app.render();
-        setTimeout(() =>
-            init.call(this, this, () => {
-                this.start();
-            })
-        , 0);
+        if (autoStartCc) {
+            setTimeout(() => this.start(), 0);
+        }
 
         Object.freeze(this._options);
     }
@@ -165,8 +165,13 @@ export default class CStage extends CObject {
     }
 
     start() {
-        this._app.start();
-        this._running = true;
+        return new Promise(resolve => {
+            init.call(this, this, () => {
+                this._app.start();
+                this._running = true;
+                resolve();
+            })
+        });
     }
 
     set x(x) {
