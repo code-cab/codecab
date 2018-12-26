@@ -44,13 +44,14 @@
     "watchify": "^3.9.0",
     "cpy-cli": "^2.0.0",
     "mocha": "^5.2.0",
+    "sinon": "^7.2.2",
     "webpack": "^4.28.1",
     "webpack-cli": "^3.1.2",
     "electron": "^1.8.8",
     "electron-mocha": "^6.0.4"
   },
   "scripts": {
-    "test": "electron-mocha --renderer ./test",
+    "test": "electron-mocha --renderer ./test --debug-brk",
     "clean": "rimraf build && mkdirp build",
     "generate.turbulenz": "tsc lib/ts/turbulenz/index.ts --module ES2015 --target ES2015 --outDir generate/lib",
     "generate.worker": "browserify src/tracer/codecab_tracer_runner.js -o generate/codecab-worker.js -t [ brfs-babel ] -t [ babelify ] && node script/generate-worker.js",

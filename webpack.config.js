@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
     entry: './src/windowscope.js',
     optimization:{
-        minimize: true,
+        minimize: false,
     },
     output: {
         path: path.resolve(__dirname, 'build'),

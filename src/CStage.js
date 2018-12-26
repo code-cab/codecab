@@ -66,7 +66,7 @@ export default class CStage extends CObject {
 
     /**
      *
-     * @private
+     * @privatesta
      * @param options
      */
     constructor(options) {
@@ -77,11 +77,12 @@ export default class CStage extends CObject {
         _instance = this;
         let self = this;
 
-        this._options = Object.assign({}, Object.assign(DEFAULT_OPTIONS, options || {}));
+        this._options = Object.assign({}, DEFAULT_OPTIONS, options || {});
 
         let autoStartCc = this._options.autoStart;
         this._options.autoStart = false;
         this._options.sharedTicker = true;
+        Object.freeze(this._options);
 
         this._app = new PIXI.Application(this._options);
 
@@ -134,7 +135,7 @@ export default class CStage extends CObject {
         this._controllers = [];
 
 
-        this._app.ticker.add(() => self._frame.call(self, this._app.ticker.elapsedMS / 1000));
+        this._app.ticker.add(() => this._app.ticker && self._frame.call(self, this._app.ticker.elapsedMS / 1000));
 
         this._physics = new CPhysicsCtrl(this._options);
         this.addController(this._physics);
@@ -155,7 +156,6 @@ export default class CStage extends CObject {
             setTimeout(() => this.start(), 0);
         }
 
-        Object.freeze(this._options);
     }
 
 
@@ -229,6 +229,7 @@ export default class CStage extends CObject {
         super.destroy();
         if (_instance) {
             _instance._app.stop();
+            _instance._app.destroy();
             _instance = null;
         }
         _instance = undefined;

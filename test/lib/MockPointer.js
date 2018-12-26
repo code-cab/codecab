@@ -1,5 +1,7 @@
 'use strict';
 
+require('./testutil');
+
 /**
  * Use this to mock mouse/touch/pointer events
  *
@@ -8,35 +10,11 @@
 class MockPointer
 {
     /**
-     * @param {PIXI.Container} stage - The root of the scene tree
-     * @param {number} [width=100] - Width of the renderer
-     * @param {number} [height=100] - Height of the renderer
-     * @param {boolean} [ensurePointerEvents=false] - If we should make sure that PointerEvents are 'supported'
      */
-    constructor(stage, width, height, ensurePointerEvents)
+    constructor()
     {
-        // fake PointerEvent existing
-        if (ensurePointerEvents && !window.PointerEvent)
-        {
-            window.PointerEvent = class PointerEvent extends MouseEvent
-            {
-                //eslint-disable-next-line
-                constructor(type, opts)
-                {
-                    super(type, opts);
-                    this.pointerType = opts.pointerType;
-                }
-            };
-            this.createdPointerEvent = true;
-        }
-
         this.activeTouches = [];
-        this.stage = stage;
-        this.renderer = new PIXI.CanvasRenderer(width || 100, height || 100);
-        this.renderer.sayHello = () => { /* empty */ };
-        this.interaction = this.renderer.plugins.interaction;
-        this.interaction.supportsTouchEvents = true;
-        PIXI.ticker.shared.remove(this.interaction.update, this.interaction);
+        this.interaction = CStage.get()._app.renderer.plugins.interaction;
     }
 
     /**
@@ -44,11 +22,6 @@ class MockPointer
      */
     cleanup()
     {
-        if (this.createdPointerEvent)
-        {
-            delete window.PointerEvent;
-        }
-        this.renderer.destroy();
     }
 
     /**
@@ -58,20 +31,13 @@ class MockPointer
      */
     setPosition(x, y)
     {
-        this.renderer.plugins.interaction.mapPositionToPoint = (point) =>
+        this.interaction.mapPositionToPoint = (point) =>
         {
             point.x = x;
             point.y = y;
         };
     }
 
-    /**
-     * @private
-     */
-    render()
-    {
-        this.renderer.render(this.stage);
-    }
 
     /**
      * [createEvent description]
@@ -86,6 +52,7 @@ class MockPointer
     createEvent(eventType, x, y, identifier, asPointer, onCanvas = true)
     {
         let event;
+        let view = CStage.get()._app.view;
 
         if (eventType.startsWith('mouse'))
         {
@@ -108,7 +75,7 @@ class MockPointer
             }
             if (onCanvas)
             {
-                Object.defineProperty(event, 'target', { value: this.renderer.view });
+                Object.defineProperty(event, 'target', { value: view });
             }
         }
         else if (eventType.startsWith('touch'))
@@ -123,11 +90,11 @@ class MockPointer
                     clientY: y,
                     preventDefault: sinon.stub(),
                 });
-                Object.defineProperty(event, 'target', { value: this.renderer.view });
+                Object.defineProperty(event, 'target', { value: view });
             }
             else
             {
-                const touch = new Touch({ identifier: identifier || 0, target: this.renderer.view });
+                const touch = new Touch({ identifier: identifier || 0, target: view });
 
                 if (eventType.endsWith('start'))
                 {
@@ -150,7 +117,7 @@ class MockPointer
                     touches: this.activeTouches,
                 });
 
-                Object.defineProperty(event, 'target', { value: this.renderer.view });
+                Object.defineProperty(event, 'target', { value: view });
             }
         }
         else
@@ -162,11 +129,11 @@ class MockPointer
                 clientY: y,
                 preventDefault: sinon.stub(),
             });
-            Object.defineProperty(event, 'target', { value: this.renderer.view });
+            Object.defineProperty(event, 'target', { value: view });
         }
 
         this.setPosition(x, y);
-        this.render();
+        // this.render();
 
         return event;
     }
@@ -178,8 +145,9 @@ class MockPointer
      */
     mousemove(x, y, asPointer)
     {
+        const stage = CStage.get();
         // mouseOverRenderer state should be correct, so mouse position to view rect
-        const rect = new PIXI.Rectangle(0, 0, this.renderer.width, this.renderer.height);
+        const rect = new PIXI.Rectangle(0, 0, stage.width, stage.height);
 
         if (rect.contains(x, y))
         {

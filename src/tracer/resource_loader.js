@@ -34,6 +34,8 @@ function reset() {
     resourceOptions = {};
 }
 
+reset();
+
 function loadAndTraceResource(resourceName, resourceUrl, options) {
     return new Promise(function (resolve, reject) {
         if (loadingDone && assetLoader.resources[resourceName] && assetLoader.resources[resourceName].isComplete) {
