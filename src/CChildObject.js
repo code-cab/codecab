@@ -2,6 +2,7 @@ import CObject from './CObject';
 import CStage from './CStage';
 import CTargetPoint from './core/CTargetPoint'
 import {deg2rad, rad2deg, rangeDeg} from './misc/math';
+import {setFilter, clearFilters} from './impl/filter';
 import CTween from './CTween';
 
 var _idCounter = 1;
@@ -156,6 +157,13 @@ export default class CChildObject extends CObject {
         return degrees;
     };
 
+    setEffect(effect, amount) {
+        return setFilter.call(this, this.__pixiObject, effect, amount);
+    }
+
+    clearEffects() {
+        return clearFilters.call(this, this.__pixiObject);
+    }
 
     glideTo(x, y, seconds) {
         return this.tween({x : x, y : y}, seconds);

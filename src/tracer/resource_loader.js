@@ -36,10 +36,15 @@ function reset() {
 
 reset();
 
+function isResourceLoadedAndTraced(resourceName) {
+    return (loadingDone && assetLoader.resources[resourceName] && assetLoader.resources[resourceName].isComplete);
+}
+
 function loadAndTraceResource(resourceName, resourceUrl, options) {
     return new Promise(function (resolve, reject) {
-        if (loadingDone && assetLoader.resources[resourceName] && assetLoader.resources[resourceName].isComplete) {
+        if (isResourceLoadedAndTraced(resourceName)) {
             resolve(assetLoader.resources[resourceName]);
+            return;
         }
 
         if (loadingResources.indexOf(resourceName) >= 0) {
@@ -216,6 +221,7 @@ function loadWebFont(origin, family) {
 }
 
 export {
+    isResourceLoadedAndTraced,
     loadAndTraceResource,
     loadWebFont,
     init,

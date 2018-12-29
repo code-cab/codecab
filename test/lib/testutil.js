@@ -6,13 +6,21 @@ window.expect = require('chai').expect;
 window.sinon = require('sinon');
 
 
-module.exports.delay = function(msec) {
+function delay(msec) {
     return new Promise(resolve => setTimeout(resolve, msec));
 };
+module.exports.delay = delay;
 
 module.exports.getResourceUrl = function(relPath) {
     let m = document.location.href.match(/(file\:.*\/codecab\/)/);
     return m[1] + relPath;
+};
+
+module.exports.startStage = async function() {
+    const stage = new CStage({width: 250, height: 100, autoStart: false});
+    await stage.start();
+    await stage.nextFrame();
+    return stage;
 };
 
 module.exports.destroyAll = function() {
@@ -22,10 +30,21 @@ module.exports.destroyAll = function() {
             let view = stage._app.view;
             stage.destroy();
             view.remove();
+
             PIXI.loader.reset();
         }
     } catch(e) {}
 };
+
+
+
+module.exports.render = render;
+async function render() {
+    let stage = CStage.get();
+    await stage.nextFrame();
+    await stage.nextFrame();
+};
+
 
 /**
  * Take a snapshot from the canvas and compare it with the last approved image.
@@ -38,7 +57,7 @@ module.exports.destroyAll = function() {
  * @param relPath
  * @returns {boolean}
  */
-module.exports.compareSnapshot = function(testContext, relPath) {
+module.exports.compareSnapshot = function(testContext) {
     const fs = require('fs');
     const path = require('path');
     const nativeImage = require('electron').nativeImage;
@@ -48,7 +67,8 @@ module.exports.compareSnapshot = function(testContext, relPath) {
         baseName = testContext.test.parent.title + ' ' + baseName;
     }
     baseName = baseName.replace(/\s/g, '-');
-
+    let copyCanvas = CStage.get()._app.view;
+/*
     let copyCanvas = document.createElement("canvas");
     let renderer = new PIXI.CanvasRenderer({
         width: CStage.get()._app.screen.width,
@@ -59,7 +79,9 @@ module.exports.compareSnapshot = function(testContext, relPath) {
         clearBeforeRenderer: false
     });
     renderer.clear('white');
+    *
     CStage.get()._app.stage.renderCanvas(renderer);
+*/
 
     let baseDir = path.dirname(testContext.test.file);
     let filename = path.join(baseDir, 'results', baseName + '.png');

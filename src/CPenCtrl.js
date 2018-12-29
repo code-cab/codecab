@@ -42,9 +42,9 @@ export default class CPenCtrl extends CController {
                     g.lineWidth = this._lineWidth;
                     g.lineCap = 'round';
                     g.strokeStyle = 'rgba(' +
-                        Math.round(this._lineColor.r) % 255 + ',' +
-                        Math.round(this._lineColor.g) % 255 + ',' +
-                        Math.round(this._lineColor.b) % 255 + ',' +
+                        Math.round(this._lineColor.r) % 256 + ',' +
+                        Math.round(this._lineColor.g) % 256 + ',' +
+                        Math.round(this._lineColor.b) % 256 + ',' +
                         this.opacity + ')';
                     g.beginPath();
                     g.moveTo(this._prevPos.x, this._prevPos.y);
@@ -127,18 +127,11 @@ export default class CPenCtrl extends CController {
     }
 
     stamp() {
-        if (!this._canvasSprite._canvasRenderer) {
-            this._canvasSprite._canvasRenderer = new PIXI.CanvasRenderer({
-                width: this._canvasSprite.width,
-                height: this._canvasSprite.height,
-                view: this._canvasSprite.canvas,
-                clearBeforeRender: false,
-                transparent: true
-            })
-        }
-        this.target._pixiObject.updateTransform();
-        this.target._pixiObject._renderCanvas(this._canvasSprite._canvasRenderer);
-        this._canvasSprite.changed = true;
+        _stamp.call(this, true);
+    }
+
+    unstamp() {
+        _stamp.call(this, false);
     }
 
     _getTargetPos(pos) {
@@ -157,5 +150,29 @@ export default class CPenCtrl extends CController {
     //     let graphics = this._g.clone();
     //     return graphics.generateCanvasTexture();
     // }
+
+}
+
+function _stamp(add) {
+    if (!this._canvasSprite._canvasRenderer) {
+        this._canvasSprite._canvasRenderer = new PIXI.CanvasRenderer({
+            width: this._canvasSprite.width,
+            height: this._canvasSprite.height,
+            view: this._canvasSprite.canvas,
+            clearBeforeRender: false,
+            transparent: true
+        })
+    }
+    // Add new destination-out blendMode on the fly
+    if (!add) {
+        const substract = 100;
+        this.target._pixiObject.blendMode = substract;
+        this._canvasSprite._canvasRenderer.blendModes[substract] = 'destination-out';
+    }
+
+    this.target._pixiObject.updateTransform();
+    this.target._pixiObject._renderCanvas(this._canvasSprite._canvasRenderer);
+    this._canvasSprite.changed = true;
+    this.target._pixiObject.blendMode = PIXI.BLEND_MODES.NORMAL;
 
 }

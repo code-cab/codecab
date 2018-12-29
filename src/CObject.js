@@ -66,7 +66,7 @@ export default class CObject extends EventEmitter {
 
     onFrame(callback) {
         if (this._destroyed) return Promise.reject("Object is destroyed");
-        let cb = () => !this.__notStarted && !this._destroyed && callback.call(this);
+        let cb = () => !this.__notStarted && !this._destroyed && callback.call(this, PIXI.ticker.shared.elapsedMS / 1000);
         PIXI.ticker.shared.add(cb, this, 0 /* UPDATE_PRIORITY.NORMAL */);
         this._frameCallbacks.push(cb);
     }

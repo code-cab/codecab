@@ -1,6 +1,6 @@
 {
   "name": "codecab",
-  "version": "2.2.2",
+  "version": "2.3.0",
   "main": "src/index.js",
   "dependencies": {
     "pixi.js": "^4.8.3",
@@ -11,7 +11,7 @@
     "ismobilejs": "^0.4.0",
     "json-loader": "^0.5.7",
     "object-assign": "^4.0.1",
-    "pixi-filters": "^2.6.0",
+    "pixi-filters": "^2.6.2",
     "pixi-gl-core": "^1.1.4",
     "pixi-sound": "^2.0.1",
     "webfontloader": "latest",

@@ -10,7 +10,7 @@ import CGraphics from './CGraphics';
 import * as _spriteText from './impl/sprite-text';
 import * as PIXI from 'pixi.js';
 
-import {loadAndTraceResource, traceTexture} from './tracer/resource_loader';
+import {loadAndTraceResource, isResourceLoadedAndTraced, traceTexture} from './tracer/resource_loader';
 import {deg2rad, rad2deg, rangeDeg} from './misc/math';
 import {ASSERT, MOUSE_EVENTS} from './misc/util';
 
@@ -416,14 +416,22 @@ function setSource(value) {
         values = [value];
     }
     if (Array.isArray(values) && values.length) {
-        let proms = values.map(v => loadAndTraceResource(v, v));
-        Promise.all(proms).then(results => {
+        const setTextures = () => {
             this._textureValues = values;
             let texture = PIXI.Texture.fromImage(values[0]);
             this._pixiObject.texture = texture;
             this._body._sourceChanged();
             this.__doStart();
-        });
+        };
+        // When resource is already loaded and traced, return it immediately instead of using promise
+        if (values.length === 1 && isResourceLoadedAndTraced(values[0])) {
+            setTextures();
+        } else {
+            let proms = values.map(v => loadAndTraceResource(v, v));
+            Promise.all(proms).then(() => {
+                setTextures();
+            });
+        }
         return;
     }
 

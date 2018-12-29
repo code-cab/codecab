@@ -103,7 +103,7 @@ export class CMotorizedJoint extends CJoint {
     set speed(rate) {
         this._createMotorConstraint();
         this._motorConstraint.setRate(rate);
-        if (!this._autoBreak) {
+        if (!this._autoBrake) {
             if (rate === 0) this._motorConstraint.disable();
             else this._motorConstraint.enable();
         }
@@ -124,8 +124,8 @@ export class CMotorizedJoint extends CJoint {
         }
     }
 
-    set autoBreak(enable) {
-        this._autoBreak = enable;
+    set autoBrake(enable) {
+        this._autoBrake = enable;
     }
 
     _createMotorConstraint() {

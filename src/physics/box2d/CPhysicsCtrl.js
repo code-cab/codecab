@@ -284,7 +284,6 @@ export default class CPhysicsCtrl extends CController {
         for (let body = this.world.GetBodyList(); body; body = body.GetNext()) {
             for (let fixture = body.GetFixtureList(); fixture; fixture = fixture.GetNext()) {
                 if (fixture.TestPoint(vec) && bodies.indexOf(body) < 0) {
-                    console.log('hit');
                     bodies.push(body);
                 }
             }

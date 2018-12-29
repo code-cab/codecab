@@ -8,6 +8,7 @@ import CMouse from './CMouse';
 import CTween from './CTween';
 import CanvasSprite from './misc/canvassprite';
 import KeyManager from './impl/stage-keymanager';
+import {setFilter , clearFilters } from './impl/filter';
 
 import { loadAndTraceResource, init, reset, loadWebFont } from './tracer/resource_loader';
 import {ASSERT, MOUSE_EVENTS} from './misc/util';
@@ -26,7 +27,11 @@ const DEFAULT_OPTIONS = {
     supportsTouchEvents: true,
     origin: 'center',
     autoStart: true,
+    antialias: true,
     // resolution: window.devicePixelRatio,
+
+    // Effects options
+    shockwaveEffectSpeed: 500,
 
     // Physics options
     pixelsPerMeter: 60,
@@ -126,16 +131,11 @@ export default class CStage extends CObject {
 
         this._dummy = 0;
 
-
-
-
         // Sorry, we'll give enough credits but want to be silent on startup
 
         this._nextFrameCallbacks = [];
         this._controllers = [];
 
-
-        this._app.ticker.add(() => this._app.ticker && self._frame.call(self, this._app.ticker.elapsedMS / 1000));
 
         this._physics = new CPhysicsCtrl(this._options);
         this.addController(this._physics);
@@ -159,20 +159,29 @@ export default class CStage extends CObject {
     }
 
 
+
+    start() {
+        let self = this;
+        return new Promise(resolve => {
+            this._init().then(() => {
+                this._app.start();
+                this._updateFn = () => this._app.ticker && self._frame.call(self, this._app.ticker.elapsedMS / 1000);
+                this._app.ticker.add(this._updateFn);
+                this._running = true;
+                resolve();
+            });
+        });
+    }
+
     stop() {
         this._running = false;
+        if (this._updateFn && this._app.ticker) {
+            this._app.ticker.remove(this._updateFn);
+            delete this._updateFn;
+        }
         this._app.stop();
     }
 
-    start() {
-        return new Promise(resolve => {
-            init.call(this, this, () => {
-                this._app.start();
-                this._running = true;
-                resolve();
-            })
-        });
-    }
 
     set x(x) {
         this._stageContainer.x = -x;
@@ -347,6 +356,12 @@ export default class CStage extends CObject {
     }
 
 
+    _init() {
+        return new Promise(resolve => {
+            init.call(this, this, resolve);
+        });
+    }
+
     /**
      * Overridden
      * @param deltaSec
@@ -480,6 +495,14 @@ export default class CStage extends CObject {
 
     get mouse() {
         return CMouse.instance;
+    }
+
+    setEffect(effect, amount) {
+        return setFilter.call(this, this._stageContainer, effect, amount);
+    }
+
+    clearEffects() {
+        return clearFilters.call(this, this._stageContainer);
     }
 
 }
