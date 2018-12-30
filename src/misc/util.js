@@ -27,12 +27,6 @@ function regExPEscape(s) {
     return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
 }
 
-const MOUSE_EVENTS = ['click',
-    'mousedown', 'mousemove', 'mouseout', 'mouseover', 'mouseup', 'mouseupoutside',
-    'pointercancel', 'pointerdown', 'pointermove', 'pointerout', 'pointerover', 'pointertab', 'pointerup', 'pointerupoutside',
-    'rightclick', 'rightdown', 'rightup', 'rightupoutside',
-    'tab', 'touchcancel', 'touchend', 'touchendoutside', 'touchmove', 'touchstart'
-];
 
 class ValidationError extends Error {}
 
@@ -105,4 +99,4 @@ var UTIL= {
     }
 };
 
-export {firstDefined, startWith, regExPEscape, ASSERT, UTIL, MOUSE_EVENTS};
+export {firstDefined, startWith, regExPEscape, ASSERT, UTIL};

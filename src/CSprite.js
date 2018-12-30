@@ -12,7 +12,8 @@ import * as PIXI from 'pixi.js';
 
 import {loadAndTraceResource, isResourceLoadedAndTraced, traceTexture} from './tracer/resource_loader';
 import {deg2rad, rad2deg, rangeDeg} from './misc/math';
-import {ASSERT, MOUSE_EVENTS} from './misc/util';
+import {ASSERT} from './misc/util';
+import * as MouseEvents from './impl/mouse-events';
 
 
 const ROTATING_STYLE_FN = {
@@ -307,21 +308,13 @@ export default class CSprite extends CChildObject {
     }
 
     on(eventName, callback) {
-        if (MOUSE_EVENTS.indexOf(eventName) >= 0) {
-            this.body._bindMouseEvent(eventName, callback);
-        } else {
-            super.on(eventName, callback);
+        if (MouseEvents.isMouseEvent(eventName)) {
+            if (this.body.isNone()) {
+                this.body.type = 'sensor';
+            }
         }
+        super.on(eventName, callback);
     }
-
-    off(eventName, callback) {
-        if (MOUSE_EVENTS.indexOf(eventName) >= 0) {
-            this.body._unbindMouseEvent(eventName, callback);
-        } else {
-            super.unbind(eventName, callback);
-        }
-    }
-
 
 
 
@@ -365,13 +358,17 @@ export default class CSprite extends CChildObject {
     }
 
     destroy() {
+        for (let controller of this._controllers) {
+            controller.destroy();
+        }
+        super.destroy();
         // Do async to avoid conflicts
-        setTimeout(() => {
-            for (let controller of this._controllers) {
-                controller.destroy();
-            }
-            super.destroy();
-        }, 0);
+        // setTimeout(() => {
+        //     for (let controller of this._controllers) {
+        //         controller.destroy();
+        //     }
+        //     super.destroy();
+        // }, 0);
     }
 
 }

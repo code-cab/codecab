@@ -4,7 +4,8 @@ import { fixPixi } from './fixes/pixijs_fixes';
 
 import wrapErrors from './misc/errorwrapper';
 
-fixPixi();
+// Not necessary, we're using own hittest
+// fixPixi();
 
 // Prevent adding event to autoStart ticker
 PIXI.ticker.shared.autoStart = false;
@@ -13,6 +14,7 @@ PIXI.loader.reset();
 
 import CStage from './CStage';
 import CSprite from './CSprite';
+import CGroup from './CGroup';
 import CGraphics from './CGraphics';
 import CMouse from './CMouse';
 import CMath from './CMath';
@@ -23,6 +25,7 @@ import { ASSERT } from './misc/util';
 export {
     CStage,
     CSprite,
+    CGroup,
     CGraphics,
     CText,
     CMouse,

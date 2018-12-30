@@ -4,10 +4,13 @@ import CObject from './CObject';
 import CPhysicsCtrl from './CPhysicsCtrl';
 import CSoundCtrl from './CSoundCtrl';
 import CController from './CController';
+import CGroup from './CGroup';
 import CMouse from './CMouse';
 import CTween from './CTween';
 import CanvasSprite from './misc/canvassprite';
 import KeyManager from './impl/stage-keymanager';
+import * as MouseEvents from './impl/mouse-events';
+
 import {setFilter , clearFilters } from './impl/filter';
 
 import { loadAndTraceResource, init, reset, loadWebFont } from './tracer/resource_loader';
@@ -28,6 +31,7 @@ const DEFAULT_OPTIONS = {
     origin: 'center',
     autoStart: true,
     antialias: true,
+    autoStopPropagation: true,
     // resolution: window.devicePixelRatio,
 
     // Effects options
@@ -90,6 +94,10 @@ export default class CStage extends CObject {
         Object.freeze(this._options);
 
         this._app = new PIXI.Application(this._options);
+
+        MouseEvents.setStage(this);
+
+        this._app.stage._stageObject = this;
 
         // this._app.stage = this;
         // All stage stuff goes in here
@@ -245,6 +253,36 @@ export default class CStage extends CObject {
         reset();
     }
 
+    get mainGroup() {
+        if (!this._mainGroup) {
+            this._mainGroup = new CGroup(null, {
+                pixiObject: this._childrenContainer
+            });
+        }
+        return this._mainGroup;
+    }
+
+    get balloonsGroup() {
+        if (!this._balloonsGroup) {
+            this._balloonsGroup = new CGroup(null, {pixiObject: this._textContainer});
+        }
+        return this._balloonsGroup;
+    }
+
+    get foregroundGroup() {
+        if (!this._foregroundGroup) {
+            this._foregroundGroup = new CGroup(null, {pixiObject: this._screenContainer});
+        }
+        return this._foregroundGroup;
+    }
+
+    get backgroundGroup() {
+        if (!this._backgroundGroup) {
+            this._backgroundGroup = new CGroup(null, {pixiObject: this._backgroundContainer});
+        }
+        return this._backgroundGroup;
+    }
+
     get physics() {
         return this._physics;
     }
@@ -290,22 +328,23 @@ export default class CStage extends CObject {
         setBackground.call(this, source, type);
     }
 
-
+/*
     on(eventName, callback) {
-        if (MOUSE_EVENTS.indexOf(eventName) >= 0) {
-            this.physics._bindMouseEvent(eventName, callback);
+        if (MouseEvents.isMouseEvent(eventName)) {
+            MouseEvents.bindMouseEvent(eventName, callback);
         } else {
             super.on(eventName, callback);
         }
     }
 
     off(eventName, callback) {
-        if (MOUSE_EVENTS.indexOf(eventName) >= 0) {
-            this.physics._unbindMouseEvent(eventName, callback);
+        if (MouseEvents.isMouseEvent(eventName)) {
+            MouseEvents.unbindMouseEvent(eventName, callback);
         } else {
             super.off(eventName, callback);
         }
     }
+*/
 
     onClick(callback) {
         this.on('click', callback);
@@ -352,7 +391,19 @@ export default class CStage extends CObject {
 
 
     broadcast(eventName) {
-        this.emit(eventName);
+        function emitRecursive(obj) {
+            const children = obj.children;
+            if (children) {
+                for (let child of children) {
+                    emitRecursive(child);
+                }
+            }
+            obj.emit(eventName);
+        }
+        this._foregroundGroup && emitRecursive(this._foregroundGroup);
+        this._balloonsGroup && emitRecursive(this._balloonsGroup);
+        emitRecursive(this);
+        this._backgroundGroup && emitRecursive(this._backgroundGroup);
     }
 
 
@@ -368,7 +419,7 @@ export default class CStage extends CObject {
      */
     _frame(deltaSec) {
         this._dummy += deltaSec;
-        this.emit('frame', deltaSec);
+        // this.emit('frame', deltaSec);
         if (this._penCanvas.changed) {
             this._penCanvas.setCanvasChanged();
             this._penCanvas.changed = false;

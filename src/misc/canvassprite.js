@@ -1,8 +1,11 @@
 import * as PIXI from 'pixi.js';
 
+/**
+ * Lazy create canvas on demand
+ */
 export default class CanvasSprite extends PIXI.Sprite {
     constructor(canvas) {
-        super(PIXI.Texture.fromCanvas(canvas));
+        super();
         this._canvas = canvas
     };
 

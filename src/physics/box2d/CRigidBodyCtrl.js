@@ -914,7 +914,7 @@ function translateShapes(x, y) {
 
 function getTouching(...targets) {
     if (this.isNone()) return;
-    if (!targets.length) targets = this.target.stage.sprites;
+    if (!targets.length) targets = this.target.stage.children;
     let utils = CPhysicsCtrl.get().collisionUtils;
     let shapes = this._rigidBody.shapes;
     let r = this._rigidBody.computeWorldBounds();

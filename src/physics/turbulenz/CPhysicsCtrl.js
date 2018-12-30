@@ -45,8 +45,6 @@ export default class CPhysicsCtrl extends CController {
         this._staticReferenceBody = this._engine.createRigidBody({type: 'static', position: [0,0]});
         this._world.addRigidBody(this._staticReferenceBody);
         this._engine.collisionUtils = this._engine.createCollisionUtils();
-        this._registeredEventMap = {};
-        this._eventMap = {};
         this._endTimeMsec = 0;
         this._startTimeMsec = 0;
         this._totalDeltaMsec = undefined;
@@ -244,8 +242,8 @@ export default class CPhysicsCtrl extends CController {
 
             this.target.on('pointerdown', (event) => {
                 if (draggingConstraint || !this._draggingEnabled) return;
-                if (event && event.data && event.data.sprites) {
-                    let sprite = event.data.sprites.find(s => s.body.type === 'dynamic');
+                if (event && event.allTargets) {
+                    let sprite = event.allTargets.find(s => s.body && s.body.type === 'dynamic');
                     if (sprite) {
                         draggingConstraint = this.engine.createPointConstraint({
                             bodyA: this._staticReferenceBody,
@@ -277,87 +275,6 @@ export default class CPhysicsCtrl extends CController {
         }
     }
 
-    _bindMouseEvent(eventName, callback) {
-        if (this._eventMap[eventName] === undefined) {
-            this._eventMap[eventName] = [];
-        }
-        this._eventMap[eventName].push(callback);
-        this._registerMouseEvent(eventName);
-    }
-
-    _unbindMouseEvent(eventName, callback) {
-        if (this._eventMap[eventName]) {
-            let i = this._eventMap[eventName].indexOf(callback);
-            if (i >= 0) this._eventMap[eventName].splice(i, 1);
-            if (!this._eventMap[eventName].length) {
-                delete this._eventMap[eventName];
-            }
-        }
-        this._unregisterMouseEvent(eventName, callback);
-    }
-
-
-    _registerMouseEvent(eventName) {
-        if (this._registeredEventMap[eventName] === undefined) {
-            this.target._app.stage.interactive = true;
-            this._registeredEventMap[eventName] = 1;
-            this.target._app.stage.on(eventName,
-                event => this._handleEvent(event, eventName));
-        } else {
-            this._registeredEventMap[eventName] += 1;
-        }
-    }
-
-    _unregisterMouseEvent(eventName) {
-        if (this._registeredEventMap[eventName] > 0) {
-            this._registeredEventMap[eventName] -= 1;
-            if (this._registeredEventMap[eventName] <= 0) {
-                delete this._registeredEventMap[eventName];
-                this.target._app.stage.removeListener(eventName);
-            }
-        }
-    }
-
-    _handleEvent(event, eventName) {
-        if (!CStage.get()._running) return;
-        let point = this.target._stageContainer.toLocal(event.data.global);
-        event.point = point;
-        point = [
-            point.x / this.target._options.pixelsPerMeter,
-            point.y / this.target._options.pixelsPerMeter];
-        event.worldPoint = {
-            x: point[0],
-            y: point[1]
-        };
-
-        let bodies = [];
-        this.world.bodyPointQuery(point, bodies);
-        if (event.data) {
-            event.data.sprites = [];
-            bodies.forEach(b => {
-                if (b.userData && b.userData.target && !b.userData.target.__notStarted && b.userData.target.enable) {
-                    event.data.sprites.push(b.userData.target);
-                }
-            });
-        }
-
-
-        for (let i = 0; i < bodies.length; i += 1) {
-            let body = bodies[i];
-            if (body.userData && body.userData._eventMap[eventName]) {
-                for (let j = 0; j < body.userData._eventMap[eventName].length; j += 1) {
-                    let callback = body.userData._eventMap[eventName][j];
-                    callback.call(body.userData.target, event);
-                    if (event.defaultPrevented) break;
-                }
-            }
-        }
-        if (!event.defaultPrevented && this._eventMap[eventName]) {
-            for (let callback of this._eventMap[eventName]) {
-                callback.call(this.target, event);
-            }
-        }
-    }
 
     _update(delta) {
         updatePhysics.call(this, delta);

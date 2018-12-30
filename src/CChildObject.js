@@ -27,13 +27,15 @@ export default class CChildObject extends CObject {
     }
 
     set _pixiObject(pixiObject) {
+        let parentPixiObject = CStage.get()._childrenContainer;
         if (this.__pixiObject) {
-            CStage.get()._childrenContainer.removeChild(this.__pixiObject);
+            parentPixiObject = this.__pixiObject.parent;
+            parentPixiObject.removeChild(this.__pixiObject);
             this.__pixiObject.destroy();
         }
         this.__pixiObject = pixiObject;
         this.__pixiObject._childObject = this;
-        CStage.get()._childrenContainer.addChild(this.__pixiObject);
+        parentPixiObject.addChild(this.__pixiObject);
     }
 
     get _pixiObject() {
@@ -244,7 +246,6 @@ export default class CChildObject extends CObject {
             this.stage._on(eventName, this, callback);
         } else {
             super.on(eventName, callback);
-            this.stage._on(eventName, this, callback);
         }
     }
 
@@ -253,12 +254,11 @@ export default class CChildObject extends CObject {
             this.stage.removeListener(eventName, callback);
         } else {
             super.removeListener(eventName, callback);
-            this.stage.removeListener(eventName, callback);
         }
     }
 
     broadcast(eventName) {
-        this.stage.emit(eventName);
+        this.stage.broadcast(eventName);
     }
 
     onStart(callback) {
@@ -272,7 +272,10 @@ export default class CChildObject extends CObject {
 function createPosition() {
     return new CTargetPoint(
         () => {
-            if (!this.body || this.body.isNone()) return this._pixiObject.transform.position;
+            if (!this.body || this.body.isNone()) {
+                if (!this._pixiObject.transform) debugger;
+                return this._pixiObject.transform.position;
+            }
             let pt = this.body.worldPosition;
             return {
                 x: pt.x * this.stage._options.pixelsPerMeter,

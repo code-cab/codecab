@@ -193,8 +193,8 @@ export default class CPhysicsCtrl extends CController {
 
             this.target.on('pointerdown', (event) => {
                 if (draggingConstraint || !this._draggingEnabled) return;
-                if (event && event.data && event.data.sprites) {
-                    let sprite = event.data.sprites.find(s => s.body.type === 'dynamic');
+                if (event && event.data && event.data.objects) {
+                    let sprite = event.data.objects.find(s => s.body.type === 'dynamic');
                     if (sprite) {
                         draggingConstraint = this.engine.createPointConstraint({
                             bodyA: this._staticReferenceBody,
@@ -289,10 +289,10 @@ export default class CPhysicsCtrl extends CController {
             }
         }
         if (event.data) {
-            event.data.sprites = [];
+            event.data.objects = [];
             bodies.forEach(b => {
                 if (b.GetUserData() && b.GetUserData().target) {
-                    event.data.sprites.push(b.GetUserData().target);
+                    event.data.objects.push(b.GetUserData().target);
                 }
             });
         }

@@ -98,33 +98,10 @@ export default class CRigidBody extends CController {
         this._useComOrigin = false;
         this._collisionMask = 0xffffffff;
         this._material = CPhysicsCtrl.get().engine.getDefaultMaterial();
-        this._eventMap = {};
     }
 
     set __target(value) {
         super.__target = value;
-    }
-
-    _bindMouseEvent(eventName, callback) {
-        if (this._eventMap[eventName] === undefined) {
-            this._eventMap[eventName] = [];
-        }
-        this._eventMap[eventName].push(callback);
-        CPhysicsCtrl.get()._registerMouseEvent(eventName);
-        if (this.isNone()) {
-            this.type = 'sensor';
-        }
-    }
-
-    _unbindMouseEvent(eventName, callback) {
-        if (this._eventMap[eventName]) {
-            let i = this._eventMap[eventName].indexOf(callback);
-            if (i >= 0) this._eventMap[eventName].splice(i, 1);
-            if (!this._eventMap[eventName].length) {
-                delete this._eventMap[eventName];
-            }
-        }
-        CPhysicsCtrl.get()._unregisterMouseEvent(eventName, callback);
     }
 
     getTouching(...targets) {
