@@ -1,5 +1,6 @@
-//import * as PIXI from '../lib/es6/pixi.js/index';
 import * as PIXI from 'pixi.js';
+import {ASSERT} from './misc/util';
+import * as MouseEvents from './impl/mouse-events';
 
 import EventEmitter from 'eventemitter3';
 
@@ -21,6 +22,7 @@ export default class CObject extends EventEmitter {
         }
         this._frameCallbacks = [];
         this._promisesSet = new Set();
+        this._eventMap = {};
     }
 
     destroy() {
@@ -29,7 +31,7 @@ export default class CObject extends EventEmitter {
         this._promisesSet.forEach(reject => {
             reject(new DestroyedError('Object destroyed'));
         });
-        this._frameCallbacks.forEach(callback => PIXI.ticker.shared.remove(callback, self));
+        // this._frameCallbacks.forEach(callback => PIXI.ticker.shared.remove(callback, self));
         this.removeAllListeners();
     }
 
@@ -64,11 +66,67 @@ export default class CObject extends EventEmitter {
         super.on('start', callback);
     }
 
+    on(eventName, callback) {
+        if (eventName === 'frame') throw new Error("on('frame') is not supported. Use onFrame()")
+        if (MouseEvents.isMouseEvent(eventName)) {
+            if (this._eventMap[eventName] === undefined) {
+                this._eventMap[eventName] = [];
+            }
+            this._eventMap[eventName].push(callback);
+            MouseEvents.registerMouseEvent(eventName);
+            // if (this.isNone()) {
+            //     this.type = 'sensor';
+            // }
+        } else {
+            super.on(eventName, callback);
+        }
+    }
+
+    off(eventName, callback) {
+        if (MouseEvents.isMouseEvent(eventName)) {
+            if (this._eventMap[eventName]) {
+                let i = this._eventMap[eventName].indexOf(callback);
+                if (i >= 0) this._eventMap[eventName].splice(i, 1);
+                if (!this._eventMap[eventName].length) {
+                    delete this._eventMap[eventName];
+                }
+            }
+            MouseEvents.unregisterMouseEvent(eventName, callback);
+        } else {
+            super.unbind(eventName, callback);
+        }
+    }
+
     onFrame(callback) {
-        if (this._destroyed) return Promise.reject("Object is destroyed");
-        let cb = () => !this.__notStarted && !this._destroyed && callback.call(this, PIXI.ticker.shared.elapsedMS / 1000);
-        PIXI.ticker.shared.add(cb, this, 0 /* UPDATE_PRIORITY.NORMAL */);
-        this._frameCallbacks.push(cb);
+        if (!callback || typeof callback !== 'function') throw new Error("No callback function provided");
+        let self = this;
+        let startTime = PIXI.ticker.shared.lastTime;
+
+        function loop() {
+            if (self._destroyed) return;
+            let currentTime = PIXI.ticker.shared.lastTime;
+            let prom = callback.call(self, (currentTime - startTime) * 0.001);
+            startTime = currentTime;
+            if (prom instanceof Promise) {
+                prom.then(() =>  self.nextFrame().then(loop)).catch(e => {
+                    if (!self._destroyed) throw e;
+                });
+            } else {
+                self.nextFrame().then(loop).catch(e => {
+                    if (!self._destroyed) throw e;
+                });
+            }
+        }
+
+        // Do not call directly but on next frame
+        this.nextFrame().then(loop);
+
+        let cb = () => {
+            if (this._destroyed) return;
+            if (!this.__notStarted) {
+                let result = callback.call(this, PIXI.ticker.shared.elapsedMS / 1000);
+            }
+        };
     }
 
     /**
@@ -117,10 +175,14 @@ export default class CObject extends EventEmitter {
                         } else {
                             loop();
                         }
-                    }).catch(reject);
+                    }).catch(e => {
+                        if (!self._destroyed) throw e;
+                    });
 
                 } else {
-                    self.nextFrame().then(loop);
+                    self.nextFrame().then(loop).catch(e => {
+                        if (!self._destroyed) throw e;
+                    });
                 }
             }
             loop();
