@@ -1,0 +1,667 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0064)http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <title>18.12. The World Object — Turbulenz 0.28.0 documentation</title>
+    
+    <link rel="stylesheet" href="./18.12. The World Object — Turbulenz 0.28.0 documentation_files/sphinxdoc.css" type="text/css">
+    <link rel="stylesheet" href="./18.12. The World Object — Turbulenz 0.28.0 documentation_files/pygments.css" type="text/css">
+    
+    <script type="text/javascript" async="" src="./18.12. The World Object — Turbulenz 0.28.0 documentation_files/ga.js.download"></script><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.28.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="./18.12. The World Object — Turbulenz 0.28.0 documentation_files/jquery.js.download"></script>
+    <script type="text/javascript" src="./18.12. The World Object — Turbulenz 0.28.0 documentation_files/underscore.js.download"></script>
+    <script type="text/javascript" src="./18.12. The World Object — Turbulenz 0.28.0 documentation_files/doctools.js.download"></script>
+    <link rel="top" title="Turbulenz 0.28.0 documentation" href="http://docs.turbulenz.com/index.html">
+    <link rel="up" title="18. Low Level 2D Physics API" href="http://docs.turbulenz.com/jslibrary_api/physics2d_api.html">
+    <link rel="next" title="19. Low Level 3D Physics API" href="http://docs.turbulenz.com/jslibrary_api/physics3d_api.html">
+    <link rel="prev" title="18.11. The Shape Object" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html">
+ 
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-10614584-10']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="http://docs.turbulenz.com/genindex.html" title="General Index" accesskey="I">index</a></li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics3d_api.html" title="19. Low Level 3D Physics API" accesskey="N">next</a> |</li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html" title="18.11. The Shape Object" accesskey="P">previous</a> |</li>
+        <li><a href="http://docs.turbulenz.com/index.html">Turbulenz 0.28.0 documentation</a> »</li>
+          <li><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_api.html" accesskey="U">18. Low Level 2D Physics API</a> »</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="http://docs.turbulenz.com/index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#">18.12. The World Object</a><ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#constructor">18.12.1. Constructor</a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#methods">18.12.2. Methods</a><ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#step">18.12.2.1. <cite>step</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#getgravity">18.12.2.2. <cite>getGravity</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#setgravity">18.12.2.3. <cite>setGravity</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#addrigidbody">18.12.2.4. <cite>addRigidBody</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#removerigidbody">18.12.2.5. <cite>removeRigidBody</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#addconstraint">18.12.2.6. <cite>addConstraint</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#removeconstraint">18.12.2.7. <cite>removeConstraint</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#clear">18.12.2.8. <cite>clear</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#shaperectanglequery">18.12.2.9. <cite>shapeRectangleQuery</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#bodyrectanglequery">18.12.2.10. <cite>bodyRectangleQuery</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#shapecirclequery">18.12.2.11. <cite>shapeCircleQuery</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#bodycirclequery">18.12.2.12. <cite>bodyCircleQuery</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#shapepointquery">18.12.2.13. <cite>shapePointQuery</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#bodypointquery">18.12.2.14. <cite>bodyPointQuery</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#raycast">18.12.2.15. <cite>rayCast</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#convexcast">18.12.2.16. <cite>convexCast</cite></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#properties">18.12.3. Properties</a><ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#simulatedtime">18.12.3.1. <cite>simulatedTime</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#timestamp">18.12.3.2. <cite>timeStamp</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#rigidbodies">18.12.3.3. <cite>rigidBodies</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#constraints">18.12.3.4. <cite>constraints</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#livedynamics">18.12.3.5. <cite>liveDynamics</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#livekinematics">18.12.3.6. <cite>liveKinematics</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#liveconstraints">18.12.3.7. <cite>liveConstraints</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#broadphase">18.12.3.8. <cite>broadphase</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#velocityiterations">18.12.3.9. <cite>velocityIterations</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#positioniterations">18.12.3.10. <cite>positionIterations</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#dynamicarbiters">18.12.3.11. <cite>dynamicArbiters</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#staticarbiters">18.12.3.12. <cite>staticArbiters</cite></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html" title="previous chapter">18.11. The Shape Object</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="http://docs.turbulenz.com/jslibrary_api/physics3d_api.html" title="next chapter">19. Low Level 3D Physics API</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="http://docs.turbulenz.com/_sources/jslibrary_api/physics2d_world_api.txt" rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="">
+  <h3>Quick search</h3>
+    <form class="search" action="http://docs.turbulenz.com/search.html" method="get">
+      <input type="text" name="q">
+      <input type="submit" value="Go">
+      <input type="hidden" name="check_keywords" value="yes">
+      <input type="hidden" name="area" value="default">
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="the-world-object">
+<span id="physics2d-world"></span><h1>18.12. The World Object<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#the-world-object" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="constructor">
+<h2>18.12.1. Constructor<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#constructor" title="Permalink to this headline">¶</a></h2>
+<p>A World object can be constructed with <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#physics2ddevice-createworld"><em>Physics2DDevice.createWorld</em></a>.</p>
+</div>
+<div class="section" id="methods">
+<h2>18.12.2. Methods<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#methods" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="step">
+<span id="index-1"></span><h3>18.12.2.1. <cite>step</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#step" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Step forwards in simulation time.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">world</span><span class="p">.</span><span class="nx">step</span><span class="p">(</span><span class="nx">deltaTime</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">deltaTime</span></tt></dt>
+<dd><p class="first">The amount of time (in seconds) to be simulated.</p>
+<p class="last">This value must be strictly positive.</p>
+</dd>
+</dl>
+<p>This methods performs a single simulation step regardless of the input <cite>deltaTime</cite>.</p>
+<p>To use a fixed time step in your simulations, but remain flexible to differing run-time performance (Assuming physics is not the bottleneck), you would use a system similar to:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// executed each frame</span>
+<span class="k">while</span> <span class="p">(</span><span class="nx">world</span><span class="p">.</span><span class="nx">simulatedTime</span> <span class="o">&lt;</span> <span class="nx">realTime</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">world</span><span class="p">.</span><span class="nx">step</span><span class="p">(</span><span class="nx">fixedTimeStep</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getgravity">
+<span id="index-2"></span><h3>18.12.2.2. <cite>getGravity</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#getgravity" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Retrieve gravity set on world.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">gravity</span> <span class="o">=</span> <span class="nx">world</span><span class="p">.</span><span class="nx">getGravity</span><span class="p">();</span>
+<span class="c1">// or</span>
+<span class="nx">world</span><span class="p">.</span><span class="nx">getGravity</span><span class="p">(</span><span class="nx">gravity</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">gravity</span></tt> (Optional)</dt>
+<dd><p class="first">If specified then the gravity of the world will be stored into this array. Otherwise a new array will be created.</p>
+<p class="last">Modifications to the return value of this function will not effect the space. Setting gravity must be done through the <cite>setGravity</cite> method.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="setgravity">
+<span id="index-3"></span><h3>18.12.2.3. <cite>setGravity</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#setgravity" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set gravity on world.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">world</span><span class="p">.</span><span class="nx">setGravity</span><span class="p">(</span><span class="nx">gravity</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">gravity</span></tt></dt>
+<dd>New value for gravity of world.</dd>
+</dl>
+</div>
+<div class="section" id="addrigidbody">
+<span id="index-4"></span><h3>18.12.2.4. <cite>addRigidBody</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#addrigidbody" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Add a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> to the simulation world.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">success</span> <span class="o">=</span> <span class="nx">world</span><span class="p">.</span><span class="nx">addRigidBody</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">body</span></tt></dt>
+<dd>The RigidBody to add to the world</dd>
+</dl>
+<p>This method will fail if the body is already in a World.</p>
+</div>
+<div class="section" id="removerigidbody">
+<span id="index-5"></span><h3>18.12.2.5. <cite>removeRigidBody</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#removerigidbody" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Remove a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> from the simulation world.</p>
+<p>Any <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-constraint"><em>Constraint</em></a> objects in the world which make use
+of the body will also be removed.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">success</span> <span class="o">=</span> <span class="nx">world</span><span class="p">.</span><span class="nx">removeRigidBody</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">body</span></tt></dt>
+<dd>The RigidBody to remove from the world</dd>
+</dl>
+<p>This method will fail if the body is not in this World.</p>
+</div>
+<div class="section" id="addconstraint">
+<span id="index-6"></span><h3>18.12.2.6. <cite>addConstraint</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#addconstraint" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Add a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-constraint"><em>Constraint</em></a> to the simulation world.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">success</span> <span class="o">=</span> <span class="nx">world</span><span class="p">.</span><span class="nx">addConstraint</span><span class="p">(</span><span class="nx">constraint</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">constraint</span></tt></dt>
+<dd>The Constraint to add to the world</dd>
+</dl>
+<p>This method will fail if the constraint is already in a World.</p>
+</div>
+<div class="section" id="removeconstraint">
+<span id="index-7"></span><h3>18.12.2.7. <cite>removeConstraint</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#removeconstraint" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Remove a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-constraint"><em>Constraint</em></a> from the simulation world.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">success</span> <span class="o">=</span> <span class="nx">world</span><span class="p">.</span><span class="nx">removeConstraint</span><span class="p">(</span><span class="nx">constraint</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">constraint</span></tt></dt>
+<dd>The Constraint to remove from the world</dd>
+</dl>
+<p>This method will fail if the constraint is not in this World.</p>
+</div>
+<div class="section" id="clear">
+<span id="index-8"></span><h3>18.12.2.8. <cite>clear</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#clear" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Clear the simulation world of all rigid bodies and constraints.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">world</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="shaperectanglequery">
+<span id="index-9"></span><h3>18.12.2.9. <cite>shapeRectangleQuery</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#shaperectanglequery" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Sample world to find all <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#physics2d-shape"><em>Shape</em></a>‘s intersecting the given axis aligned rectangle.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">store</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">world</span><span class="p">.</span><span class="nx">shapeRectangleQuery</span><span class="p">(</span><span class="nx">rectangle</span><span class="p">,</span> <span class="nx">store</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">rectangle</span></tt></dt>
+<dd>The rectangle in Physics2D coordinates to sample Shapes.</dd>
+<dt><tt class="docutils literal"><span class="pre">store</span></tt></dt>
+<dd>The array in which to store intersected shapes.</dd>
+</dl>
+<p>The return value <cite>count</cite> is the number of shapes which were intersected.</p>
+</div>
+<div class="section" id="bodyrectanglequery">
+<span id="index-10"></span><h3>18.12.2.10. <cite>bodyRectangleQuery</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#bodyrectanglequery" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Sample world to find all <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a>‘s intersecting the given axis aligned rectangle.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">store</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">world</span><span class="p">.</span><span class="nx">bodyRectangleQuery</span><span class="p">(</span><span class="nx">rectangle</span><span class="p">,</span> <span class="nx">store</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">rectangle</span></tt></dt>
+<dd>The rectangle in Physics2D coordinates to sample rigid bodies.</dd>
+<dt><tt class="docutils literal"><span class="pre">store</span></tt></dt>
+<dd>The array in which to store intersected bodies.</dd>
+</dl>
+<p>The return value <cite>count</cite> is the number of bodies which were intersected.</p>
+</div>
+<div class="section" id="shapecirclequery">
+<span id="index-11"></span><h3>18.12.2.11. <cite>shapeCircleQuery</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#shapecirclequery" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Sample world to find all <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#physics2d-shape"><em>Shape</em></a>‘s intersecting the given circle.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">store</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">world</span><span class="p">.</span><span class="nx">shapeCircleQuery</span><span class="p">(</span><span class="nx">center</span><span class="p">,</span> <span class="nx">radius</span><span class="p">,</span> <span class="nx">store</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">center</span></tt></dt>
+<dd>The point in Physics2D coordinates defining center of the circle.</dd>
+<dt><tt class="docutils literal"><span class="pre">radius</span></tt></dt>
+<dd>The radius in Physics2D coordinates for sample circle.</dd>
+<dt><tt class="docutils literal"><span class="pre">store</span></tt></dt>
+<dd>The array in which to store intersected shapes.</dd>
+</dl>
+<p>The return value <cite>count</cite> is the number of shapes which were intersected.</p>
+</div>
+<div class="section" id="bodycirclequery">
+<span id="index-12"></span><h3>18.12.2.12. <cite>bodyCircleQuery</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#bodycirclequery" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Sample world to find all <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a>‘s intersecting the given point.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">store</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">world</span><span class="p">.</span><span class="nx">bodyCircleQuery</span><span class="p">(</span><span class="nx">center</span><span class="p">,</span> <span class="nx">radius</span><span class="p">,</span> <span class="nx">store</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">center</span></tt></dt>
+<dd>The point in Physics2D coordinates defining center of the circle.</dd>
+<dt><tt class="docutils literal"><span class="pre">radius</span></tt></dt>
+<dd>The radius in Physics2D coordinates for sample circle.</dd>
+<dt><tt class="docutils literal"><span class="pre">store</span></tt></dt>
+<dd>The array in which to store intersected bodies.</dd>
+</dl>
+<p>The return value <cite>count</cite> is the number of bodies which were intersected.</p>
+</div>
+<div class="section" id="shapepointquery">
+<span id="index-13"></span><h3>18.12.2.13. <cite>shapePointQuery</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#shapepointquery" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Sample world to find all <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#physics2d-shape"><em>Shape</em></a>‘s intersecting the given point.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">store</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">world</span><span class="p">.</span><span class="nx">shapePointQuery</span><span class="p">(</span><span class="nx">point</span><span class="p">,</span> <span class="nx">store</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">point</span></tt></dt>
+<dd>The point in Physics2D coordinates to sample Shapes.</dd>
+<dt><tt class="docutils literal"><span class="pre">store</span></tt></dt>
+<dd>The array in which to store intersected shapes.</dd>
+</dl>
+<p>The return value <cite>count</cite> is the number of shapes which were intersected.</p>
+</div>
+<div class="section" id="bodypointquery">
+<span id="index-14"></span><h3>18.12.2.14. <cite>bodyPointQuery</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#bodypointquery" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Sample world to find all <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a>‘s intersecting the given point.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">store</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">world</span><span class="p">.</span><span class="nx">bodyPointQuery</span><span class="p">(</span><span class="nx">point</span><span class="p">,</span> <span class="nx">store</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">point</span></tt></dt>
+<dd>The point in Physics2D coordinates to sample rigid bodies.</dd>
+<dt><tt class="docutils literal"><span class="pre">store</span></tt></dt>
+<dd>The array in which to store intersected bodies.</dd>
+</dl>
+<p>The return value <cite>count</cite> is the number of bodies which were intersected.</p>
+</div>
+<div class="section" id="raycast">
+<span id="index-15"></span><h3>18.12.2.15. <cite>rayCast</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#raycast" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Sample world for the first intersection of the given parametric ray.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">ray</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">origin</span> <span class="o">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="nx">direction</span> <span class="o">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="nx">maxFactor</span> <span class="o">:</span> <span class="mi">2</span>
+<span class="p">};</span>
+<span class="kd">var</span> <span class="nx">callback</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">ignored</span> <span class="o">:</span> <span class="nx">someShape</span><span class="p">,</span>
+    <span class="nx">filter</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ray</span><span class="p">,</span> <span class="nx">temporaryResult</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">ignored</span> <span class="o">===</span> <span class="nx">temporaryResult</span><span class="p">.</span><span class="nx">shape</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">temporaryResult</span><span class="p">.</span><span class="nx">hitNormal</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">world</span><span class="p">.</span><span class="nx">rayCast</span><span class="p">(</span><span class="nx">ray</span><span class="p">,</span> <span class="nx">ignoreInnerSurfaces</span><span class="p">,</span> <span class="nx">callback</span><span class="p">.</span><span class="nx">filter</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Ray intersected!"</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Distance to intersection = "</span> <span class="o">+</span> <span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">factor</span> <span class="o">/</span> <span class="nx">mathDevice</span><span class="p">.</span><span class="nx">v2Length</span><span class="p">(</span><span class="nx">ray</span><span class="p">.</span><span class="nx">direction</span><span class="p">)));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">ray</span></tt></dt>
+<dd>Parametric ray to be cast through the world. Ray cast will be limited to a factor of <cite>maxFactor</cite> of the ray direction.</dd>
+<dt><tt class="docutils literal"><span class="pre">ignoreInnerSurfaces</span></tt> (Optional)</dt>
+<dd><p class="first">If true, then intersections with the <cite>inner</cite> surfaces of Shapes will be ignored.</p>
+<p class="last">Default value is <cite>false</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">callback</span></tt> (Optional)</dt>
+<dd><p class="first">If supplied, this function will be called after each intersection test with the input <cite>ray</cite> and a temporary results object detailing the intersection.</p>
+<p>This result object is re-used and you should not keep any references to it.</p>
+<p class="last">Any intersection for which the callback function returns false, will be ignored.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">thisObject</span></tt> (Optional)</dt>
+<dd>If supplied, the <cite>callback</cite> function supplied will be called with <cite>thisObject</cite> as its <cite>this</cite> value.</dd>
+</dl>
+<p>The return value of this function is a new results result object detailing the closest intersection to the ray.</p>
+<p>This results object has the following fields:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="nx">hitPoint</span> <span class="o">:</span> <span class="p">[</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">],</span>  <span class="c1">// point of intersection</span>
+    <span class="nx">hitNormal</span> <span class="o">:</span> <span class="p">[</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">],</span> <span class="c1">// normal at intersection on intersected shape.</span>
+    <span class="nx">shape</span> <span class="o">:</span> <span class="nx">intersectedShape</span><span class="p">,</span>
+    <span class="nx">factor</span> <span class="o">:</span> <span class="c1">// factor corresponding to ray intersection</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="convexcast">
+<span id="index-16"></span><h3>18.12.2.16. <cite>convexCast</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#convexcast" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Sample world for the first intersection of the given <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#physics2d-shape"><em>Shape</em></a> as determined by its <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a>‘s velocities.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">sweepShape</span> <span class="o">=</span> <span class="nx">phys2D</span><span class="p">.</span><span class="nx">createCircleShape</span><span class="p">({</span>
+    <span class="nx">radius</span> <span class="o">:</span> <span class="mi">1</span>
+<span class="p">});</span>
+<span class="kd">var</span> <span class="nx">sweepBody</span> <span class="o">=</span> <span class="nx">phys2D</span><span class="p">.</span><span class="nx">createRigidBody</span><span class="p">({</span>
+    <span class="nx">shapes</span> <span class="o">:</span> <span class="p">[</span><span class="nx">circle</span><span class="p">],</span>
+    <span class="nx">position</span> <span class="o">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="nx">velocity</span> <span class="o">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="nx">angularVelocity</span> <span class="o">:</span> <span class="mi">20</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">callback</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">ignored</span> <span class="o">:</span> <span class="nx">someShape</span><span class="p">,</span>
+    <span class="nx">filter</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">shape</span><span class="p">,</span> <span class="nx">temporaryResult</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">ignored</span> <span class="o">===</span> <span class="nx">temporaryResult</span><span class="p">.</span><span class="nx">shape</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">temporaryResult</span><span class="p">.</span><span class="nx">hitNormal</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">maxTime</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// seconds</span>
+<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">world</span><span class="p">.</span><span class="nx">convexCast</span><span class="p">(</span><span class="nx">sweepShape</span><span class="p">,</span> <span class="nx">maxTime</span><span class="p">,</span> <span class="nx">callback</span><span class="p">.</span><span class="nx">filter</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Shape intersected!"</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Time of Impact = "</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">factor</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">shape</span></tt></dt>
+<dd><p class="first">The <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#physics2d-shape"><em>Shape</em></a> to be swept through the world. This shape must belong to a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> which defines the sweep
+start position/rotation and sweep velocities.</p>
+<p class="last">This shape/body pair is permitted belong to the world, in which case it will ignore itself automatically.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">deltaTime</span></tt></dt>
+<dd>The amount of time shape will be swept through before returning failure.</dd>
+<dt><tt class="docutils literal"><span class="pre">callback</span></tt> (Optional)</dt>
+<dd><p class="first">If supplied, this function will be called after each intersection test with the input <cite>shape</cite> and a temporary results object detailing the intersection.</p>
+<p>This result object is re-used and you should not keep any references to it.</p>
+<p class="last">Any intersection for which the callback function returns false, will be ignored.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">thisObject</span></tt> (Optional)</dt>
+<dd>If supplied, the <cite>callback</cite> function supplied will be called with <cite>thisObject</cite> as its <cite>this</cite> value.</dd>
+</dl>
+<p>The return value of this function is a new results result object detailing the first intersection of swept shape in the world.</p>
+<p>This results object has the same fields as that of the <cite>rayCast</cite> method.</p>
+</div>
+</div>
+<div class="section" id="properties">
+<h2>18.12.3. Properties<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#properties" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="simulatedtime">
+<span id="index-17"></span><h3>18.12.3.1. <cite>simulatedTime</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#simulatedtime" title="Permalink to this headline">¶</a></h3>
+<p>The amount of time in seconds that has been simulated since world creation.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only</p>
+</div>
+</div>
+<div class="section" id="timestamp">
+<span id="index-18"></span><h3>18.12.3.2. <cite>timeStamp</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#timestamp" title="Permalink to this headline">¶</a></h3>
+<p>The current time stamp for this World: equal to the number of times step() has been executed.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only</p>
+</div>
+</div>
+<div class="section" id="rigidbodies">
+<span id="index-19"></span><h3>18.12.3.3. <cite>rigidBodies</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#rigidbodies" title="Permalink to this headline">¶</a></h3>
+<p>Array of all <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> that are in the World.</p>
+<p>Removing, or adding body from the world will modify this array, and should not be performed during iteration. If you wish to remove all rigid bodies from the world you may use the following pattern:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">rigidBodies</span> <span class="o">=</span> <span class="nx">world</span><span class="p">.</span><span class="nx">rigidBodies</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span><span class="nx">rigidBodies</span><span class="p">.</span><span class="nx">length</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">world</span><span class="p">.</span><span class="nx">removeRigidBody</span><span class="p">(</span><span class="nx">rigidBodies</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only</p>
+</div>
+</div>
+<div class="section" id="constraints">
+<span id="index-20"></span><h3>18.12.3.4. <cite>constraints</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#constraints" title="Permalink to this headline">¶</a></h3>
+<p>Array of all <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-constraint"><em>Constraint</em></a> that are in the World.</p>
+<p>Removing, or adding constraint from the world will modify this array, and should not be performed during iteration. If you wish to remove all constraints from the world you may use the following pattern:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">constraints</span> <span class="o">=</span> <span class="nx">world</span><span class="p">.</span><span class="nx">constraints</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span><span class="nx">constraints</span><span class="p">.</span><span class="nx">length</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">world</span><span class="p">.</span><span class="nx">removeConstraint</span><span class="p">(</span><span class="nx">constraints</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only</p>
+</div>
+</div>
+<div class="section" id="livedynamics">
+<span id="index-21"></span><h3>18.12.3.5. <cite>liveDynamics</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#livedynamics" title="Permalink to this headline">¶</a></h3>
+<p>Array of all non-sleeping <cite>dynamic</cite> type Rigid Bodies that are in the World.</p>
+<p>Dynamic bodies are put to sleep when the island of objects formed by contacts
+with other dynamic bodies, and constraints are all sufficiently slow moving for
+a sufficient amount of time.</p>
+<p>Any operation that causes a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> or <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-constraint"><em>Constraint</em></a> to be woken, or forced to sleep may modify this array, you should be carefully not to perform any such mutation of any such objects in the world during iteration.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only</p>
+</div>
+</div>
+<div class="section" id="livekinematics">
+<span id="index-22"></span><h3>18.12.3.6. <cite>liveKinematics</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#livekinematics" title="Permalink to this headline">¶</a></h3>
+<p>Array of all non-sleeping <cite>kinematic</cite> type Rigid Bodies that are in the World.</p>
+<p>Kinematic bodies are put to sleep when they have not moved during a world <cite>step()</cite>.</p>
+<p>Any operation that causes a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> or <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-constraint"><em>Constraint</em></a> to be woken, or forced to sleep may modify this array, you should be carefully not to perform any such mutation of any such objects in the world during iteration.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only</p>
+</div>
+</div>
+<div class="section" id="liveconstraints">
+<span id="index-23"></span><h3>18.12.3.7. <cite>liveConstraints</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#liveconstraints" title="Permalink to this headline">¶</a></h3>
+<p>Array of all non-sleeping Constraints that are in the World.</p>
+<p>Constraints are put to sleep when the island of dynamic bodies they are connected
+to is put to sleep.</p>
+<p>Any operation that causes a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> or <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-constraint"><em>Constraint</em></a> to be woken, or forced to sleep may modify this array, you should be carefully not to perform any such mutation of any such objects in the world during iteration.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only</p>
+</div>
+</div>
+<div class="section" id="broadphase">
+<span id="index-24"></span><h3>18.12.3.8. <cite>broadphase</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#broadphase" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#broadphase"><em>Broadphase</em></a> object assigned to this World.</p>
+<p>You should not modify the broadphase object, though you are free to query it.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only</p>
+</div>
+</div>
+<div class="section" id="velocityiterations">
+<span id="index-25"></span><h3>18.12.3.9. <cite>velocityIterations</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#velocityiterations" title="Permalink to this headline">¶</a></h3>
+<p>The number of iterations used in the physics step when solving errors in velocity constraints.</p>
+<p>This value must be positive.</p>
+</div>
+<div class="section" id="positioniterations">
+<span id="index-26"></span><h3>18.12.3.10. <cite>positionIterations</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#positioniterations" title="Permalink to this headline">¶</a></h3>
+<p>The number of iterations used in the physics step when solving errors in position constraints.</p>
+<p>This value must be positive.</p>
+</div>
+<div class="section" id="dynamicarbiters">
+<span id="index-27"></span><h3>18.12.3.11. <cite>dynamicArbiters</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#dynamicarbiters" title="Permalink to this headline">¶</a></h3>
+<p>Set of all non-sleeping <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_arbiter_api.html#physics2d-arbiter"><em>Arbiter</em></a> objects between pairs of dynamic rigid bodies.</p>
+<p>If iterating over this array, you should be careful to ignore any <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_arbiter_api.html#physics2d-arbiter"><em>Arbiter</em></a> object
+whose <cite>active</cite> field is false. Such objects correspond either to an interaction which has recently ended
+and exists purely to cache values that may shortly be re-used, or that is waiting to be destroyed.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">arbiters</span> <span class="o">=</span> <span class="nx">world</span><span class="p">.</span><span class="nx">dynamicArbiters</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">numArbiters</span> <span class="o">=</span> <span class="nx">arbiters</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">i</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">numArbiters</span><span class="p">;</span> <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">arb</span> <span class="o">=</span> <span class="nx">arbiters</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">arb</span><span class="p">.</span><span class="nx">active</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">continue</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This array may be modified by removing a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> object from the World and should be avoided during iteration.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only</p>
+</div>
+</div>
+<div class="section" id="staticarbiters">
+<span id="index-28"></span><h3>18.12.3.12. <cite>staticArbiters</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#staticarbiters" title="Permalink to this headline">¶</a></h3>
+<p>Set of all non-sleeping <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_arbiter_api.html#physics2d-arbiter"><em>Arbiter</em></a> objects between a dynamic, and non-dynamic rigid body.</p>
+<p>If iterating over this array, you should be careful to ignore any <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_arbiter_api.html#physics2d-arbiter"><em>Arbiter</em></a> object
+whose <cite>active</cite> field is false. Such objects correspond either to an interaction which has recently ended
+and exists purely to cache values that may shortly be re-used, or that is waiting to be destroyed.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">arbiters</span> <span class="o">=</span> <span class="nx">world</span><span class="p">.</span><span class="nx">staticArbiters</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">numArbiters</span> <span class="o">=</span> <span class="nx">arbiters</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">i</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">numArbiters</span><span class="p">;</span> <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">arb</span> <span class="o">=</span> <span class="nx">arbiters</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">arb</span><span class="p">.</span><span class="nx">active</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">continue</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This array may be modified by removing a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> object from the World and should be avoided during iteration.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="http://docs.turbulenz.com/genindex.html" title="General Index">index</a></li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics3d_api.html" title="19. Low Level 3D Physics API">next</a> |</li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html" title="18.11. The Shape Object">previous</a> |</li>
+        <li><a href="http://docs.turbulenz.com/index.html">Turbulenz 0.28.0 documentation</a> »</li>
+          <li><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_api.html">18. Low Level 2D Physics API</a> »</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        © Copyright 2010-2014, Turbulenz Limited.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  
+</body></html>

@@ -5,7 +5,7 @@ import * as PIXI from 'pixi.js';
  */
 export default class CanvasSprite extends PIXI.Sprite {
     constructor(canvas) {
-        super();
+        super(PIXI.Texture.fromCanvas(canvas));
         this._canvas = canvas
     };
 

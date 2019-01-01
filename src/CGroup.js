@@ -62,16 +62,12 @@ export default class CGroup extends CChildObject {
         }
     }
 
-    // get anchor() {
-    //     return this._anchor
-    // }
-    //
-    // set anchor(point) {
-    //     this._anchor = point;
-    // }
-    //
-    // _onAnchorUpdate() {
-    //     this._pixiObject.anchor = this._anchor;
-    // }
+    destroy() {
+        let children = this.children;
+        for (let child of children) {
+            child.destroy();
+        }
+        super.destroy();
+    }
 
 };

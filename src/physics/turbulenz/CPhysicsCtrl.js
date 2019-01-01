@@ -293,7 +293,6 @@ function updatePhysics(deltaSec) {
 
     let world = this.world;
     let bodies = world.rigidBodies;
-    let limit = bodies.length;
     this._endTimeMsec += deltaSec * 1000;
 
     let endNow = performance.now() + maxTimeMsec;
@@ -326,7 +325,7 @@ function updatePhysics(deltaSec) {
         g = this._bodyObject;
         g.clear();
     }
-    for (let i = 0; i < limit; i++) {
+    for (let i = 0; i < bodies.length; i++) {
         let body = bodies[i];
         if (body.userData && body.userData.target &&
             (body.userData.target.__notStarted || body.userData.target._destroyed || !body.userData.target.enable)) continue;

@@ -1,0 +1,524 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0068)http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <title>18.8. The Physics2DDebugDraw Object — Turbulenz 0.28.0 documentation</title>
+    
+    <link rel="stylesheet" href="./18.8. The Physics2DDebugDraw Object — Turbulenz 0.28.0 documentation_files/sphinxdoc.css" type="text/css">
+    <link rel="stylesheet" href="./18.8. The Physics2DDebugDraw Object — Turbulenz 0.28.0 documentation_files/pygments.css" type="text/css">
+    
+    <script type="text/javascript" async="" src="./18.8. The Physics2DDebugDraw Object — Turbulenz 0.28.0 documentation_files/ga.js.download"></script><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.28.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="./18.8. The Physics2DDebugDraw Object — Turbulenz 0.28.0 documentation_files/jquery.js.download"></script>
+    <script type="text/javascript" src="./18.8. The Physics2DDebugDraw Object — Turbulenz 0.28.0 documentation_files/underscore.js.download"></script>
+    <script type="text/javascript" src="./18.8. The Physics2DDebugDraw Object — Turbulenz 0.28.0 documentation_files/doctools.js.download"></script>
+    <link rel="top" title="Turbulenz 0.28.0 documentation" href="http://docs.turbulenz.com/index.html">
+    <link rel="up" title="18. Low Level 2D Physics API" href="http://docs.turbulenz.com/jslibrary_api/physics2d_api.html">
+    <link rel="next" title="18.9. The Physics2DDevice Object" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html">
+    <link rel="prev" title="18.7. The Constraint Object" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html">
+ 
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-10614584-10']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="http://docs.turbulenz.com/genindex.html" title="General Index" accesskey="I">index</a></li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html" title="18.9. The Physics2DDevice Object" accesskey="N">next</a> |</li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html" title="18.7. The Constraint Object" accesskey="P">previous</a> |</li>
+        <li><a href="http://docs.turbulenz.com/index.html">Turbulenz 0.28.0 documentation</a> »</li>
+          <li><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_api.html" accesskey="U">18. Low Level 2D Physics API</a> »</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="http://docs.turbulenz.com/index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#">18.8. The Physics2DDebugDraw Object</a><ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#constructor">18.8.1. Constructor</a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#methods">18.8.2. Methods</a><ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#setphysics2dviewport">18.8.2.1. <cite>setPhysics2DViewport</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#setscreenviewport">18.8.2.2. <cite>setScreenViewport</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#begin">18.8.2.3. <cite>begin</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#end">18.8.2.4. <cite>end</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#destroy">18.8.2.5. <cite>destroy</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#drawrigidbody">18.8.2.6. <cite>drawRigidBody</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#drawconstraint">18.8.2.7. <cite>drawConstraint</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#drawworld">18.8.2.8. <cite>drawWorld</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#drawline">18.8.2.9. <cite>drawLine</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#drawcurve">18.8.2.10. <cite>drawCurve</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#drawrectangle">18.8.2.11. <cite>drawRectangle</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#drawcircle">18.8.2.12. <cite>drawCircle</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#drawspiral">18.8.2.13. <cite>drawSpiral</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#drawlinearspring">18.8.2.14. <cite>drawLinearSpring</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#drawspiralspring">18.8.2.15. <cite>drawSpiralSpring</cite></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#properties">18.8.3. Properties</a><ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#physics2dtoscreen">18.8.3.1. <cite>physics2DToScreen</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#screentophysics2d">18.8.3.2. <cite>screenToPhysics2D</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#showconstraints">18.8.3.3. <cite>showConstraints</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#showcontacts">18.8.3.4. <cite>showContacts</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#showcontactimpulses">18.8.3.5. <cite>showContactImpulses</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#showrigidbodies">18.8.3.6. <cite>showRigidBodies</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#showcollidershapes">18.8.3.7. <cite>showColliderShapes</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#showsensorshapes">18.8.3.8. <cite>showSensorShapes</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#showbodydetail">18.8.3.9. <cite>showBodyDetail</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#showshapedetail">18.8.3.10. <cite>showShapeDetail</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#circlemaxerror">18.8.3.11. <cite>circleMaxError</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#curvemaxerror">18.8.3.12. <cite>curveMaxError</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#spiralspringsize">18.8.3.13. <cite>spiralSpringSize</cite></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html" title="previous chapter">18.7. The Constraint Object</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html" title="next chapter">18.9. The Physics2DDevice Object</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="http://docs.turbulenz.com/_sources/jslibrary_api/physics2d_debugdraw_api.txt" rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="">
+  <h3>Quick search</h3>
+    <form class="search" action="http://docs.turbulenz.com/search.html" method="get">
+      <input type="text" name="q">
+      <input type="submit" value="Go">
+      <input type="hidden" name="check_keywords" value="yes">
+      <input type="hidden" name="area" value="default">
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="the-physics2ddebugdraw-object">
+<span id="physics2d-debug"></span><h1>18.8. The Physics2DDebugDraw Object<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#the-physics2ddebugdraw-object" title="Permalink to this headline">¶</a></h1>
+<p>Provides fast line based, GPU powered drawing API for 2d debug drawing, and drawing
+of Physics2D physics data.</p>
+<p>Coordinates of the DebugDraw object are that of Physics2D, with scaling to pixels
+defined solely by the viewports set on this object.</p>
+<p><strong>Required scripts</strong></p>
+<p>The Physics2DDevice object requires:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="cm">/*{{ javascript("jslib/physics2ddevice.js") }}*/</span>
+<span class="cm">/*{{ javascript("jslib/physics2ddebugdraw.js") }}*/</span>
+</pre></div>
+</div>
+<div class="section" id="constructor">
+<h2>18.8.1. Constructor<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#constructor" title="Permalink to this headline">¶</a></h2>
+<p><strong>Summary</strong></p>
+<p>Create a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#physics2d-debug"><em>DebugDraw</em></a> object.</p>
+<p>DebugDraw object uses the <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/graphicsdevice_api.html#graphicsdevice"><em>GraphicsDevice</em></a> object to render line based primitives on the GPU with methods for rendering a
+Physics2D World and other Physics2D objects.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">debug</span> <span class="o">=</span> <span class="nx">Physics2DDebugDraw</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+    <span class="nx">graphicsDevice</span> <span class="o">:</span> <span class="nx">gd</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">graphicsDevice</span></tt></dt>
+<dd>The <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/graphicsdevice_api.html#graphicsdevice"><em>GraphicsDevice</em></a> object for the debug draw to use.</dd>
+</dl>
+</div>
+<div class="section" id="methods">
+<h2>18.8.2. Methods<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#methods" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="setphysics2dviewport">
+<span id="index-1"></span><h3>18.8.2.1. <cite>setPhysics2DViewport</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#setphysics2dviewport" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Define the region in Physics2D coordinates that is to be drawn to the screen.</p>
+<p>This method will take effect upon the next call to <cite>debug.begin()</cite>.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">debug</span><span class="p">.</span><span class="nx">setPhysics2DViewport</span><span class="p">(</span><span class="nx">rectangle</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">rectangle</span></tt></dt>
+<dd><p class="first">The rectangle in Physics2D coordinates to be drawn.</p>
+<p class="last">If using <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/draw2d_api.html#draw2d"><em>Draw2D</em></a> in conjunction with Physics2D, then as long as your graphics logic uses the same coordinates as Physics2D you would most likely find that using the value of <cite>draw2D.getViewport()</cite> is the best fit for the Physics2D viewport so that debug drawing is correctly aligned.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="setscreenviewport">
+<span id="index-2"></span><h3>18.8.2.2. <cite>setScreenViewport</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#setscreenviewport" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Define the region in screen pixels (with top-left corner at (0,0)) to which the
+Physics2D viewport will be mapped onto.</p>
+<p>Anything outside of this region will be clipped.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">debug</span><span class="p">.</span><span class="nx">setScreenViewport</span><span class="p">(</span><span class="nx">rectangle</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">rectangle</span></tt></dt>
+<dd><p class="first">The rectangle in screen pixels to be drawn to.</p>
+<p class="last">If using <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/draw2d_api.html#draw2d"><em>Draw2D</em></a> in conjunction with Physics2D, then you would most likely find that using the value of <cite>draw2D.getScreenSpaceViewport()</cite> is the best fit for the Screen viewport so that debug drawing is correctly aligned.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="begin">
+<span id="index-3"></span><h3>18.8.2.3. <cite>begin</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#begin" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Begin debug drawing state.</p>
+<p>This call will update shader parameters for drawing based on viewports, as well as setting the scissor on the graphics device.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">debug</span><span class="p">.</span><span class="nx">begin</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="end">
+<span id="index-4"></span><h3>18.8.2.4. <cite>end</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#end" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>End debug drawing state.</p>
+<p>This call will dispatch all drawing data to the GPU that has accumulated since the matching calling to <cite>begin()</cite>.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">debug</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="destroy">
+<span id="index-5"></span><h3>18.8.2.5. <cite>destroy</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#destroy" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Destroy debug draw object, releasing memory allocated on GPU through the <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/graphicsdevice_api.html#graphicsdevice"><em>GraphicsDevice</em></a></p>
+<p>You cannot use this object after it has been destroyed.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">debug</span><span class="p">.</span><span class="nx">destroy</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="drawrigidbody">
+<span id="index-6"></span><h3>18.8.2.6. <cite>drawRigidBody</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#drawrigidbody" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Draw a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> object.</p>
+<p>The colors with which the shapes of the body are drawn is controlled by the various color properties of this object.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">debug</span><span class="p">.</span><span class="nx">drawRigidBody</span><span class="p">(</span><span class="nx">rigidBody</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="drawconstraint">
+<span id="index-7"></span><h3>18.8.2.7. <cite>drawConstraint</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#drawconstraint" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Draw a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-constraint"><em>Constraint</em></a> object.</p>
+<p>Drawing of the constraint is deferred to the constraint object itself. In built constraints make use of the common DebugDraw methods and colors listed in the properties of this object.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">debug</span><span class="p">.</span><span class="nx">drawConstraint</span><span class="p">(</span><span class="nx">constraint</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="drawworld">
+<span id="index-8"></span><h3>18.8.2.8. <cite>drawWorld</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#drawworld" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Draw a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#physics2d-world"><em>World</em></a> object.</p>
+<p>Control of what parts of the world is drawn is given by the various properties of this object like <cite>showRigidBodies</cite> and <cite>showContacts</cite>.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">debug</span><span class="p">.</span><span class="nx">drawWorld</span><span class="p">(</span><span class="nx">world</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="drawline">
+<span id="index-9"></span><h3>18.8.2.9. <cite>drawLine</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#drawline" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Draw a single line with given color.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">debug</span><span class="p">.</span><span class="nx">drawLine</span><span class="p">(</span><span class="nx">x1</span><span class="p">,</span> <span class="nx">y1</span><span class="p">,</span> <span class="nx">x2</span><span class="p">,</span> <span class="nx">y2</span><span class="p">,</span> <span class="nx">color</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">x1</span></tt></dt>
+<dd>The x-coordinate for the start point of the line in Physics2D coordinates.</dd>
+<dt><tt class="docutils literal"><span class="pre">y1</span></tt></dt>
+<dd>The y-coordinate for the start point of the line in Physics2D coordinates</dd>
+<dt><tt class="docutils literal"><span class="pre">x2</span></tt></dt>
+<dd>The x-coordinate for the end point of the line in Physics2D coordinates</dd>
+<dt><tt class="docutils literal"><span class="pre">y2</span></tt></dt>
+<dd>The y-coordinate for the end point of the line in Physics2D coordinates.</dd>
+<dt><tt class="docutils literal"><span class="pre">color</span></tt></dt>
+<dd>The normalized RGBA color values in the range <cite>[0, 1]</cite>.</dd>
+</dl>
+</div>
+<div class="section" id="drawcurve">
+<span id="index-10"></span><h3>18.8.2.10. <cite>drawCurve</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#drawcurve" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Draw a quadratic bezier curve with given color.</p>
+<p>The accuracy with which the curve is drawn is controlled by the <cite>curveMaxError</cite> property.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">debug</span><span class="p">.</span><span class="nx">drawCurve</span><span class="p">(</span><span class="nx">x1</span><span class="p">,</span> <span class="nx">y1</span><span class="p">,</span> <span class="nx">cx</span><span class="p">,</span> <span class="nx">cy</span><span class="p">,</span> <span class="nx">x2</span><span class="p">,</span> <span class="nx">y2</span><span class="p">,</span> <span class="nx">color</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">x1</span></tt></dt>
+<dd>The x-coordinate for the start point of the curve in Physics2D coordinates.</dd>
+<dt><tt class="docutils literal"><span class="pre">y1</span></tt></dt>
+<dd>The y-coordinate for the start point of the curve in Physics2D coordinates</dd>
+<dt><tt class="docutils literal"><span class="pre">cx</span></tt></dt>
+<dd>The x-coordinate for the bezier control point in Physics2D coordinates.</dd>
+<dt><tt class="docutils literal"><span class="pre">cy</span></tt></dt>
+<dd>The y-coordinate for the bezier control point in Physics2D coordinates.</dd>
+<dt><tt class="docutils literal"><span class="pre">x2</span></tt></dt>
+<dd>The x-coordinate for the end point of the curve in Physics2D coordinates</dd>
+<dt><tt class="docutils literal"><span class="pre">y2</span></tt></dt>
+<dd>The y-coordinate for the end point of the curve in Physics2D coordinates.</dd>
+<dt><tt class="docutils literal"><span class="pre">color</span></tt></dt>
+<dd>The normalized RGBA color values in the range <cite>[0, 1]</cite>.</dd>
+</dl>
+</div>
+<div class="section" id="drawrectangle">
+<span id="index-11"></span><h3>18.8.2.11. <cite>drawRectangle</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#drawrectangle" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Draw an axis aligned rectangle with given color.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">debug</span><span class="p">.</span><span class="nx">drawRectangle</span><span class="p">(</span><span class="nx">x1</span><span class="p">,</span> <span class="nx">y1</span><span class="p">,</span> <span class="nx">x2</span><span class="p">,</span> <span class="nx">y2</span><span class="p">,</span> <span class="nx">color</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">x1</span></tt></dt>
+<dd>The x-coordinate of the top-left corner of rectangle in Physics2D coordinates.</dd>
+<dt><tt class="docutils literal"><span class="pre">y1</span></tt></dt>
+<dd>The y-coordinate of the top-left corner of rectangle in Physics2D coordinates</dd>
+<dt><tt class="docutils literal"><span class="pre">x2</span></tt></dt>
+<dd>The x-coordinate of the bottom-right corner of rectangle in Physics2D coordinates</dd>
+<dt><tt class="docutils literal"><span class="pre">y2</span></tt></dt>
+<dd>The y-coordinate of the bottom-right corner of rectangle in Physics2D coordinates.</dd>
+<dt><tt class="docutils literal"><span class="pre">color</span></tt></dt>
+<dd>The normalized RGBA color values in the range <cite>[0, 1]</cite>.</dd>
+</dl>
+</div>
+<div class="section" id="drawcircle">
+<span id="index-12"></span><h3>18.8.2.12. <cite>drawCircle</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#drawcircle" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Draw a circle with given color.</p>
+<p>The accuracy with which this circle is drawn is controlled by the <cite>circleMaxError</cite> property of this object.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">debug</span><span class="p">.</span><span class="nx">drawCircle</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">radius</span><span class="p">,</span> <span class="nx">color</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">x</span></tt></dt>
+<dd>The x-coordinate of the center of the circle in Physics2D coordinates.</dd>
+<dt><tt class="docutils literal"><span class="pre">y</span></tt></dt>
+<dd>The y-coordinate of the center of the circle in Physics2D coordinates.</dd>
+<dt><tt class="docutils literal"><span class="pre">radius</span></tt></dt>
+<dd>The radius of the circle in Physics2D coordinates.</dd>
+<dt><tt class="docutils literal"><span class="pre">color</span></tt></dt>
+<dd>The normalized RGBA color values in the range <cite>[0, 1]</cite>.</dd>
+</dl>
+</div>
+<div class="section" id="drawspiral">
+<span id="index-13"></span><h3>18.8.2.13. <cite>drawSpiral</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#drawspiral" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Draw a circular spiral with given color.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">debug</span><span class="p">.</span><span class="nx">drawSpiral</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">angle1</span><span class="p">,</span> <span class="nx">angle2</span><span class="p">,</span> <span class="nx">radius1</span><span class="p">,</span> <span class="nx">radius2</span><span class="p">,</span> <span class="nx">color</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">x</span></tt></dt>
+<dd>The x-coordinate of the center of the spiral in Physics2D coordinates.</dd>
+<dt><tt class="docutils literal"><span class="pre">y</span></tt></dt>
+<dd>The y-coordinate of the center of the spiral in Physics2D coordinates.</dd>
+<dt><tt class="docutils literal"><span class="pre">angle1</span></tt></dt>
+<dd>The angle for the start point in spiral in clockwise radians.</dd>
+<dt><tt class="docutils literal"><span class="pre">angle2</span></tt></dt>
+<dd>The angle for the end point in spiral in clockwise radians.</dd>
+<dt><tt class="docutils literal"><span class="pre">radius1</span></tt></dt>
+<dd>The radius to the start point in spiral in Physics2D coordinates.</dd>
+<dt><tt class="docutils literal"><span class="pre">radius2</span></tt></dt>
+<dd>The radius to the end point in spiral in Physics2D coordinates.</dd>
+<dt><tt class="docutils literal"><span class="pre">color</span></tt></dt>
+<dd>The normalized RGBA color values in the range <cite>[0, 1]</cite>.</dd>
+</dl>
+</div>
+<div class="section" id="drawlinearspring">
+<span id="index-14"></span><h3>18.8.2.14. <cite>drawLinearSpring</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#drawlinearspring" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Draw a linear spring (sine-wave) with given color.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">debug</span><span class="p">.</span><span class="nx">drawLinearSpring</span><span class="p">(</span><span class="nx">x1</span><span class="p">,</span> <span class="nx">y1</span><span class="p">,</span> <span class="nx">x2</span><span class="p">,</span> <span class="nx">y2</span><span class="p">,</span> <span class="nx">numCoils</span><span class="p">,</span> <span class="nx">radius</span><span class="p">,</span> <span class="nx">color</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">x1</span></tt></dt>
+<dd>The x-coordinate for the start point of the spring in Physics2D coordinates.</dd>
+<dt><tt class="docutils literal"><span class="pre">y1</span></tt></dt>
+<dd>The y-coordinate for the start point of the spring in Physics2D coordinates</dd>
+<dt><tt class="docutils literal"><span class="pre">x2</span></tt></dt>
+<dd>The x-coordinate for the end point of the spring in Physics2D coordinates</dd>
+<dt><tt class="docutils literal"><span class="pre">y2</span></tt></dt>
+<dd>The y-coordinate for the end point of the spring in Physics2D coordinates.</dd>
+<dt><tt class="docutils literal"><span class="pre">numCoils</span></tt></dt>
+<dd>The number of coils (full sine waves) in the spring. This value must be
+positive.</dd>
+<dt><tt class="docutils literal"><span class="pre">radius</span></tt></dt>
+<dd>The radius of the spring (amplitude of the sine waves) in Physics2D coordinates.</dd>
+<dt><tt class="docutils literal"><span class="pre">color</span></tt></dt>
+<dd>The normalized RGBA color values in the range <cite>[0, 1]</cite>.</dd>
+</dl>
+</div>
+<div class="section" id="drawspiralspring">
+<span id="index-15"></span><h3>18.8.2.15. <cite>drawSpiralSpring</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#drawspiralspring" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Draw a spiral spring (sine-wave perturbed circular spiral) with given color.</p>
+<p>The percentage of the gap between spiral arms into which the spring is drawn is controlled by the <cite>spiralSpringSize</cite> property of this object.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">debug</span><span class="p">.</span><span class="nx">drawSpiralSpring</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">angle1</span><span class="p">,</span> <span class="nx">angle2</span><span class="p">,</span> <span class="nx">radius1</span><span class="p">,</span> <span class="nx">radius2</span><span class="p">,</span> <span class="nx">numCoils</span><span class="p">,</span> <span class="nx">color</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">x</span></tt></dt>
+<dd>The x-coordinate of the center of the spiral in Physics2D coordinates.</dd>
+<dt><tt class="docutils literal"><span class="pre">y</span></tt></dt>
+<dd>The y-coordinate of the center of the spiral in Physics2D coordinates.</dd>
+<dt><tt class="docutils literal"><span class="pre">angle1</span></tt></dt>
+<dd>The angle for the start point in spiral in clockwise radians.</dd>
+<dt><tt class="docutils literal"><span class="pre">angle2</span></tt></dt>
+<dd>The angle for the end point in spiral in clockwise radians.</dd>
+<dt><tt class="docutils literal"><span class="pre">radius1</span></tt></dt>
+<dd>The radius to the start point in spiral in Physics2D coordinates.</dd>
+<dt><tt class="docutils literal"><span class="pre">radius2</span></tt></dt>
+<dd>The radius to the end point in spiral in Physics2D coordinates.</dd>
+<dt><tt class="docutils literal"><span class="pre">numCoils</span></tt></dt>
+<dd>The number of coils (full sine waves) in the spring. This value must be
+positive.</dd>
+<dt><tt class="docutils literal"><span class="pre">color</span></tt></dt>
+<dd>The normalized RGBA color values in the range <cite>[0, 1]</cite>.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="properties">
+<h2>18.8.3. Properties<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#properties" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="physics2dtoscreen">
+<span id="index-16"></span><h3>18.8.3.1. <cite>physics2DToScreen</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#physics2dtoscreen" title="Permalink to this headline">¶</a></h3>
+<p>Provides a scaling factor from physics coordinates to screen pixels.</p>
+<p>This value is computed when <cite>begin()</cite> is called.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only</p>
+</div>
+</div>
+<div class="section" id="screentophysics2d">
+<span id="index-17"></span><h3>18.8.3.2. <cite>screenToPhysics2D</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#screentophysics2d" title="Permalink to this headline">¶</a></h3>
+<p>Provides a scaling factor from screen pixels to physics coordinates.</p>
+<p>This value is computed when <cite>begin()</cite> is called.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only</p>
+</div>
+</div>
+<div class="section" id="showconstraints">
+<span id="index-18"></span><h3>18.8.3.3. <cite>showConstraints</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#showconstraints" title="Permalink to this headline">¶</a></h3>
+<p>Flag determining whether constraints will be drawn in calls to <cite>drawWorld(..)</cite>.</p>
+<p>Default value is <cite>true</cite>.</p>
+</div>
+<div class="section" id="showcontacts">
+<span id="index-19"></span><h3>18.8.3.4. <cite>showContacts</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#showcontacts" title="Permalink to this headline">¶</a></h3>
+<p>Flag determining whether contact points will be drawn in calls to <cite>drawWorld(..)</cite>.</p>
+<p>Default value is <cite>false</cite>.</p>
+</div>
+<div class="section" id="showcontactimpulses">
+<span id="index-20"></span><h3>18.8.3.5. <cite>showContactImpulses</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#showcontactimpulses" title="Permalink to this headline">¶</a></h3>
+<p>Flag determining whether contact impulses will be drawn in calls to <cite>drawWorld(..)</cite>.</p>
+<p>For impulses to be drawn, it must also be the case that <cite>showContacts</cite> is true.</p>
+<p>Default value is <cite>false</cite>.</p>
+</div>
+<div class="section" id="showrigidbodies">
+<span id="index-21"></span><h3>18.8.3.6. <cite>showRigidBodies</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#showrigidbodies" title="Permalink to this headline">¶</a></h3>
+<p>Flag determining whether rigid bodies will be drawn in calls to <cite>drawWorld(..)</cite>.</p>
+<p>Default value is <cite>true</cite>.</p>
+</div>
+<div class="section" id="showcollidershapes">
+<span id="index-22"></span><h3>18.8.3.7. <cite>showColliderShapes</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#showcollidershapes" title="Permalink to this headline">¶</a></h3>
+<p>Flag determining whether collidable shapes will be drawn in calls to <cite>drawWorld(..)</cite> and <cite>drawRigidBody(..)</cite>.</p>
+<p>Default value is <cite>true</cite>.</p>
+</div>
+<div class="section" id="showsensorshapes">
+<span id="index-23"></span><h3>18.8.3.8. <cite>showSensorShapes</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#showsensorshapes" title="Permalink to this headline">¶</a></h3>
+<p>Flag determining whether shapes with <cite>sensor</cite> true will be drawn in calls to <cite>drawWorld(..)</cite> and <cite>drawRigidBody(..)</cite>.</p>
+<p>Default value is <cite>true</cite>.</p>
+</div>
+<div class="section" id="showbodydetail">
+<span id="index-24"></span><h3>18.8.3.9. <cite>showBodyDetail</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#showbodydetail" title="Permalink to this headline">¶</a></h3>
+<p>Flag determining whether rigid body details (origin, and change in position since last update) will be drawn in calls to
+<cite>drawWorld(..)</cite>, and <cite>drawRigidBody(..)</cite>.</p>
+<p>Default value is <cite>false</cite>.</p>
+</div>
+<div class="section" id="showshapedetail">
+<span id="index-25"></span><h3>18.8.3.10. <cite>showShapeDetail</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#showshapedetail" title="Permalink to this headline">¶</a></h3>
+<p>Flag determining whether shape details (world-space bounds) will be drawn in calls to <cite>drawWorld(..)</cite>, and <cite>drawRigidBody(..)</cite>.</p>
+<p>Default value is <cite>false</cite>.</p>
+</div>
+<div class="section" id="circlemaxerror">
+<span id="index-26"></span><h3>18.8.3.11. <cite>circleMaxError</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#circlemaxerror" title="Permalink to this headline">¶</a></h3>
+<p>The maximum error, measured as the distance from the chord drawn to the circle in pixels.</p>
+<p>Default value is <cite>0.4px</cite>.</p>
+</div>
+<div class="section" id="curvemaxerror">
+<span id="index-27"></span><h3>18.8.3.12. <cite>curveMaxError</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#curvemaxerror" title="Permalink to this headline">¶</a></h3>
+<p>The maximum error, measured as the distance from the chord drawn to the curve in pixels.</p>
+<p>Default value is <cite>0.6px</cite>.</p>
+</div>
+<div class="section" id="spiralspringsize">
+<span id="index-28"></span><h3>18.8.3.13. <cite>spiralSpringSize</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#spiralspringsize" title="Permalink to this headline">¶</a></h3>
+<p>The fraction of the gap between spiral arms, in which the spring will be drawn.</p>
+<p>Default value is <cite>0.75</cite>.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="http://docs.turbulenz.com/genindex.html" title="General Index">index</a></li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html" title="18.9. The Physics2DDevice Object">next</a> |</li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html" title="18.7. The Constraint Object">previous</a> |</li>
+        <li><a href="http://docs.turbulenz.com/index.html">Turbulenz 0.28.0 documentation</a> »</li>
+          <li><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_api.html">18. Low Level 2D Physics API</a> »</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        © Copyright 2010-2014, Turbulenz Limited.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  
+</body></html>

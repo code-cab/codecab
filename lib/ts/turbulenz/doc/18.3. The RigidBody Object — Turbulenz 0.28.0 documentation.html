@@ -1,0 +1,884 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0063)http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <title>18.3. The RigidBody Object — Turbulenz 0.28.0 documentation</title>
+    
+    <link rel="stylesheet" href="./18.3. The RigidBody Object — Turbulenz 0.28.0 documentation_files/sphinxdoc.css" type="text/css">
+    <link rel="stylesheet" href="./18.3. The RigidBody Object — Turbulenz 0.28.0 documentation_files/pygments.css" type="text/css">
+    
+    <script type="text/javascript" async="" src="./18.3. The RigidBody Object — Turbulenz 0.28.0 documentation_files/ga.js.download"></script><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.28.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="./18.3. The RigidBody Object — Turbulenz 0.28.0 documentation_files/jquery.js.download"></script>
+    <script type="text/javascript" src="./18.3. The RigidBody Object — Turbulenz 0.28.0 documentation_files/underscore.js.download"></script>
+    <script type="text/javascript" src="./18.3. The RigidBody Object — Turbulenz 0.28.0 documentation_files/doctools.js.download"></script>
+    <link rel="top" title="Turbulenz 0.28.0 documentation" href="http://docs.turbulenz.com/index.html">
+    <link rel="up" title="18. Low Level 2D Physics API" href="http://docs.turbulenz.com/jslibrary_api/physics2d_api.html">
+    <link rel="next" title="18.4. The Broadphase Object" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html">
+    <link rel="prev" title="18.1. The Arbiter Object" href="http://docs.turbulenz.com/jslibrary_api/physics2d_arbiter_api.html">
+ 
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-10614584-10']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="http://docs.turbulenz.com/genindex.html" title="General Index" accesskey="I">index</a></li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html" title="18.4. The Broadphase Object" accesskey="N">next</a> |</li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2d_arbiter_api.html" title="18.1. The Arbiter Object" accesskey="P">previous</a> |</li>
+        <li><a href="http://docs.turbulenz.com/index.html">Turbulenz 0.28.0 documentation</a> »</li>
+          <li><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_api.html" accesskey="U">18. Low Level 2D Physics API</a> »</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="http://docs.turbulenz.com/index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#">18.3. The RigidBody Object</a><ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#constructor">18.3.1. Constructor</a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#methods">18.3.2. Methods</a><ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#isdynamic">18.3.2.1. <cite>isDynamic</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#iskinematic">18.3.2.2. <cite>isKinematic</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#isstatic">18.3.2.3. <cite>isStatic</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setasdynamic">18.3.2.4. <cite>setAsDynamic</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setaskinematic">18.3.2.5. <cite>setAsKinematic</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setasstatic">18.3.2.6. <cite>setAsStatic</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#getposition">18.3.2.7. <cite>getPosition</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setposition">18.3.2.8. <cite>setPosition</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#getrotation">18.3.2.9. <cite>getRotation</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setrotation">18.3.2.10. <cite>setRotation</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#getvelocity">18.3.2.11. <cite>getVelocity</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setvelocity">18.3.2.12. <cite>setVelocity</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#getangularvelocity">18.3.2.13. <cite>getAngularVelocity</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setangularvelocity">18.3.2.14. <cite>setAngularVelocity</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#getforce">18.3.2.15. <cite>getForce</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setforce">18.3.2.16. <cite>setForce</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#gettorque">18.3.2.17. <cite>getTorque</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#settorque">18.3.2.18. <cite>setTorque</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#getsurfacevelocity">18.3.2.19. <cite>getSurfaceVelocity</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setsurfacevelocity">18.3.2.20. <cite>setSurfaceVelocity</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#getmass">18.3.2.21. <cite>getMass</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setmass">18.3.2.22. <cite>setMass</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setmassfromshapes">18.3.2.23. <cite>setMassFromShapes</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#getinertia">18.3.2.24. <cite>getInertia</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setinertia">18.3.2.25. <cite>setInertia</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setinertiafromshapes">18.3.2.26. <cite>setInertiaFromShapes</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#getlineardrag">18.3.2.27. <cite>getLinearDrag</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setlineardrag">18.3.2.28. <cite>setLinearDrag</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#getangulardrag">18.3.2.29. <cite>getAngularDrag</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setangulardrag">18.3.2.30. <cite>setAngularDrag</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#addshape">18.3.2.31. <cite>addShape</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#removeshape">18.3.2.32. <cite>removeShape</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#applyimpulse">18.3.2.33. <cite>applyImpulse</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setvelocityfromposition">18.3.2.34. <cite>setVelocityFromPosition</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#transformworldpointtolocal">18.3.2.35. <cite>transformWorldPointToLocal</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#transformlocalpointtoworld">18.3.2.36. <cite>transformLocalPointToWorld</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#transformworldvectortolocal">18.3.2.37. <cite>transformWorldVectorToLocal</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#transformlocalvectortoworld">18.3.2.38. <cite>transformLocalVectorToWorld</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#computemassfromshapes">18.3.2.39. <cite>computeMassFromShapes</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#computeinertiafromshapes">18.3.2.40. <cite>computeInertiaFromShapes</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#wake">18.3.2.41. <cite>wake</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#sleep">18.3.2.42. <cite>sleep</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#computelocalcenterofmass">18.3.2.43. <cite>computeLocalCenterOfMass</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#computeworldbounds">18.3.2.44. <cite>computeWorldBounds</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#alignwithorigin">18.3.2.45. <cite>alignWithOrigin</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#integrate">18.3.2.46. <cite>integrate</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#addeventlistener">18.3.2.47. <cite>addEventListener</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#removeeventlistener">18.3.2.48. <cite>removeEventListener</cite></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#properties">18.3.3. Properties</a><ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#shapes">18.3.3.1. <cite>shapes</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#constraints">18.3.3.2. <cite>constraints</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#world">18.3.3.3. <cite>world</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#sleeping">18.3.3.4. <cite>sleeping</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#bullet">18.3.3.5. <cite>bullet</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#userdata">18.3.3.6. <cite>userData</cite></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_arbiter_api.html" title="previous chapter">18.1. The Arbiter Object</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html" title="next chapter">18.4. The Broadphase Object</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="http://docs.turbulenz.com/_sources/jslibrary_api/physics2d_body_api.txt" rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="">
+  <h3>Quick search</h3>
+    <form class="search" action="http://docs.turbulenz.com/search.html" method="get">
+      <input type="text" name="q">
+      <input type="submit" value="Go">
+      <input type="hidden" name="check_keywords" value="yes">
+      <input type="hidden" name="area" value="default">
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="the-rigidbody-object">
+<span id="physics2d-body"></span><h1>18.3. The RigidBody Object<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#the-rigidbody-object" title="Permalink to this headline">¶</a></h1>
+<p>Rigid bodies come in 3 different types:</p>
+<blockquote>
+<div><ul class="simple">
+<li><cite>‘static’</cite>: This type of body, once added to a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#physics2d-world"><em>World</em></a> may no longer be mutated in any way (Changing position, changing shapes) except where documented.</li>
+<li><cite>‘kinematic’</cite>: This type of body is equivalent to a static type, except that it is permitted to move (And will always move to exactly where it is told). Kinematic bodies should be moved by modifying their velocity as changing position directly will be equivalent to teleporting the body.</li>
+<li><cite>‘dynamic’</cite>: This type of body has non-infinite mass/inertia (Unless explicitly set as such) and is under the influence of gravity, collision and constraint impulses.</li>
+</ul>
+</div></blockquote>
+<div class="section" id="constructor">
+<h2>18.3.1. Constructor<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#constructor" title="Permalink to this headline">¶</a></h2>
+<p>A RigidBody object can be constructed with <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#physics2ddevice-createbody"><em>Physics2DDevice.createRigidBody</em></a>.</p>
+</div>
+<div class="section" id="methods">
+<h2>18.3.2. Methods<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#methods" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="isdynamic">
+<span id="index-1"></span><h3>18.3.2.1. <cite>isDynamic</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#isdynamic" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Returns true, if body is of a <cite>dynamic</cite> type.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">isDynamic</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">isDynamic</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="iskinematic">
+<span id="index-2"></span><h3>18.3.2.2. <cite>isKinematic</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#iskinematic" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Returns true, if body is of a <cite>kinematic</cite> type.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">isKinematic</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">isKinematic</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="isstatic">
+<span id="index-3"></span><h3>18.3.2.3. <cite>isStatic</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#isstatic" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Returns true, if body is of a <cite>static</cite> type.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">isStatic</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">isStatic</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setasdynamic">
+<span id="index-4"></span><h3>18.3.2.4. <cite>setAsDynamic</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setasdynamic" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Change rigid body type to <cite>dynamic</cite>. This operation can be made at any time except for during a simulation step.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">body</span><span class="p">.</span><span class="nx">setAsDynamic</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setaskinematic">
+<span id="index-5"></span><h3>18.3.2.5. <cite>setAsKinematic</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setaskinematic" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Change rigid body type to <cite>kinematic</cite>. This operation can be made at any time except for during a simulation step.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">body</span><span class="p">.</span><span class="nx">setAsKinematic</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setasstatic">
+<span id="index-6"></span><h3>18.3.2.6. <cite>setAsStatic</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setasstatic" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Change rigid body type to <cite>static</cite>. This operation can be made at any time except for during a simulation step.</p>
+<p>This method will also set the <cite>velocity</cite> and <cite>angularVelocity</cite> of the rigid body to <cite>0</cite> as static bodies are not permitted to have velocity.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">body</span><span class="p">.</span><span class="nx">setAsStatic</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getposition">
+<span id="index-7"></span><h3>18.3.2.7. <cite>getPosition</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#getposition" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Retrieve the current position of this rigid body.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">position</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">getPosition</span><span class="p">();</span>
+<span class="c1">// or</span>
+<span class="nx">body</span><span class="p">.</span><span class="nx">getPosition</span><span class="p">(</span><span class="nx">position</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">position</span></tt> (Optional)</dt>
+<dd>If specified, the position of the body will be stored in this array, otherwise a new array will be created.</dd>
+</dl>
+</div>
+<div class="section" id="setposition">
+<span id="index-8"></span><h3>18.3.2.8. <cite>setPosition</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setposition" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the position of this rigid body.</p>
+<p>This method will be ignored for <cite>static</cite> type bodies which are in a World as well as if it is made during a simulation step.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">body</span><span class="p">.</span><span class="nx">setPosition</span><span class="p">(</span><span class="nx">position</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">position</span></tt></dt>
+<dd>The position with which to set body.</dd>
+</dl>
+</div>
+<div class="section" id="getrotation">
+<span id="index-9"></span><h3>18.3.2.9. <cite>getRotation</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#getrotation" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Retrieve the current rotation of this rigid body.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">rotation</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">getRotation</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setrotation">
+<span id="index-10"></span><h3>18.3.2.10. <cite>setRotation</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setrotation" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the rotation of this rigid body.</p>
+<p>This method will be ignored for <cite>static</cite> type bodies which are in a World as well as if it is made during a simulation step.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">body</span><span class="p">.</span><span class="nx">setRotation</span><span class="p">(</span><span class="nx">rotation</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">rotation</span></tt></dt>
+<dd>The rotation with which to set body.</dd>
+</dl>
+</div>
+<div class="section" id="getvelocity">
+<span id="index-11"></span><h3>18.3.2.11. <cite>getVelocity</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#getvelocity" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Retrieve the current velocity of this rigid body.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">velocity</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">getVelocity</span><span class="p">();</span>
+<span class="c1">// or</span>
+<span class="nx">body</span><span class="p">.</span><span class="nx">getVelocity</span><span class="p">(</span><span class="nx">velocity</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">velocity</span></tt> (Optional)</dt>
+<dd>If specified, the velocity of the body will be stored in this array, otherwise a new array will be created.</dd>
+</dl>
+</div>
+<div class="section" id="setvelocity">
+<span id="index-12"></span><h3>18.3.2.12. <cite>setVelocity</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setvelocity" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the velocity of this rigid body.</p>
+<p>This method will be ignored for <cite>static</cite> type bodies which are in a World.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">body</span><span class="p">.</span><span class="nx">setVelocity</span><span class="p">(</span><span class="nx">velocity</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">velocity</span></tt></dt>
+<dd>The velocity with which to set body.</dd>
+</dl>
+</div>
+<div class="section" id="getangularvelocity">
+<span id="index-13"></span><h3>18.3.2.13. <cite>getAngularVelocity</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#getangularvelocity" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Retrieve the current angular velocity of this rigid body.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">angularVelocity</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">getAngularVelocity</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setangularvelocity">
+<span id="index-14"></span><h3>18.3.2.14. <cite>setAngularVelocity</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setangularvelocity" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the angular velocity of this rigid body.</p>
+<p>This method will be ignored for <cite>static</cite> type bodies which are in a World.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">body</span><span class="p">.</span><span class="nx">setAngularVelocity</span><span class="p">(</span><span class="nx">angularVelocity</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">angularVelocity</span></tt></dt>
+<dd>The angular velocity with which to set body.</dd>
+</dl>
+</div>
+<div class="section" id="getforce">
+<span id="index-15"></span><h3>18.3.2.15. <cite>getForce</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#getforce" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Retrieve the current force of this rigid body.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">force</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">getForce</span><span class="p">();</span>
+<span class="c1">// or</span>
+<span class="nx">body</span><span class="p">.</span><span class="nx">getForce</span><span class="p">(</span><span class="nx">force</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">force</span></tt> (Optional)</dt>
+<dd>If specified, the force of the body will be stored in this array, otherwise a new array will be created.</dd>
+</dl>
+</div>
+<div class="section" id="setforce">
+<span id="index-16"></span><h3>18.3.2.16. <cite>setForce</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setforce" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the force of this rigid body.</p>
+<p>Static bodies may have their force changed even if they are in a World.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">body</span><span class="p">.</span><span class="nx">setForce</span><span class="p">(</span><span class="nx">force</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">force</span></tt></dt>
+<dd>The force with which to set body.</dd>
+</dl>
+</div>
+<div class="section" id="gettorque">
+<span id="index-17"></span><h3>18.3.2.17. <cite>getTorque</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#gettorque" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Retrieve the current torque of this rigid body.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">torque</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">getTorque</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="settorque">
+<span id="index-18"></span><h3>18.3.2.18. <cite>setTorque</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#settorque" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the torque of this rigid body.</p>
+<p>Static bodies may have their torque changed even if they are in a World.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">body</span><span class="p">.</span><span class="nx">setTorque</span><span class="p">(</span><span class="nx">torque</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">torque</span></tt></dt>
+<dd>The torque with which to set body.</dd>
+</dl>
+</div>
+<div class="section" id="getsurfacevelocity">
+<span id="index-19"></span><h3>18.3.2.19. <cite>getSurfaceVelocity</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#getsurfacevelocity" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Retrieve the current surface velocity of this rigid body.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">velocity</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">getSurfaceVelocity</span><span class="p">();</span>
+<span class="c1">// or</span>
+<span class="nx">body</span><span class="p">.</span><span class="nx">getSurfaceVelocity</span><span class="p">(</span><span class="nx">velocity</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">velocity</span></tt> (Optional)</dt>
+<dd>If specified, the surface velocity of the body will be stored in this array, otherwise a new array will be created.</dd>
+</dl>
+</div>
+<div class="section" id="setsurfacevelocity">
+<span id="index-20"></span><h3>18.3.2.20. <cite>setSurfaceVelocity</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setsurfacevelocity" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the surface velocity of this rigid body.</p>
+<p>Static bodies are permitted to have their surface velocity changed even if they are inside of a World.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">body</span><span class="p">.</span><span class="nx">setSurfaceVelocity</span><span class="p">(</span><span class="nx">velocity</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">velocity</span></tt></dt>
+<dd>The surface velocity with which to set body.</dd>
+</dl>
+</div>
+<div class="section" id="getmass">
+<span id="index-21"></span><h3>18.3.2.21. <cite>getMass</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#getmass" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Get the mass of this rigid body. This mass is equal to that set in body constructor, even if body is static or kinematic.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">mass</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">getMass</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setmass">
+<span id="index-22"></span><h3>18.3.2.22. <cite>setMass</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setmass" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the mass of this rigid body.</p>
+<p>The mass of a static/kinematic body may be set at any time, but it will make no effect on the physics unless that body is later set as dynamic.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">body</span><span class="p">.</span><span class="nx">setMass</span><span class="p">(</span><span class="nx">mass</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">mass</span></tt></dt>
+<dd>The new mass for the rigid body, this value must be greater than zero for dynamic bodies, though it may be set to <cite>0</cite> for static and kinematics (Doing such will have no effect on physics for such bodies).</dd>
+</dl>
+</div>
+<div class="section" id="setmassfromshapes">
+<span id="index-23"></span><h3>18.3.2.23. <cite>setMassFromShapes</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setmassfromshapes" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set body so that its mass will always be computed from its Shapes.</p>
+<p>This is <cite>not</cite> the same as: <cite>body.setMass(body.computeMassFromShapes())</cite>, as when setting mass from shapes the mass will be recomputed should the shapes be modified.</p>
+<p>This may be called for any object at any time.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">body</span><span class="p">.</span><span class="nx">setMassFromShapes</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getinertia">
+<span id="index-24"></span><h3>18.3.2.24. <cite>getInertia</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#getinertia" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Get the moment of inertia for this rigid body. This inertia is equal to that set in body constructor, even if body is static or kinematic.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">inertia</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">getInertia</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setinertia">
+<span id="index-25"></span><h3>18.3.2.25. <cite>setInertia</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setinertia" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the moment of inertia for this rigid body.</p>
+<p>The inertia of a static/kinematic body may be set at any time, but it will make no effect on the physics unless that body is later set as dynamic.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">body</span><span class="p">.</span><span class="nx">setInertia</span><span class="p">(</span><span class="nx">inertia</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">inertia</span></tt></dt>
+<dd>The new inertia for the rigid body, this value must be greater than zero for dynamic bodies, though it may be set to <cite>0</cite> for static and kinematics (Doing such will have no effect on physics for such bodies).</dd>
+</dl>
+</div>
+<div class="section" id="setinertiafromshapes">
+<span id="index-26"></span><h3>18.3.2.26. <cite>setInertiaFromShapes</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setinertiafromshapes" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set body so that its inertia will always be computed from its Shapes.</p>
+<p>This is <cite>not</cite> the same as: <cite>body.setInertia(body.computeInertiaFromShapes())</cite>, as when setting inertia from shapes the inertia will be recomputed should the shapes be modified.</p>
+<p>This may be called for any object at any time.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">body</span><span class="p">.</span><span class="nx">setInertiaFromShapes</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getlineardrag">
+<span id="index-27"></span><h3>18.3.2.27. <cite>getLinearDrag</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#getlineardrag" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Retrieve the current value for the linear drag applied to this body.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">linearDrag</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">getLinearDrag</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setlineardrag">
+<span id="index-28"></span><h3>18.3.2.28. <cite>setLinearDrag</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setlineardrag" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the linear drag on this body.</p>
+<p>This may be set on any body type at any time though it will have an affect only on dynamic bodies.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">body</span><span class="p">.</span><span class="nx">setLinearDrag</span><span class="p">(</span><span class="nx">linearDrag</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">linearDrag</span></tt></dt>
+<dd><p class="first">The new linear drag for this body.</p>
+<p class="last">This value must be between 0 and 1.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="getangulardrag">
+<span id="index-29"></span><h3>18.3.2.29. <cite>getAngularDrag</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#getangulardrag" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Retrieve the current value for the angular drag applied to this body.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">angularDrag</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">getAngularDrag</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setangulardrag">
+<span id="index-30"></span><h3>18.3.2.30. <cite>setAngularDrag</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setangulardrag" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the angular drag on this body.</p>
+<p>This may be set on any body type at any time though it will have an affect only on dynamic bodies.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">body</span><span class="p">.</span><span class="nx">setAngularDrag</span><span class="p">(</span><span class="nx">angularDrag</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">angularDrag</span></tt></dt>
+<dd><p class="first">The new angular drag for this body.</p>
+<p class="last">This value must be between 0 and 1.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="addshape">
+<span id="index-31"></span><h3>18.3.2.31. <cite>addShape</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#addshape" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Add a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#physics2d-shape"><em>Shape</em></a> to this Body.</p>
+<p>This method will fail should the Shape already be in a Body, or this Body is a <cite>static</cite> type body, and is part of a World or if it is made during a simulation step.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">success</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">addShape</span><span class="p">(</span><span class="nx">shape</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">shape</span></tt></dt>
+<dd>The <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#physics2d-shape"><em>Shape</em></a> to add to this body.</dd>
+</dl>
+</div>
+<div class="section" id="removeshape">
+<span id="index-32"></span><h3>18.3.2.32. <cite>removeShape</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#removeshape" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Remove a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#physics2d-shape"><em>Shape</em></a> from this Body.</p>
+<p>This method will fail should the Shape not be in this Body, or this Body is a <cite>static</cite> type body, and is part of a World or if it is made during a simulation step.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">success</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">removeShape</span><span class="p">(</span><span class="nx">shape</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">shape</span></tt></dt>
+<dd>The <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#physics2d-shape"><em>Shape</em></a> to remove from this body.</dd>
+</dl>
+</div>
+<div class="section" id="applyimpulse">
+<span id="index-33"></span><h3>18.3.2.33. <cite>applyImpulse</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#applyimpulse" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Apply an impulse to this rigid body. This has an effect only for dynamic bodies.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">body</span><span class="p">.</span><span class="nx">applyImpulse</span><span class="p">(</span><span class="nx">impulse</span><span class="p">,</span> <span class="nx">position</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">impulse</span></tt></dt>
+<dd>The impulse to apply to the rigid body. This impulse is defined in world coordinates.</dd>
+<dt><tt class="docutils literal"><span class="pre">position</span></tt> (optional)</dt>
+<dd><p class="first">The position to apply the impulse at. This position is also defined in world coordinates.</p>
+<p class="last">If unspecified, the rigid body’s position is used.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="setvelocityfromposition">
+<span id="index-34"></span><h3>18.3.2.34. <cite>setVelocityFromPosition</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#setvelocityfromposition" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>This function will set the velocity of a body, so that under no other influence it will move to the target position and rotation via its velocity.</p>
+<p>This is an aid for animation of kinematic object types.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">body</span><span class="p">.</span><span class="nx">setVelocityFromPosition</span><span class="p">(</span><span class="nx">targetPosition</span><span class="p">,</span> <span class="nx">targetRotation</span><span class="p">,</span> <span class="nx">deltaTime</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">targetPosition</span></tt></dt>
+<dd>The position body will be moved to under no other influence after the given amount of time has passed.</dd>
+<dt><tt class="docutils literal"><span class="pre">targetRotation</span></tt></dt>
+<dd>The rotation body will be rotated to under no other influence after the given amount of time has passed.</dd>
+<dt><tt class="docutils literal"><span class="pre">deltaTime</span></tt></dt>
+<dd><p class="first">The amount of time in which it should take the body to reach its target.</p>
+<p class="last">Likely, this will be the same time used in calls to space.step() in animating a kinematic object.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="transformworldpointtolocal">
+<span id="index-35"></span><h3>18.3.2.35. <cite>transformWorldPointToLocal</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#transformworldpointtolocal" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Transform a point defined in world coordinates, into the local coordinates of this rigid body.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">worldPoint</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">transformWorldPointToLocal</span><span class="p">(</span><span class="nx">localPoint</span><span class="p">);</span>
+<span class="c1">// or</span>
+<span class="nx">body</span><span class="p">.</span><span class="nx">transformWorldPointToLocal</span><span class="p">(</span><span class="nx">localPoint</span><span class="p">,</span> <span class="nx">worldPoint</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">worldPoint</span></tt> (Optional)</dt>
+<dd>If specified, then the transformed point will be stored in this array. Otherwise a new array will be created.</dd>
+</dl>
+</div>
+<div class="section" id="transformlocalpointtoworld">
+<span id="index-36"></span><h3>18.3.2.36. <cite>transformLocalPointToWorld</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#transformlocalpointtoworld" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Transform a point defined in local coordinates, into the world coordinates of this rigid body.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">localPoint</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">transformWorldPointToLocal</span><span class="p">(</span><span class="nx">worldPoint</span><span class="p">);</span>
+<span class="c1">// or</span>
+<span class="nx">body</span><span class="p">.</span><span class="nx">transformWorldPointToLocal</span><span class="p">(</span><span class="nx">worldPoint</span><span class="p">,</span> <span class="nx">localPoint</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">localPoint</span></tt> (Optional)</dt>
+<dd>If specified, then the transformed point will be stored in this array. Otherwise a new array will be created.</dd>
+</dl>
+</div>
+<div class="section" id="transformworldvectortolocal">
+<span id="index-37"></span><h3>18.3.2.37. <cite>transformWorldVectorToLocal</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#transformworldvectortolocal" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Transform a vector defined in world coordinates, into the local coordinates of this rigid body.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">worldVector</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">transformWorldVectorToLocal</span><span class="p">(</span><span class="nx">localVector</span><span class="p">);</span>
+<span class="c1">// or</span>
+<span class="nx">body</span><span class="p">.</span><span class="nx">transformWorldVectorToLocal</span><span class="p">(</span><span class="nx">localVector</span><span class="p">,</span> <span class="nx">worldVector</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">worldVector</span></tt> (Optional)</dt>
+<dd>If specified, then the transformed vector will be stored in this array. Otherwise a new array will be created.</dd>
+</dl>
+</div>
+<div class="section" id="transformlocalvectortoworld">
+<span id="index-38"></span><h3>18.3.2.38. <cite>transformLocalVectorToWorld</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#transformlocalvectortoworld" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Transform a vector defined in local coordinates, into the world coordinates of this rigid body.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">localVector</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">transformWorldVectorToLocal</span><span class="p">(</span><span class="nx">worldVector</span><span class="p">);</span>
+<span class="c1">// or</span>
+<span class="nx">body</span><span class="p">.</span><span class="nx">transformWorldVectorToLocal</span><span class="p">(</span><span class="nx">worldVector</span><span class="p">,</span> <span class="nx">localVector</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">localVector</span></tt> (Optional)</dt>
+<dd>If specified, then the transformed vector will be stored in this array. Otherwise a new array will be created.</dd>
+</dl>
+</div>
+<div class="section" id="computemassfromshapes">
+<span id="index-39"></span><h3>18.3.2.39. <cite>computeMassFromShapes</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#computemassfromshapes" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Compute the sum mass of all Shapes in this body as computed based on their area and material densities.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">mass</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">computeMassFromShapes</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="computeinertiafromshapes">
+<span id="index-40"></span><h3>18.3.2.40. <cite>computeInertiaFromShapes</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#computeinertiafromshapes" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Compute the sum moment of inertia of all Shapes in this body as computed based on their material densities and profiles.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">inertia</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">computeInertiaFromShapes</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="wake">
+<span id="index-41"></span><h3>18.3.2.41. <cite>wake</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#wake" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Manually wake this RigidBody.</p>
+<p>Waking a rigid body in Physics2D is not generally required. It is only ever required to manually wake a rigid body, if you manually put it to sleep or added it as a sleeping body.</p>
+<p>Mutations to the body, and interactions with other bodies in the world will otherwise automatically wake the body.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">body</span><span class="p">.</span><span class="nx">wake</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sleep">
+<span id="index-42"></span><h3>18.3.2.42. <cite>sleep</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#sleep" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Manually put this RigidBody to sleep.</p>
+<p>This body will be woken as soon as it is interacted with in a World, or is mutated in any way that would require it to wake up in normal circumstances.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">body</span><span class="p">.</span><span class="nx">sleep</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="computelocalcenterofmass">
+<span id="index-43"></span><h3>18.3.2.43. <cite>computeLocalCenterOfMass</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#computelocalcenterofmass" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Compute the center of mass of this RigidBody in its local coordinate system, as based on Shape profiles and material densities.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">com</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">computeLocalCenterOfMass</span><span class="p">();</span>
+<span class="c1">// or</span>
+<span class="nx">body</span><span class="p">.</span><span class="nx">computeLocalCenterOfMass</span><span class="p">(</span><span class="nx">com</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">com</span></tt> (Optional)</dt>
+<dd>If specified, the local center of mass will be stored in this array, otherwise a new array will be created.</dd>
+</dl>
+</div>
+<div class="section" id="computeworldbounds">
+<span id="index-44"></span><h3>18.3.2.44. <cite>computeWorldBounds</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#computeworldbounds" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Compute the axis-aligned bounding rectangle of this RigidBody in world coordinates.</p>
+<p>This method is only well defined if this Body contains at least one shape, and otherwise will have meaningless bounds.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">bounds</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">computeWorldBounds</span><span class="p">();</span>
+<span class="c1">// or</span>
+<span class="nx">body</span><span class="p">.</span><span class="nx">computeWorldBounds</span><span class="p">(</span><span class="nx">bounds</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">bounds</span></tt></dt>
+<dd>If specified, the bounds of this body will be stored in this array, otherwise a new array will be created.</dd>
+</dl>
+</div>
+<div class="section" id="alignwithorigin">
+<span id="index-45"></span><h3>18.3.2.45. <cite>alignWithOrigin</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#alignwithorigin" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Translate the Shapes of this body, in local coordinate system so that the center of mass of this body as computed by <cite>computeLocalCentreOfMass</cite> is equal to <cite>[0, 0]</cite>.</p>
+<p>It is important for a rigid body to be aligned with the origin to behave intuitively.</p>
+<p>This method will be ignored for <cite>static</cite> type bodies which are inside of a World or if it is made during a simulation step.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">body</span><span class="p">.</span><span class="nx">alignWithOrigin</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="integrate">
+<span id="index-46"></span><h3>18.3.2.46. <cite>integrate</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#integrate" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Perform an integration of this body’s position and rotation based the bodies current velocities.</p>
+<p>This method will be ignored for <cite>static</cite> type bodies which are inside of a World or if it is made during a simulation step.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">body</span><span class="p">.</span><span class="nx">integrate</span><span class="p">(</span><span class="nx">deltaTime</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">deltaTime</span></tt></dt>
+<dd>The amount of time in seconds to integrate body. Negative values are also permitted.</dd>
+</dl>
+</div>
+<div class="section" id="addeventlistener">
+<span id="index-47"></span><h3>18.3.2.47. <cite>addEventListener</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#addeventlistener" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Add a new event listener to this Body.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">success</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="nx">eventType</span><span class="p">,</span> <span class="nx">handler</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">eventType</span></tt></dt>
+<dd><p class="first">One of:</p>
+<dl class="last docutils">
+<dt><cite>‘wake’</cite></dt>
+<dd>Issued when this rigid body was woken. This event is not generated when using the wake() method manually.</dd>
+<dt><cite>‘sleep’</cite></dt>
+<dd>Issued when this rigid body goes to sleep. This event is not generated when using the sleep() methods manually.</dd>
+</dl>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">handler</span></tt></dt>
+<dd><p class="first">Function to be called when this event occurs (Noting that events as usual are deferred until the end of world <cite>step()</cite>).</p>
+<p class="last">Function is called with no arguments, and with its <cite>this</cite> object as the <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> to which the event relates.</p>
+</dd>
+</dl>
+<p>This function will fail, and return <cite>false</cite> if the event type was not accepted, or if the handler already exists for the given event type.</p>
+<p>Example:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">wakeHandler</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Body named: "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">userData</span><span class="p">.</span><span class="nx">name</span><span class="o">+</span><span class="s2">" woke up!"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">body</span> <span class="o">=</span> <span class="nx">phys2D</span><span class="p">.</span><span class="nx">createRigidBody</span><span class="p">({</span>
+    <span class="p">...</span>
+    <span class="nx">userData</span> <span class="o">:</span> <span class="p">{</span>
+        <span class="nx">name</span> <span class="o">:</span> <span class="s2">"Box no. 1"</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+<span class="nx">body</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'wake'</span><span class="p">,</span> <span class="nx">wakeHandler</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>You may add as many handlers for a given event type as you wish, and handlers will be called in the same order in which they were added.</p>
+</div>
+<div class="section" id="removeeventlistener">
+<h3>18.3.2.48. <cite>removeEventListener</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#removeeventlistener" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Remove existing event listener from this Body.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">success</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="nx">eventType</span><span class="p">,</span> <span class="nx">handler</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This function will fail, and return <cite>false</cite> if the event type was not accepted, or if the handler was not found on the body for the given event type.</p>
+</div>
+</div>
+<div class="section" id="properties">
+<h2>18.3.3. Properties<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#properties" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="shapes">
+<span id="index-48"></span><h3>18.3.3.1. <cite>shapes</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#shapes" title="Permalink to this headline">¶</a></h3>
+<p>The set of <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#physics2d-shape"><em>Shape</em></a> objects assigned to this body.</p>
+<p>Adding and removing shapes from this body will mutate this list and should be avoided during iteration. To remove all <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#physics2d-shape"><em>Shape</em></a> objects from this Body, you may use the following pattern:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">shapes</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">shapes</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span><span class="nx">shapes</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">body</span><span class="p">.</span><span class="nx">removeShape</span><span class="p">(</span><span class="nx">shapes</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only.</p>
+</div>
+</div>
+<div class="section" id="constraints">
+<span id="index-49"></span><h3>18.3.3.2. <cite>constraints</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#constraints" title="Permalink to this headline">¶</a></h3>
+<p>The set of <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-constraint"><em>Constraint</em></a> objects making use of this body which are presently part of a simulation World.</p>
+<p>Adding and removing constraints from the world will mutate this list and should be avoided during iteration. To remove all <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-constraint"><em>Constraint</em></a> objects from the world which make us of this Body, you may use the following pattern:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">constraints</span> <span class="o">=</span> <span class="nx">body</span><span class="p">.</span><span class="nx">constraints</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">(</span><span class="nx">constraints</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">world</span><span class="p">.</span><span class="nx">removeConstraint</span><span class="p">(</span><span class="nx">constraints</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This action is performed automatically when removing the Body itself from the simulation world.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only.</p>
+</div>
+</div>
+<div class="section" id="world">
+<span id="index-50"></span><h3>18.3.3.3. <cite>world</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#world" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#physics2d-world"><em>World</em></a> object this rigid body has been assigned to.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only.</p>
+</div>
+</div>
+<div class="section" id="sleeping">
+<span id="index-51"></span><h3>18.3.3.4. <cite>sleeping</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#sleeping" title="Permalink to this headline">¶</a></h3>
+<p>Whether this body is presently sleeping. If true, and body is added to a simulation World, then it will be added as a sleeping body.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only.</p>
+</div>
+</div>
+<div class="section" id="bullet">
+<span id="index-52"></span><h3>18.3.3.5. <cite>bullet</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#bullet" title="Permalink to this headline">¶</a></h3>
+<p>Whether this body is marked for continuous collisions against other dynamic bodies. Due to implementation details it is advised not to create a group of bullet objects that interact together as there may be visual stalling.</p>
+</div>
+<div class="section" id="userdata">
+<span id="index-53"></span><h3>18.3.3.6. <cite>userData</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#userdata" title="Permalink to this headline">¶</a></h3>
+<p>Field to which you may assign whatever data you like.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="http://docs.turbulenz.com/genindex.html" title="General Index">index</a></li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html" title="18.4. The Broadphase Object">next</a> |</li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2d_arbiter_api.html" title="18.1. The Arbiter Object">previous</a> |</li>
+        <li><a href="http://docs.turbulenz.com/index.html">Turbulenz 0.28.0 documentation</a> »</li>
+          <li><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_api.html">18. Low Level 2D Physics API</a> »</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        © Copyright 2010-2014, Turbulenz Limited.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  
+</body></html>

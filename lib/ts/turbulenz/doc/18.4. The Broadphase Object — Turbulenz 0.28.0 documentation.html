@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0059)http://docs.turbulenz.com/jslibrary_api/broadphase_api.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <title>18.4. The Broadphase Object — Turbulenz 0.28.0 documentation</title>
+    
+    <link rel="stylesheet" href="./18.4. The Broadphase Object — Turbulenz 0.28.0 documentation_files/sphinxdoc.css" type="text/css">
+    <link rel="stylesheet" href="./18.4. The Broadphase Object — Turbulenz 0.28.0 documentation_files/pygments.css" type="text/css">
+    
+    <script type="text/javascript" async="" src="./18.4. The Broadphase Object — Turbulenz 0.28.0 documentation_files/ga.js.download"></script><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.28.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="./18.4. The Broadphase Object — Turbulenz 0.28.0 documentation_files/jquery.js.download"></script>
+    <script type="text/javascript" src="./18.4. The Broadphase Object — Turbulenz 0.28.0 documentation_files/underscore.js.download"></script>
+    <script type="text/javascript" src="./18.4. The Broadphase Object — Turbulenz 0.28.0 documentation_files/doctools.js.download"></script>
+    <link rel="top" title="Turbulenz 0.28.0 documentation" href="http://docs.turbulenz.com/index.html">
+    <link rel="up" title="18. Low Level 2D Physics API" href="http://docs.turbulenz.com/jslibrary_api/physics2d_api.html">
+    <link rel="next" title="18.6. The CollisionUtils Object" href="http://docs.turbulenz.com/jslibrary_api/physics2d_collisionutils_api.html">
+    <link rel="prev" title="18.3. The RigidBody Object" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html">
+ 
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-10614584-10']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="http://docs.turbulenz.com/genindex.html" title="General Index" accesskey="I">index</a></li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2d_collisionutils_api.html" title="18.6. The CollisionUtils Object" accesskey="N">next</a> |</li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html" title="18.3. The RigidBody Object" accesskey="P">previous</a> |</li>
+        <li><a href="http://docs.turbulenz.com/index.html">Turbulenz 0.28.0 documentation</a> »</li>
+          <li><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_api.html" accesskey="U">18. Low Level 2D Physics API</a> »</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="http://docs.turbulenz.com/index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#">18.4. The Broadphase Object</a><ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#constructor">18.4.1. Constructor</a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#methods">18.4.2. Methods</a><ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#insert">18.4.2.1. <cite>insert</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#update">18.4.2.2. <cite>update</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#remove">18.4.2.3. <cite>remove</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#clear">18.4.2.4. <cite>clear</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#perform">18.4.2.5. <cite>perform</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#sample">18.4.2.6. <cite>sample</cite></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#the-broadphase-handle-object">18.5. The Broadphase Handle Object</a><ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#properties">18.5.1. Properties</a><ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#data">18.5.1.1. <cite>data</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#isstatic">18.5.1.2. <cite>isStatic</cite></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html" title="previous chapter">18.3. The RigidBody Object</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_collisionutils_api.html" title="next chapter">18.6. The CollisionUtils Object</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="http://docs.turbulenz.com/_sources/jslibrary_api/broadphase_api.txt" rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="">
+  <h3>Quick search</h3>
+    <form class="search" action="http://docs.turbulenz.com/search.html" method="get">
+      <input type="text" name="q">
+      <input type="submit" value="Go">
+      <input type="hidden" name="check_keywords" value="yes">
+      <input type="hidden" name="area" value="default">
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="the-broadphase-object">
+<span id="broadphase"></span><h1>18.4. The Broadphase Object<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#the-broadphase-object" title="Permalink to this headline">¶</a></h1>
+<p>The Broadphase objects keep a common interface that may be used outside of any 2d physics simulation, nor are Broadphases limited just to two dimensions.</p>
+<div class="section" id="constructor">
+<h2>18.4.1. Constructor<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#constructor" title="Permalink to this headline">¶</a></h2>
+<p>Two Broadphase implementation exists in the Turbulenz SDK at present, these can be constructed with <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#physics2ddevice-sap"><em>Physics2DDevice.createSweepAndPruneBroadphase()</em></a> and <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#physics2ddevice-boxtree"><em>Physics2DDevice.createBoxTreeBroadphase()</em></a>.</p>
+</div>
+<div class="section" id="methods">
+<h2>18.4.2. Methods<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#methods" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="insert">
+<span id="index-1"></span><h3>18.4.2.1. <cite>insert</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#insert" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Insert data value into broadphase, with given bounds and static type.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">handle</span> <span class="o">=</span> <span class="nx">broadphase</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">bounds</span><span class="p">,</span> <span class="nx">isStatic</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">data</span></tt></dt>
+<dd><p class="first">The data value to be inserted.</p>
+<p class="last">This value may be of any type, and inserted multiple times if needed.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">bounds</span></tt></dt>
+<dd><p class="first">The bounds of the data in the broadphase.</p>
+<dl class="last docutils">
+<dt>The definition of the bounds is up to the broadphase. For the 2D broadphases used by <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#physics2ddevice"><em>Physics2DDevice</em></a> these bounds should be an axis-aligned rectangle defined like</dt>
+<dd>[minX, minY, maxX, maxY]</dd>
+</dl>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">isStatic</span></tt></dt>
+<dd>Whether this data is a static, or dynamic data value.</dd>
+</dl>
+</div>
+<div class="section" id="update">
+<span id="index-2"></span><h3>18.4.2.2. <cite>update</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#update" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Update handle bounds and static type.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">broadphase</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">handle</span><span class="p">,</span> <span class="nx">bounds</span><span class="p">,</span> <span class="nx">isStatic</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">handle</span></tt></dt>
+<dd>The handle to be updated as returned by <cite>broadphase.insert</cite>.</dd>
+<dt><tt class="docutils literal"><span class="pre">bounds</span></tt></dt>
+<dd>The new bounds for the handle.</dd>
+<dt><tt class="docutils literal"><span class="pre">isStatic</span></tt> (Optional)</dt>
+<dd>The new static type for the handle. If unspecified the handles type will remain unchanged.</dd>
+</dl>
+</div>
+<div class="section" id="remove">
+<span id="index-3"></span><h3>18.4.2.3. <cite>remove</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#remove" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Remove handle from broadphase.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">broadphase</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">handle</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">handle</span></tt></dt>
+<dd>The handle to be removed as returned by <cite>broadphase.insert</cite>.</dd>
+</dl>
+<p>Broadphase implementations are free to re-use object handles, so references to handles that have been removed should be deleted.</p>
+</div>
+<div class="section" id="clear">
+<span id="index-4"></span><h3>18.4.2.4. <cite>clear</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#clear" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Remove all handles from broadphase, executing given callback (if supplied) for each
+handle.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">broadphase</span><span class="p">.</span><span class="nx">clear</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="nx">thisObject</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">callback</span></tt> (Optional)</dt>
+<dd><p class="first">An optional callback which will be called for all handles.</p>
+<p class="last">It should take a single argument as the handle from the broadphase.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">thisObject</span></tt> (Optional)</dt>
+<dd>An optional object to use for the <cite>this</cite> object when calling the callback.</dd>
+</dl>
+</div>
+<div class="section" id="perform">
+<span id="index-5"></span><h3>18.4.2.5. <cite>perform</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#perform" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Query all pairs of handles overlapping in the broadphase.</p>
+<p>Pairs will not be reported for two handles marked as <cite>static</cite>.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">broadphase</span><span class="p">.</span><span class="nx">perform</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="nx">thisObject</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">callback</span></tt></dt>
+<dd><p class="first">A callback which will be called for all handle pairs.</p>
+<p class="last">It should take two arguments as the handles from the broadphase that form
+each pair.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">thisObject</span></tt> (Optional)</dt>
+<dd>An optional object to use for the <cite>this</cite> object when calling the callback.</dd>
+</dl>
+</div>
+<div class="section" id="sample">
+<span id="index-6"></span><h3>18.4.2.6. <cite>sample</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#sample" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Query all handles overlapping given bounds.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">broadphase</span><span class="p">.</span><span class="nx">sample</span><span class="p">(</span><span class="nx">bounds</span><span class="p">,</span> <span class="nx">callback</span><span class="p">,</span> <span class="nx">thisObject</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">bounds</span></tt></dt>
+<dd>The bounds (as defined by broadphase) to sample handles from.</dd>
+<dt><tt class="docutils literal"><span class="pre">callback</span></tt></dt>
+<dd><p class="first">A callback which will be called for all overlapping handles.</p>
+<p class="last">It should take two arguments as the handle that was overlapped, and the input bounds to the sample function.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">thisObject</span></tt> (Optional)</dt>
+<dd>An optional object to use for the <cite>this</cite> object when calling the callback.</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="section" id="the-broadphase-handle-object">
+<span id="index-7"></span><h1>18.5. The Broadphase Handle Object<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#the-broadphase-handle-object" title="Permalink to this headline">¶</a></h1>
+<p>Full specification of the handle object is left to the Broadphase implementation.</p>
+<p>Broadphase implementations are free to re-use object handles, so references to them
+should not be kept.</p>
+<div class="section" id="properties">
+<h2>18.5.1. Properties<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#properties" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="data">
+<span id="index-8"></span><h3>18.5.1.1. <cite>data</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#data" title="Permalink to this headline">¶</a></h3>
+<p>The data associated with handle.</p>
+</div>
+<div class="section" id="isstatic">
+<span id="index-9"></span><h3>18.5.1.2. <cite>isStatic</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#isstatic" title="Permalink to this headline">¶</a></h3>
+<p>The static type of handle.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="http://docs.turbulenz.com/genindex.html" title="General Index">index</a></li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2d_collisionutils_api.html" title="18.6. The CollisionUtils Object">next</a> |</li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html" title="18.3. The RigidBody Object">previous</a> |</li>
+        <li><a href="http://docs.turbulenz.com/index.html">Turbulenz 0.28.0 documentation</a> »</li>
+          <li><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_api.html">18. Low Level 2D Physics API</a> »</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        © Copyright 2010-2014, Turbulenz Limited.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  
+</body></html>

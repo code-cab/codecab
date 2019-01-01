@@ -1,0 +1,962 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0064)http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <title>18.9. The Physics2DDevice Object — Turbulenz 0.28.0 documentation</title>
+    
+    <link rel="stylesheet" href="./18.9. The Physics2DDevice Object — Turbulenz 0.28.0 documentation_files/sphinxdoc.css" type="text/css">
+    <link rel="stylesheet" href="./18.9. The Physics2DDevice Object — Turbulenz 0.28.0 documentation_files/pygments.css" type="text/css">
+    
+    <script type="text/javascript" async="" src="./18.9. The Physics2DDevice Object — Turbulenz 0.28.0 documentation_files/ga.js.download"></script><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.28.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="./18.9. The Physics2DDevice Object — Turbulenz 0.28.0 documentation_files/jquery.js.download"></script>
+    <script type="text/javascript" src="./18.9. The Physics2DDevice Object — Turbulenz 0.28.0 documentation_files/underscore.js.download"></script>
+    <script type="text/javascript" src="./18.9. The Physics2DDevice Object — Turbulenz 0.28.0 documentation_files/doctools.js.download"></script>
+    <link rel="top" title="Turbulenz 0.28.0 documentation" href="http://docs.turbulenz.com/index.html">
+    <link rel="up" title="18. Low Level 2D Physics API" href="http://docs.turbulenz.com/jslibrary_api/physics2d_api.html">
+    <link rel="next" title="18.10. The Material Object" href="http://docs.turbulenz.com/jslibrary_api/physics2d_material_api.html">
+    <link rel="prev" title="18.8. The Physics2DDebugDraw Object" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html">
+ 
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-10614584-10']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="http://docs.turbulenz.com/genindex.html" title="General Index" accesskey="I">index</a></li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2d_material_api.html" title="18.10. The Material Object" accesskey="N">next</a> |</li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html" title="18.8. The Physics2DDebugDraw Object" accesskey="P">previous</a> |</li>
+        <li><a href="http://docs.turbulenz.com/index.html">Turbulenz 0.28.0 documentation</a> »</li>
+          <li><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_api.html" accesskey="U">18. Low Level 2D Physics API</a> »</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="http://docs.turbulenz.com/index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#">18.9. The Physics2DDevice Object</a><ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#methods">18.9.1. Methods</a><ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createworld">18.9.1.1. <cite>createWorld</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createsweepandprunebroadphase">18.9.1.2. <cite>createSweepAndPruneBroadphase</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createboxtreebroadphase">18.9.1.3. <cite>createBoxTreeBroadphase</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createrigidbody">18.9.1.4. <cite>createRigidBody</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#getdefaultmaterial">18.9.1.5. <cite>getDefaultMaterial</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#creatematerial">18.9.1.6. <cite>createMaterial</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createcircleshape">18.9.1.7. <cite>createCircleShape</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createpolygonshape">18.9.1.8. <cite>createPolygonShape</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createboxvertices">18.9.1.9. <cite>createBoxVertices</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createrectanglevertices">18.9.1.10. <cite>createRectangleVertices</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createregularpolygonvertices">18.9.1.11. <cite>createRegularPolygonVertices</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createcollisionutils">18.9.1.12. <cite>createCollisionUtils</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createpointconstraint">18.9.1.13. <cite>createPointConstraint</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createweldconstraint">18.9.1.14. <cite>createWeldConstraint</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createangleconstraint">18.9.1.15. <cite>createAngleConstraint</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createdistanceconstraint">18.9.1.16. <cite>createDistanceConstraint</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createlineconstraint">18.9.1.17. <cite>createLineConstraint</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createmotorconstraint">18.9.1.18. <cite>createMotorConstraint</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createpulleyconstraint">18.9.1.19. <cite>createPulleyConstraint</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createcustomconstraint">18.9.1.20. <cite>createCustomConstraint</cite></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html" title="previous chapter">18.8. The Physics2DDebugDraw Object</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_material_api.html" title="next chapter">18.10. The Material Object</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="http://docs.turbulenz.com/_sources/jslibrary_api/physics2ddevice_api.txt" rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="">
+  <h3>Quick search</h3>
+    <form class="search" action="http://docs.turbulenz.com/search.html" method="get">
+      <input type="text" name="q">
+      <input type="submit" value="Go">
+      <input type="hidden" name="check_keywords" value="yes">
+      <input type="hidden" name="area" value="default">
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="the-physics2ddevice-object">
+<span id="physics2ddevice"></span><h1>18.9. The Physics2DDevice Object<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#the-physics2ddevice-object" title="Permalink to this headline">¶</a></h1>
+<p>Provides rigid body physics, optimized for Javascript.</p>
+<p>The Physics2DDevice object can be used to create the following objects:</p>
+<ul class="simple">
+<li>Rigid bodies: dynamic, static or kinematic.</li>
+<li>Shapes: polygon, circle.</li>
+<li>Vertex factories: rectangle, aligned box, regular polygon.</li>
+<li>Constraints: point to point, distance, weld, angle, motor, line, pulley, user constraint.</li>
+<li>World.</li>
+<li>Broadphases: 1-axis sweep and prune, box tree broadphase.</li>
+<li>CollisionUtils.</li>
+<li>Debug Draw.</li>
+</ul>
+<p>Physics2D uses SI units of meters (<cite>m</cite>), radians (<cite>rad</cite>), seconds (<cite>s</cite>), kilograms (<cite>kg</cite>) and Newtons (<cite>N</cite>). Physics2D coordinates have y-axis pointing down.</p>
+<p>Physics parameters are tuned for objects in size ranging down to an absolute minimum of <cite>0.001m = 1mm</cite>. Objects smaller than this will not behave correctly due to contact slop and thresholds in continuous collision detection routines. At the same time, for stability reasons there is a permitted slop in positional contacts of <cite>0.01m = 1cm</cite> so that whilst objects down to <cite>1mm</cite> are acceptible, objects this small will not interact together properly. You should try to keep objects at least <cite>1cm</cite> big.</p>
+<p>A suggestion if your game operates in pixels (<cite>px</cite>) is to use a scaling factor of roughly <cite>60px</cite> for every <cite>1m</cite>.</p>
+<p><strong>Required scripts</strong></p>
+<p>The Physics2DDevice object requires:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="cm">/*{{ javascript("jslib/physics2ddevice.js") }}*/</span>
+<span class="cm">/*{{ javascript("jslib/boxtree.js") }}*/</span>
+</pre></div>
+</div>
+<div class="section" id="methods">
+<h2>18.9.1. Methods<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#methods" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="physics2ddevice-createworld"></span><div class="section" id="createworld">
+<span id="index-0"></span><h3>18.9.1.1. <cite>createWorld</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createworld" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Create a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#physics2d-world"><em>World</em></a> object to which rigid bodies and constraints can be added.
+Rigid bodies and constants can only be added to a single World at any given time.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">world</span> <span class="o">=</span> <span class="nx">phys2D</span><span class="p">.</span><span class="nx">createWorld</span><span class="p">({</span>
+    <span class="nx">broadphase</span> <span class="o">:</span> <span class="nx">broadphaseObject</span><span class="p">,</span>
+    <span class="nx">gravity</span> <span class="o">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+    <span class="nx">velocityIterations</span> <span class="o">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="nx">positionIterations</span> <span class="o">:</span> <span class="mi">8</span><span class="p">,</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">broadphase</span></tt> (Optional)</dt>
+<dd><p class="first">Supply a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#broadphase"><em>Broadphase</em></a> object to be used by this World.</p>
+<p class="last">If unspecified, then a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/boxtree_api.html#boxtree"><em>BoxTree</em></a> broadphase as created using <cite>phys2D.createBoxTreeBroadphase()</cite> will be used.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">gravity</span></tt> (Optional)</dt>
+<dd><p class="first">The direction and magnitude of global acceleration due to <cite>gravity</cite>,
+applied to all dynamic bodies per update.</p>
+<p class="last">Defaults to [0, 10].</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">velocityIterations</span></tt> (Optional)</dt>
+<dd><p class="first">The number of physics iterations to use when solving errors in velocity
+constraints. This value must be positive, and is largely responsible for
+the stability of the physics.</p>
+<p class="last">Defaults to 8.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">positionIterations</span></tt> (Optional)</dt>
+<dd><p class="first">The number of physics iterations to use when solving errors in position
+constraints. This value must be positive and is responsible for solving
+errors in contact penetrations and stiff constraints.</p>
+<p class="last">Defaults to 8.</p>
+</dd>
+</dl>
+<span class="target" id="physics2ddevice-sap"></span></div>
+<div class="section" id="createsweepandprunebroadphase">
+<span id="index-1"></span><h3>18.9.1.2. <cite>createSweepAndPruneBroadphase</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createsweepandprunebroadphase" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Create a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#broadphase"><em>Broadphase</em></a> object built using a 1-axis Sweep and Prune approach in the x-axis direction.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">broadphase</span> <span class="o">=</span> <span class="nx">phys2D</span><span class="p">.</span><span class="nx">createSweepAndPruneBroadphase</span><span class="p">();</span>
+</pre></div>
+</div>
+<span class="target" id="physics2ddevice-boxtree"></span></div>
+<div class="section" id="createboxtreebroadphase">
+<span id="index-2"></span><h3>18.9.1.3. <cite>createBoxTreeBroadphase</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createboxtreebroadphase" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Create a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#broadphase"><em>Broadphase</em></a> object built using a pair of <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/boxtree_api.html#boxtree"><em>BoxTree</em></a> objects separating static/sleeping
+bodies from active bodies. This is a more generally performant broadphase than the 1-axis Sweep and Prune.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">broadphase</span> <span class="o">=</span> <span class="nx">phys2D</span><span class="p">.</span><span class="nx">createBoxTreeBroadphase</span><span class="p">();</span>
+</pre></div>
+</div>
+<span class="target" id="physics2ddevice-createbody"></span></div>
+<div class="section" id="createrigidbody">
+<span id="index-3"></span><h3>18.9.1.4. <cite>createRigidBody</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createrigidbody" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Create a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> object.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">phys2D</span><span class="p">.</span><span class="nx">createRigidBody</span><span class="p">({</span>
+    <span class="nx">type</span> <span class="o">:</span> <span class="s1">'dynamic'</span><span class="p">,</span>
+    <span class="nx">shapes</span> <span class="o">:</span> <span class="p">[],</span>
+    <span class="nx">mass</span> <span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="nx">inertia</span> <span class="o">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="nx">sleeping</span> <span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nx">bullet</span> <span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nx">position</span> <span class="o">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="nx">rotation</span> <span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nx">velocity</span> <span class="o">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="nx">angularVelocity</span> <span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nx">force</span> <span class="o">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="nx">torque</span> <span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nx">linearDrag</span> <span class="o">:</span> <span class="mf">0.05</span><span class="p">,</span>
+    <span class="nx">angularDrag</span> <span class="o">:</span> <span class="mf">0.05</span><span class="p">,</span>
+    <span class="nx">surfaceVelocity</span> <span class="o">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="nx">userData</span> <span class="o">:</span> <span class="kc">null</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">type</span></tt> (Optional)</dt>
+<dd><p class="first">The type of Rigid Body to create. One of <cite>‘static’, ‘dynamic’, ‘kinematic’</cite>.</p>
+<p class="last">Defaults to <cite>‘dynamic’</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">shapes</span></tt> (Optional)</dt>
+<dd>The set of Shapes to assign to the Rigid Body. Shapes may not be shared between rigid bodies. Shapes of a <cite>static</cite> body may not be modified once the body has been assigned to a World object.</dd>
+<dt><tt class="docutils literal"><span class="pre">mass</span></tt> (Optional)</dt>
+<dd><p class="first">The mass in <cite>kg</cite> for this rigid body. This value must be strictly positive and has no effect on <cite>static</cite> and <cite>kinematic</cite> bodies which in terms of physics computations are assumed to have infinite mass. However if such a body should be transformed into a <cite>dynamic</cite> body at run-time, this value will still persist.</p>
+<p class="last">If unspecified, mass will be computed as per <cite>body.computeMassFromShapes()</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">inertia</span></tt> (Optional)</dt>
+<dd><p class="first">The moment of inertia in <cite>kg.m</cite><sup>2</sup><cite>/rad</cite><sup>2</sup>. This value must be strictly positive and has no effect on <cite>static</cite> and <cite>kinematic</cite> bodies which in terms of physics computations are assumed to have infinite inertia. However if such a body should be transformed into a <cite>dynamic</cite> body at run-time, this value will still persist.</p>
+<p class="last">If unspecified, inertia will be computed as per <cite>body.computeInertiaFromShapes()</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">sleeping</span></tt> (Optional)</dt>
+<dd><p class="first">Define if the body is to be created in a sleeping state. When added to a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#physics2d-world"><em>World</em></a> object, the body will remain asleep until woken.</p>
+<p class="last">Defaults to <cite>false</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">bullet</span></tt> (Optional)</dt>
+<dd><p class="first">Define if a <cite>dynamic</cite> body should collide continuously with other <cite>dynamic</cite> bodies. Continuous collision occur always between static/kinematic and dynamic bodies, but will occur between two dynamic bodies only if at least one of them is marked as a <cite>bullet</cite>.</p>
+<p class="last">Due to implementation details of continuous collisions, you are advised not to create groups of bodies that interact together as bullets which may lead to visual stalling.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">position</span></tt> (Optional)</dt>
+<dd><p class="first">The position of the body’s origin in world coordinates. The position of a <cite>static</cite> body cannot be changed once it has been assigned to a World object, and modifications to this value equate to a teleportation of the body. <cite>kinematic</cite> bodies should be moved via manipulations of the body <cite>velocity</cite>.</p>
+<p class="last">Defaults to <cite>[0, 0]</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">rotation</span></tt> (Optional)</dt>
+<dd><p class="first">The rotation of the body in clockwise radians. The rotation of a <cite>static</cite> body cannot be changed once it has been assigned to a World object, and modifications to this value equate to a teleportation of the body. <cite>kinematic</cite> bodies should be rotated via manipulations of the body <cite>angularVelocity</cite>.</p>
+<p class="last">Defaults to <cite>0</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">velocity</span></tt> (Optional)</dt>
+<dd><p class="first">The linear velocity of the body in <cite>m/s</cite>. This parameter is ignored for <cite>static</cite> bodies which are not permitted to have a velocity.</p>
+<p class="last">Defaults to <cite>[0, 0]</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">angularVelocity</span></tt> (Optional)</dt>
+<dd><p class="first">The angular velocity of the body in <cite>rad/s</cite>. This parameter is ignored for <cite>static</cite> bodies which are not permitted to have a velocity.</p>
+<p class="last">Defaults to <cite>[0, 0]</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">force</span></tt> (Optional)</dt>
+<dd><p class="first">Force applied to the body at it’s origin for every update. As this is a force, and not an acceleration this property has no effect on <cite>static</cite> and <cite>kinematic</cite> bodies, or any <cite>dynamic</cite> body with infinite mass.</p>
+<p>This force is persistent, and is not reset after world update.</p>
+<p class="last">Defaults to <cite>[0, 0]</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">torque</span></tt> (Optional)</dt>
+<dd><p class="first">Torque applied to the body at it’s origin for every update. As this is a torque, and not an acceleration this property has no effect on <cite>static</cite> and <cite>kinematic</cite> bodies, or any <cite>dynamic</cite> body with infinite inertia.</p>
+<p>This torque is persistent, and is not reset after world update.</p>
+<p class="last">Defaults to <cite>[0, 0]</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">linearDrag</span></tt> (Optional)</dt>
+<dd><p class="first">The fraction of the linear velocity of a body which will be lost per second. This value must be <cite>&gt;= 0</cite>. This property has no effect on <cite>static</cite> and <cite>kinematic</cite> bodies, or any <cite>dynamic</cite> body with infinite mass.</p>
+<p class="last">Defaults to <cite>0.05</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">angularDrag</span></tt> (Optional)</dt>
+<dd><p class="first">The fraction of the angular velocity of a body which will be lost per second. This value must be <cite>&gt;= 0</cite>. This property has no effect on <cite>static</cite> and <cite>kinematic</cite> bodies, or any <cite>dynamic</cite> body with infinite inertia.</p>
+<p class="last">Defaults to <cite>0.05</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">surfaceVelocity</span></tt> (Optional)</dt>
+<dd><p class="first">An additional velocity in (<cite>m/s</cite>) used for contact physics and rotated to match the surface direction used to manipulate the effects of friction and normal reactions. Static objects may also be given a surface velocity.</p>
+<p>For example one may create a conveyor belt that moves objects pushed against in a clockwise direction by supplying a surface velocity with positive x-component.</p>
+<p class="last">Defaults to <cite>[0, 0]</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">userData</span></tt> (Optional)</dt>
+<dd>Field on which to store whatever information you may like.</dd>
+</dl>
+<span class="target" id="physics2ddevice-getdefmat"></span></div>
+<div class="section" id="getdefaultmaterial">
+<span id="index-4"></span><h3>18.9.1.5. <cite>getDefaultMaterial</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#getdefaultmaterial" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Return the default <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_material_api.html#physics2d-material"><em>Material</em></a>, instantiated as a Singleton by result of <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#physics2ddevice-creatematerial"><em>Physics2DDevice.createMaterial({});</em></a>.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">material</span> <span class="o">=</span> <span class="nx">phys2D</span><span class="p">.</span><span class="nx">getDefaultMaterial</span><span class="p">();</span>
+</pre></div>
+</div>
+<span class="target" id="physics2ddevice-creatematerial"></span></div>
+<div class="section" id="creatematerial">
+<span id="index-5"></span><h3>18.9.1.6. <cite>createMaterial</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#creatematerial" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Create a new <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_material_api.html#physics2d-material"><em>Material</em></a> object.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">material</span> <span class="o">=</span> <span class="nx">phys2D</span><span class="p">.</span><span class="nx">createMaterial</span><span class="p">({</span>
+    <span class="nx">elasticity</span> <span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nx">staticFriction</span> <span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="nx">dynamicFriction</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">rollingFriction</span> <span class="o">:</span> <span class="mf">0.005</span><span class="p">,</span>
+    <span class="nx">density</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">userData</span> <span class="o">:</span> <span class="kc">null</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">elasticity</span></tt> (Optional)</dt>
+<dd><p class="first">Coefficient of restitution for this material.</p>
+<p>Values of elasticity are combined during collision as <cite>clamp(0.5 * (elasticity1 + elasticity2), [0, 1])</cite>.</p>
+<p>In this way, elasticity may be given any value (Even infinity) and the result will still be a valid coefficient of restitution for a collision with <cite>0</cite> being no elasticity, and <cite>1</cite> being complete elasticity.</p>
+<p class="last">Default value is <cite>0</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">staticFriction</span></tt> (Optional)</dt>
+<dd><p class="first">Coefficient of static friction for this material.</p>
+<p>When the relative, tangential velocity of the two rigid bodies at contact point is near zero, static friction will be used.</p>
+<p>This value must be <cite>&gt;= 0</cite> and should intuitively be greater than <cite>dynamicFriction</cite>.
+Values are combined in collision as <cite>Math.sqrt(friction1 * friction2)</cite>.</p>
+<p class="last">Default value is <cite>2</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">dynamicFriction</span></tt> (Optional)</dt>
+<dd><p class="first">Coefficient of dynamic friction for this material.</p>
+<p>Apart from the above scenario, dynamic friction is used between two rigid bodies.</p>
+<p>This value must be <cite>&gt;= 0</cite> and should intuitively be greater than <cite>staticFriction</cite>.
+Values are combined in collision as <cite>Math.sqrt(friction1 * friction2)</cite>.</p>
+<p class="last">Default value is <cite>1</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">rollingFriction</span></tt> (Optional)</dt>
+<dd><p class="first">Coefficient of rolling friction for this material.</p>
+<p>When one of the colliding shapes is a Circle type, then rolling friction will be applied to the objects.</p>
+<p>This value must be <cite>&gt;= 0</cite> and values are combined in collision as <cite>Math.sqrt(friction1 * friction2)</cite>.</p>
+<p class="last">Default value is <cite>0.005</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">density</span></tt> (Optional)</dt>
+<dd><p class="first">Density of material in units of <cite>kg/m/m</cite>.</p>
+<p>When a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> has its mass or inertia set from its shapes, or when computing mass or inertia based on its shapes. Then the material density is used to compute the mass and inertia of the Shape using it.</p>
+<p class="last">Default value is <cite>1</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">userData</span></tt> (Optional)</dt>
+<dd>Field on which to store whatever information you may like.</dd>
+</dl>
+<span class="target" id="physics2ddevice-createcircle"></span></div>
+<div class="section" id="createcircleshape">
+<span id="index-6"></span><h3>18.9.1.7. <cite>createCircleShape</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createcircleshape" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Create a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#physics2d-circle"><em>Circle</em></a> shape.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">phys2D</span><span class="p">.</span><span class="nx">createCircleShape</span><span class="p">({</span>
+    <span class="nx">radius</span> <span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="nx">origin</span> <span class="o">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="c1">// ... + common Shape constructor parameters</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">radius</span></tt></dt>
+<dd>The radius of the Circle shape. This value must be strictly positive.</dd>
+<dt><tt class="docutils literal"><span class="pre">origin</span></tt> (Optional)</dt>
+<dd><p class="first">The origin of the Circle shape within the local coordinate system of the Body it is assigned to.</p>
+<p class="last">Defaults to <cite>[0, 0]</cite></p>
+</dd>
+</dl>
+<p>For common Shape constructor parameters see <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#physics2d-shape"><em>Shape</em></a></p>
+<span class="target" id="physics2ddevice-createpolygon"></span></div>
+<div class="section" id="createpolygonshape">
+<span id="index-7"></span><h3>18.9.1.8. <cite>createPolygonShape</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createpolygonshape" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Create a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#physics2d-polygon"><em>Polygon</em></a> shape.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">phys2D</span><span class="p">.</span><span class="nx">createPolygonShape</span><span class="p">({</span>
+    <span class="nx">vertices</span> <span class="o">:</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span>
+    <span class="c1">// ... + common Shape constructor parameters</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">vertices</span></tt></dt>
+<dd><p class="first">The vertices of the Polygon in the local coordinate system of the Body it is assigned to.</p>
+<p>The vertices list is copied internally and may be re-used multiple times.</p>
+<p class="last">These vertices must define a convex, non-intersecting polygon and must be in a clockwise order
+(Remembering that Physics2D coordinates have y-axis pointing down). This property is unchecked.</p>
+</dd>
+</dl>
+<p>For common Shape constructor parameters see <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#physics2d-shape"><em>Shape</em></a></p>
+</div>
+<div class="section" id="createboxvertices">
+<span id="index-8"></span><h3>18.9.1.9. <cite>createBoxVertices</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createboxvertices" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Create a set of vertices defining an axis-aligned box, centered at the origin.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">vertices</span> <span class="o">=</span> <span class="nx">phys2D</span><span class="p">.</span><span class="nx">createBoxVertices</span><span class="p">(</span><span class="nx">width</span><span class="p">,</span> <span class="nx">height</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">width</span></tt></dt>
+<dd>The width of the box. This value should be strictly positive.</dd>
+<dt><tt class="docutils literal"><span class="pre">height</span></tt></dt>
+<dd>The height of the box. This value should be strictly positive.</dd>
+</dl>
+</div>
+<div class="section" id="createrectanglevertices">
+<span id="index-9"></span><h3>18.9.1.10. <cite>createRectangleVertices</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createrectanglevertices" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Create a set of vertices defined by the given axis-aligned rectangle.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">vertices</span> <span class="o">=</span> <span class="nx">phys2D</span><span class="p">.</span><span class="nx">createRectangleVertices</span><span class="p">(</span><span class="nx">x1</span><span class="p">,</span> <span class="nx">y1</span><span class="p">,</span> <span class="nx">x2</span><span class="p">,</span> <span class="nx">y2</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">x1</span></tt></dt>
+<dd>The x-coordinate of the top-left corner of rectangle</dd>
+<dt><tt class="docutils literal"><span class="pre">y1</span></tt></dt>
+<dd>The y-coordinate of the top-left corner of rectangle.</dd>
+<dt><tt class="docutils literal"><span class="pre">x2</span></tt></dt>
+<dd><p class="first">The x-coordinate of the bottom-right corner of rectangle.</p>
+<p class="last">In case that <cite>x2 &lt; x1</cite>, the values of x1/x2 will be swapped.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">y2</span></tt></dt>
+<dd><p class="first">The y-coordinate of the bottom-right corner of rectangle.</p>
+<p class="last">In case that <cite>y2 &lt; y1</cite>, the values of y1/y2 will be swapped.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="createregularpolygonvertices">
+<span id="index-10"></span><h3>18.9.1.11. <cite>createRegularPolygonVertices</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createregularpolygonvertices" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Create a set of vertices defining a (Possibly squished) regular polygon.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">vertices</span> <span class="o">=</span> <span class="nx">phys2D</span><span class="p">.</span><span class="nx">createRegularPolygonVertices</span><span class="p">(</span><span class="nx">diameterX</span><span class="p">,</span> <span class="nx">diameterY</span><span class="p">,</span> <span class="nx">numVertices</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">diameterX</span></tt></dt>
+<dd>The diameter in the x-axis direction for the ellipse upon which the vertices are taken for the regular polygon. This value should be strictly positive.</dd>
+<dt><tt class="docutils literal"><span class="pre">diameterY</span></tt></dt>
+<dd>The diameter in the y-axis direction for the ellipse upon which the vertices are taken for the regular polygon. This value should be strictly positive.</dd>
+<dt><tt class="docutils literal"><span class="pre">numVertices</span></tt></dt>
+<dd>The number of vertices for the polygon. This value should be <cite>&gt;= 3</cite>.</dd>
+</dl>
+<p>The vertices are generated by:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">angle</span> <span class="o">=</span> <span class="nx">N</span> <span class="o">*</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">/</span> <span class="nx">numVertices</span><span class="p">);</span>
+<span class="nx">vertex</span> <span class="o">=</span> <span class="p">[(</span><span class="nx">diameterX</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">angle</span><span class="p">),</span> <span class="p">(</span><span class="nx">diameterY</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">angle</span><span class="p">)];</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="createcollisionutils">
+<span id="physics2ddevice-createcollisionutils"></span><span id="index-11"></span><h3>18.9.1.12. <cite>createCollisionUtils</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createcollisionutils" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Create a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_collisionutils_api.html#physics2d-collisionutils"><em>CollisionUtils</em></a> object.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">utils</span> <span class="o">=</span> <span class="nx">phys2D</span><span class="p">.</span><span class="nx">createCollisionUtils</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="createpointconstraint">
+<span id="physics2ddevice-createpoint"></span><span id="index-12"></span><h3>18.9.1.13. <cite>createPointConstraint</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createpointconstraint" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Create a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-point"><em>PointConstraint</em></a> object.</p>
+<p>A Point constraint, constrains the anchor points on the two bodies to be locked together.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">worldAnchorA</span> <span class="o">===</span> <span class="nx">worldAnchorB</span>
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="./18.9. The Physics2DDevice Object — Turbulenz 0.28.0 documentation_files/Point.png"><img alt="Point screenshot" src="./18.9. The Physics2DDevice Object — Turbulenz 0.28.0 documentation_files/Point.png"></a>
+<p class="caption">(Set as non-stiff for screenshot)</p>
+</div>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">constraint</span> <span class="o">=</span> <span class="nx">phys2D</span><span class="p">.</span><span class="nx">createPointConstraint</span><span class="p">({</span>
+    <span class="nx">bodyA</span> <span class="o">:</span> <span class="nx">firstRigidBody</span><span class="p">,</span>
+    <span class="nx">bodyB</span> <span class="o">:</span> <span class="nx">secondRigidBody</span><span class="p">,</span>
+    <span class="nx">anchorA</span> <span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="nx">anchorB</span> <span class="o">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="c1">// ... + common Constraint constructor parameters</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">bodyA</span></tt></dt>
+<dd>The first rigid body for the constraint.</dd>
+<dt><tt class="docutils literal"><span class="pre">bodyB</span></tt></dt>
+<dd>The second rigid body for the constraint.</dd>
+<dt><tt class="docutils literal"><span class="pre">anchorA</span></tt> (Optional)</dt>
+<dd><p class="first">The anchor point for the first body, defined in the local coordinate system of the rigid body.</p>
+<p class="last">Default value is the origin; <cite>[0, 0]</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">anchorB</span></tt> (Optional)</dt>
+<dd><p class="first">The anchor point for the second body, defined in the local coordinate system of the rigid body.</p>
+<p class="last">Default value is the origin; <cite>[0, 0]</cite>.</p>
+</dd>
+</dl>
+<p>For common constructor parameters, see <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-constraint"><em>Constraint</em></a>.</p>
+</div>
+<div class="section" id="createweldconstraint">
+<span id="physics2ddevice-createweld"></span><span id="index-13"></span><h3>18.9.1.14. <cite>createWeldConstraint</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createweldconstraint" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Create a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-weld"><em>WeldConstraint</em></a> object.</p>
+<p>A Weld constraint constrains the anchor points on the two bodies to be locked together, and their relative rotation to be locked at a specific value. These sub-constraints are solved as a single complex constraint for extra stability.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">(</span><span class="nx">worldAnchorA</span> <span class="o">===</span> <span class="nx">worldAnchorB</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">rotationB</span> <span class="o">-</span> <span class="nx">rotationA</span> <span class="o">===</span> <span class="nx">phase</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="./18.9. The Physics2DDevice Object — Turbulenz 0.28.0 documentation_files/Weld.png"><img alt="Weld screenshot" src="./18.9. The Physics2DDevice Object — Turbulenz 0.28.0 documentation_files/Weld.png"></a>
+<p class="caption">(Set as non-stiff for screenshot)</p>
+</div>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">constraint</span> <span class="o">=</span> <span class="nx">phys2D</span><span class="p">.</span><span class="nx">createWeldConstraint</span><span class="p">({</span>
+    <span class="nx">bodyA</span> <span class="o">:</span> <span class="nx">firstRigidBody</span><span class="p">,</span>
+    <span class="nx">bodyB</span> <span class="o">:</span> <span class="nx">secondRigidBody</span><span class="p">,</span>
+    <span class="nx">anchorA</span> <span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="nx">anchorB</span> <span class="o">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="nx">phase</span> <span class="o">:</span> <span class="nx">angularPhase</span><span class="p">,</span>
+    <span class="c1">// ... + common Constraint constructor parameters</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">bodyA</span></tt></dt>
+<dd>The first rigid body for the constraint.</dd>
+<dt><tt class="docutils literal"><span class="pre">bodyB</span></tt></dt>
+<dd>The second rigid body for the constraint.</dd>
+<dt><tt class="docutils literal"><span class="pre">anchorA</span></tt> (Optional)</dt>
+<dd><p class="first">The anchor point for the first body, defined in the local coordinate system of the rigid body.</p>
+<p class="last">Default value is the origin; <cite>[0, 0]</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">anchorB</span></tt> (Optional)</dt>
+<dd><p class="first">The anchor point for the second body, defined in the local coordinate system of the rigid body.</p>
+<p class="last">Default value is the origin; <cite>[0, 0]</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">phase</span></tt> (Optional)</dt>
+<dd><p class="first">The target value for the difference in rotations, if phase were equal to <cite>1</cite>, then the second rigid body would be
+constrained to have a rotational value <cite>1 rad</cite> greater than the first body.</p>
+<p class="last">Default value is <cite>0</cite>.</p>
+</dd>
+</dl>
+<p>For common constructor parameters, see <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-constraint"><em>Constraint</em></a>.</p>
+</div>
+<div class="section" id="createangleconstraint">
+<span id="physics2ddevice-createangle"></span><span id="index-14"></span><h3>18.9.1.15. <cite>createAngleConstraint</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createangleconstraint" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Create a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-angle"><em>AngleConstraint</em></a> object.</p>
+<p>An Angle constraint constrains the weighted difference of the rotations of the two bodies
+to be locked to a given range of values.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">lowerBound</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="nx">rotationB</span> <span class="o">*</span> <span class="nx">ratio</span><span class="p">)</span> <span class="o">-</span> <span class="nx">rotationA</span> <span class="o">&lt;=</span> <span class="nx">upperBound</span>
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="./18.9. The Physics2DDevice Object — Turbulenz 0.28.0 documentation_files/Angle.png"><img alt="Angle screenshot" src="./18.9. The Physics2DDevice Object — Turbulenz 0.28.0 documentation_files/Angle.png"></a>
+</div>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">constraint</span> <span class="o">=</span> <span class="nx">phys2D</span><span class="p">.</span><span class="nx">createAngleConstraint</span><span class="p">({</span>
+    <span class="nx">bodyA</span> <span class="o">:</span> <span class="nx">firstRigidBody</span><span class="p">,</span>
+    <span class="nx">bodyB</span> <span class="o">:</span> <span class="nx">secondRigidBody</span><span class="p">,</span>
+    <span class="nx">ratio</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">lowerBound</span> <span class="o">:</span> <span class="o">-</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">,</span>
+    <span class="nx">upperBound</span> <span class="o">:</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span>
+    <span class="c1">// ... + common Constraint parameters</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">bodyA</span></tt></dt>
+<dd>The first rigid body for the constraint.</dd>
+<dt><tt class="docutils literal"><span class="pre">bodyB</span></tt></dt>
+<dd>The second rigid body for the constraint.</dd>
+<dt><tt class="docutils literal"><span class="pre">ratio</span></tt> (Optional)</dt>
+<dd><p class="first">The ratio in the constraint equation. If ratio were equal to 2, then bodyA would be forced to rotate twice as fast as bodyB when constraint is at a limit.</p>
+<p class="last">Default value is 1.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">lowerBound</span></tt> (Optional)</dt>
+<dd><p class="first">The lower bound in the constraint equation. This value must be <cite>&lt;= upperBound</cite>.</p>
+<p class="last">Default value is 0.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">upperBound</span></tt> (Optional)</dt>
+<dd><p class="first">The upper bound in the constraint equation. This value must be <cite>&gt;= lowerBound</cite>.</p>
+<p class="last">Default value is 0.</p>
+</dd>
+</dl>
+<p>For common constructor parameters, see <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-constraint"><em>Constraint</em></a>.</p>
+</div>
+<div class="section" id="createdistanceconstraint">
+<span id="physics2ddevice-createdistance"></span><span id="index-15"></span><h3>18.9.1.16. <cite>createDistanceConstraint</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createdistanceconstraint" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Create a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-distance"><em>DistanceConstraint</em></a> object.</p>
+<p>A Distance constraint constrains the distance between the anchor points of the
+two bodies to be locked to a given range of values.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">lowerBound</span> <span class="o">&lt;=</span> <span class="nx">distance</span><span class="p">(</span><span class="nx">worldAnchorA</span><span class="p">,</span> <span class="nx">worldAnchorB</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nx">upperBound</span>
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="./18.9. The Physics2DDevice Object — Turbulenz 0.28.0 documentation_files/Distance.png"><img alt="Distance screenshot" src="./18.9. The Physics2DDevice Object — Turbulenz 0.28.0 documentation_files/Distance.png"></a>
+</div>
+<p>This constraint degenerates when the distance between anchors is 0.</p>
+<p>To lock the distance at exactly 0 you will find much greater stability and accuracy by using the two-dimensional Point constraint instead.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">constraint</span> <span class="o">=</span> <span class="nx">phys2D</span><span class="p">.</span><span class="nx">createDistanceConstraint</span><span class="p">({</span>
+    <span class="nx">bodyA</span> <span class="o">:</span> <span class="nx">firstRigidBody</span><span class="p">,</span>
+    <span class="nx">bodyB</span> <span class="o">:</span> <span class="nx">secondRigidBody</span><span class="p">,</span>
+    <span class="nx">anchorA</span> <span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="nx">anchorB</span> <span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="nx">lowerBound</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">upperBound</span> <span class="o">:</span> <span class="mi">4</span>
+    <span class="c1">// ... + common Constraint parameters</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">bodyA</span></tt></dt>
+<dd>The first rigid body for the constraint.</dd>
+<dt><tt class="docutils literal"><span class="pre">bodyB</span></tt></dt>
+<dd>The second rigid body for the constraint.</dd>
+<dt><tt class="docutils literal"><span class="pre">anchorA</span></tt> (Optional)</dt>
+<dd><p class="first">The anchor point for the first body, defined in the local coordinate system of the rigid body.</p>
+<p class="last">Default value is the origin; <cite>[0, 0]</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">anchorB</span></tt> (Optional)</dt>
+<dd><p class="first">The anchor point for the second body, defined in the local coordinate system of the rigid body.</p>
+<p class="last">Default value is the origin; <cite>[0, 0]</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">lowerBound</span></tt> (Optional)</dt>
+<dd><p class="first">The lower bound in the constraint equation. This value must be <cite>&gt;= 0</cite>.</p>
+<p class="last">Default value is 0.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">upperBound</span></tt> (Optional)</dt>
+<dd><p class="first">The upper bound in the constraint equation. This value must be <cite>&gt;= lowerBound</cite>.</p>
+<p class="last">Default value is 0.</p>
+</dd>
+</dl>
+<p>For common constructor parameters, see <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-constraint"><em>Constraint</em></a>.</p>
+</div>
+<div class="section" id="createlineconstraint">
+<span id="physics2ddevice-createline"></span><span id="index-16"></span><h3>18.9.1.17. <cite>createLineConstraint</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createlineconstraint" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Create a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-line"><em>LineConstraint</em></a> object.</p>
+<p>A Line constraint constrains the anchor point on the second body, to be
+constrained to a line segment defined on the first body.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">(</span><span class="nx">perpDot</span><span class="p">(</span><span class="nx">worldAxis</span><span class="p">,</span> <span class="nx">worldAnchorB</span> <span class="o">-</span> <span class="nx">worldAnchorA</span><span class="p">)</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+<span class="p">(</span><span class="nx">lowerBound</span> <span class="o">&lt;=</span> <span class="nx">dot</span><span class="p">(</span><span class="nx">worldAxis</span><span class="p">,</span> <span class="nx">worldAnchorB</span> <span class="o">-</span> <span class="nx">worldAnchorA</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nx">upperBound</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="./18.9. The Physics2DDevice Object — Turbulenz 0.28.0 documentation_files/Line.png"><img alt="Line screenshot" src="./18.9. The Physics2DDevice Object — Turbulenz 0.28.0 documentation_files/Line.png"></a>
+</div>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">constraint</span> <span class="o">=</span> <span class="nx">phys2D</span><span class="p">.</span><span class="nx">createLineConstraint</span><span class="p">({</span>
+    <span class="nx">bodyA</span> <span class="o">:</span> <span class="nx">firstRigidBody</span><span class="p">,</span>
+    <span class="nx">bodyB</span> <span class="o">:</span> <span class="nx">secondRigidBody</span><span class="p">,</span>
+    <span class="nx">axis</span> <span class="o">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="nx">anchorA</span> <span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="nx">anchorB</span> <span class="o">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="nx">lowerBound</span> <span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="nx">upperBound</span> <span class="o">:</span> <span class="mi">1</span>
+    <span class="c1">// ... + common Constraint parameters</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">bodyA</span></tt></dt>
+<dd>The first rigid body for the constraint.</dd>
+<dt><tt class="docutils literal"><span class="pre">bodyB</span></tt></dt>
+<dd>The second rigid body for the constraint.</dd>
+<dt><tt class="docutils literal"><span class="pre">axis</span></tt></dt>
+<dd><p class="first">The axis for the line constraint, defined in the local coordinate system of the first rigid body.</p>
+<p class="last">This vector must not be of zero length and will be automatically normalized when set.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">anchorA</span></tt> (Optional)</dt>
+<dd><p class="first">The anchor point for the first body, defined in the local coordinate system of the rigid body.</p>
+<p class="last">Default value is the origin; <cite>[0, 0]</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">anchorB</span></tt> (Optional)</dt>
+<dd><p class="first">The anchor point for the second body, defined in the local coordinate system of the rigid body.</p>
+<p class="last">Default value is the origin; <cite>[0, 0]</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">lowerBound</span></tt> (Optional)</dt>
+<dd><p class="first">The lower bound in the constraint equation. This value must be <cite>&lt;= upperBound</cite>.</p>
+<p class="last">Default value is <cite>-infinity</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">upperBound</span></tt> (Optional)</dt>
+<dd><p class="first">The upper bound in the constraint equation. This value must be <cite>&gt;= lowerBound</cite>.</p>
+<p class="last">Default value is <cite>infinity</cite>.</p>
+</dd>
+</dl>
+<p>For common constructor parameters, see <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-constraint"><em>Constraint</em></a>.</p>
+<p>To define the values for constraint bounds, anchorA and axis to match a given line segment defined locally to bodyA, you should create the constraint like:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">constraint</span> <span class="o">=</span> <span class="nx">phys2D</span><span class="p">.</span><span class="nx">createLineConstraint</span><span class="p">({</span>
+    <span class="nx">axis</span> <span class="o">:</span> <span class="nx">fromPoint</span> <span class="o">-</span> <span class="nx">startPoint</span><span class="p">,</span>
+    <span class="nx">anchorA</span> <span class="o">:</span> <span class="nx">startPoint</span><span class="p">,</span>
+    <span class="nx">lowerBound</span> <span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nx">upperBound</span> <span class="o">:</span> <span class="nx">length</span><span class="p">(</span><span class="nx">fromPoint</span> <span class="o">-</span> <span class="nx">startPoint</span><span class="p">)</span>
+    <span class="p">...</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>This constraint would most often be used to implement (In conjunction with a Distance constraint)
+suspension on a vehicle. Using the line constraint to limit how the wheel moves in relation to the vehicle,
+and the distance constraint to supply dampening through elasticity.</p>
+</div>
+<div class="section" id="createmotorconstraint">
+<span id="physics2ddevice-createmotor"></span><span id="index-17"></span><h3>18.9.1.18. <cite>createMotorConstraint</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createmotorconstraint" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Create a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-motor"><em>MotorConstraint</em></a> object.</p>
+<p>A Motor constraint, is a velocity only constraint (Meaning that parameters like <cite>stiff</cite>, <cite>maxError</cite>,
+<cite>breakUnderError</cite> have no effect on a motor constraint). Which constrains the weighted difference of
+the angular velocities of two objects to be locked at a given value.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">(</span><span class="nx">bodyB</span><span class="p">.</span><span class="nx">getAngularVelocity</span><span class="p">()</span> <span class="o">*</span> <span class="nx">ratio</span><span class="p">)</span> <span class="o">-</span> <span class="nx">bodyA</span><span class="p">.</span><span class="nx">getAngularVelocity</span><span class="p">()</span> <span class="o">===</span> <span class="nx">rate</span>
+</pre></div>
+</div>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">constraint</span> <span class="o">=</span> <span class="nx">phys2D</span><span class="p">.</span><span class="nx">createMotorConstraint</span><span class="p">({</span>
+    <span class="nx">bodyA</span> <span class="o">:</span> <span class="nx">firstRigidBody</span><span class="p">,</span>
+    <span class="nx">bodyB</span> <span class="o">:</span> <span class="nx">secondRigidBody</span><span class="p">,</span>
+    <span class="nx">ratio</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">rate</span> <span class="o">:</span> <span class="mi">0</span>
+    <span class="c1">// ... + common Constraint parameters</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">bodyA</span></tt></dt>
+<dd>The first rigid body for the constraint.</dd>
+<dt><tt class="docutils literal"><span class="pre">bodyB</span></tt></dt>
+<dd>The second rigid body for the constraint.</dd>
+<dt><tt class="docutils literal"><span class="pre">ratio</span></tt></dt>
+<dd><p class="first">The ratio for the motor. For instance if the ratio were <cite>2</cite>, then the first rigid body would be forced to rotate twice as fast
+as the second rigid body.</p>
+<p>This value must be non-zero.</p>
+<p class="last">Default value is <cite>1</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">rate</span></tt></dt>
+<dd><p class="first">The rate for the motor.</p>
+<p class="last">Default value is <cite>0</cite>.</p>
+</dd>
+</dl>
+<p>For common constructor parameters, see <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-constraint"><em>Constraint</em></a>.</p>
+<p>This constraint can also be used to implement a form of angular friction for a body by appropriately setting the <cite>maxForce</cite> parameter to limit the force that can be applied, and using a static body as the other body in constraint.</p>
+<p>More usually, you would use this constraint to power some mechanism.</p>
+</div>
+<div class="section" id="createpulleyconstraint">
+<span id="physics2ddevice-createpulley"></span><span id="index-18"></span><h3>18.9.1.19. <cite>createPulleyConstraint</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createpulleyconstraint" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Create a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-pulley"><em>PulleyConstraint</em></a> object.</p>
+<p>The Pulley constraint constrains the weighted sum of the distances between pairs of anchors (anchorA &lt;-&gt; anchorB) (anchorC &lt;-&gt; anchorD) to be locked to a given range of values.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">lowerBound</span> <span class="o">&lt;=</span> <span class="nx">distance</span><span class="p">(</span><span class="nx">worldAnchorA</span><span class="p">,</span> <span class="nx">worldAnchorB</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="nx">ratio</span> <span class="o">*</span> <span class="nx">distance</span><span class="p">(</span><span class="nx">worldAnchorC</span><span class="p">,</span> <span class="nx">worldAnchorD</span><span class="p">))</span> <span class="o">&lt;=</span> <span class="nx">upperBound</span>
+</pre></div>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="./18.9. The Physics2DDevice Object — Turbulenz 0.28.0 documentation_files/Pulley.png"><img alt="Pulley screenshot" src="./18.9. The Physics2DDevice Object — Turbulenz 0.28.0 documentation_files/Pulley.png"></a>
+</div>
+<p>This constraint will partially degenerate when the distance of any one pair is <cite>0</cite> and it may be wise if this is able to occur, to create additional distance constraints for each separate pair to enforce that the length may not reach <cite>0</cite>.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">constraint</span> <span class="o">=</span> <span class="nx">phys2D</span><span class="p">.</span><span class="nx">createPulleyConstraint</span><span class="p">({</span>
+    <span class="nx">bodyA</span> <span class="o">:</span> <span class="nx">firstRigidBody</span>
+    <span class="nx">bodyB</span> <span class="o">:</span> <span class="nx">secondRigidBody</span><span class="p">,</span>
+    <span class="nx">bodyC</span> <span class="o">:</span> <span class="nx">thirdRigidBody</span><span class="p">,</span>
+    <span class="nx">bodyD</span> <span class="o">:</span> <span class="nx">fourthRigidBody</span><span class="p">,</span>
+    <span class="nx">anchorA</span> <span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="nx">anchorB</span> <span class="o">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="nx">anchorC</span> <span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="nx">anchorD</span> <span class="o">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="nx">ratio</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">lowerBound</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">upperBound</span> <span class="o">:</span> <span class="mi">4</span>
+    <span class="c1">// + common Constraint constructor parameters.</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">bodyA</span></tt></dt>
+<dd>The first rigid body in constraint.</dd>
+<dt><tt class="docutils literal"><span class="pre">bodyB</span></tt></dt>
+<dd><p class="first">The second rigid body in constraint.</p>
+<p class="last">This body is permitted to be equal to <cite>bodyC</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">bodyC</span></tt></dt>
+<dd><p class="first">The third rigid body in constraint.</p>
+<p class="last">This body is permitted to be equal to <cite>bodyB</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">bodyD</span></tt></dt>
+<dd>The fourth rigid body in constraint.</dd>
+<dt><tt class="docutils literal"><span class="pre">anchorA</span></tt> (Optional)</dt>
+<dd><p class="first">The anchor point for the first body, defined in the local coordinate system of the rigid body.</p>
+<p class="last">Default value is the origin; <cite>[0, 0]</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">anchorB</span></tt> (Optional)</dt>
+<dd><p class="first">The anchor point for the second body, defined in the local coordinate system of the rigid body.</p>
+<p class="last">Default value is the origin; <cite>[0, 0]</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">anchorC</span></tt> (Optional)</dt>
+<dd><p class="first">The anchor point for the third body, defined in the local coordinate system of the rigid body.</p>
+<p class="last">Default value is the origin; <cite>[0, 0]</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">anchorD</span></tt> (Optional)</dt>
+<dd><p class="first">The anchor point for the fourth body, defined in the local coordinate system of the rigid body.</p>
+<p class="last">Default value is the origin; <cite>[0, 0]</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">ratio</span></tt> (Optional)</dt>
+<dd><p class="first">The ratio of the constraint. For instance if the ratio is <cite>2</cite>, then the length between the first two anchors will change
+twice as fast as the length between the last two anchors.</p>
+<p>This value must be non-zero.</p>
+<p class="last">Default value is <cite>1</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">lowerBound</span></tt> (Optional)</dt>
+<dd><p class="first">The lower bound in the constraint equation. This value must be <cite>&lt;= upperBound</cite>.</p>
+<p class="last">Default value is <cite>0</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">upperBound</span></tt> (Optional)</dt>
+<dd><p class="first">The upper bound in the constraint equation. This value must be <cite>&gt;= lowerBound</cite>.</p>
+<p class="last">Default value is <cite>0</cite>.</p>
+</dd>
+</dl>
+<p>For common constructor parameters, see <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-constraint"><em>Constraint</em></a>.</p>
+</div>
+<div class="section" id="createcustomconstraint">
+<span id="physics2ddevice-createcustom"></span><span id="index-19"></span><h3>18.9.1.20. <cite>createCustomConstraint</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#createcustomconstraint" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Create a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-custom"><em>CustomConstraint</em></a> object.</p>
+<p>The CustomConstraint API provides a higher level of abstraction for creating custom constraints. At the most basic level for
+a standard positional constraint, you will provide methods to compute positional errors in constraint, and to
+compute the constraint jacobian and the rest of the mathematics and physics is performed by the API.</p>
+<p>The CustomConstraint API has all parameters common with the other constraints, including being able to make the constraint non-stiff and limit the amount of force used.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><pre>var constraint = phys2D.createCustomConstraint({
+    dimension : 2,
+    bodies : [bodyA, bodyB],
+    position : function positionErrorFn(data, index)
+        {
+            data[index]     = errorInFirstDimension;
+            data[index + 1] = errorInSecondDimension;
+        },
+    jacobian : function jacobianFn(data, index)
+        {
+            data[index]     = `jacobian term for x-velocity of first body, in first dimension`;
+            data[index + 1] = `jacobian term for y-velocity of first body, in first dimension`;
+            data[index + 2] = `jacobian term for angular velocity of first body, in first dimension`;
+            data[index + 3] = `jacobian term for x-velocity of second body, in first dimension`;
+            data[index + 4] = `jacobian term for y-velocity of second body, in first dimension`;
+            data[index + 5] = `jacobian term for angular velocity of second body, in first dimension`;
+
+            data[index + 6]  = `jacobian term for x-velocity of first body, in second dimension`;
+            data[index + 7]  = `jacobian term for y-velocity of first body, in second dimension`;
+            data[index + 8]  = `jacobian term for angular velocity of first body, in second dimension`;
+            data[index + 9]  = `jacobian term for x-velocity of second body, in second dimension`;
+            data[index + 10] = `jacobian term for y-velocity of second body, in second dimension`;
+            data[index + 11] = `jacobian term for angular velocity of second body, in second dimension`;
+        },
+    positionConstants : function positionConstantsFn()
+        {
+            // Perform any useful computations whose results may be used in definition of
+            // position and jacobian functions.
+        },
+    velocityClamp : function velocityClampFn(data, index)
+        {
+            // Clamp impulse values at
+            //   data[index]     :: impulse in first dimension
+            //   data[index + 1] :: impulse in second dimension
+        },
+    positionClamp : function positionClampFn(data, index)
+        {
+            // Clamp impulse values at
+            //   data[index]     :: impulse in first dimension
+            //   data[index + 1] :: impulse in second dimension
+        },
+    debugDraw : function debugDrawFn(debugDrawObject, stiff)
+        {
+            // Draw constraint information to debug object.
+        }
+    // + common Constraint constructor parameters.
+});</pre>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">dimension</span></tt></dt>
+<dd><p class="first">The number of dimensions in the constraint. This value must be <cite>&gt;= 1</cite>.</p>
+<p class="last">For example the
+Angle, Distance, Motor and Pulley constraints are 1 dimensional, whilst the
+Point and Line constraints are 2 dimensional, and the Weld constraint is
+3 dimensional.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">bodies</span></tt></dt>
+<dd>The set of rigid bodies used by this constraint.</dd>
+<dt><tt class="docutils literal"><span class="pre">position</span></tt> (Optional)</dt>
+<dd><p class="first">The function which computes the positional error of the constraint.</p>
+<p>If unspecified, the constraint will be treat as a velocity-only constraint like the Motor constraint.</p>
+<p class="last">The <cite>this</cite> object in calls to the position function will be the created constraint.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">jacobian</span></tt></dt>
+<dd><p class="first">The function which computes the jacobian of the constraint, this implicitly defines
+also the velocity error of the constraint.</p>
+<p class="last">The <cite>this</cite> object in calls to this function will be the created constraint.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">positionConstants</span></tt> (Optional)</dt>
+<dd><p class="first">The function which may be defined to compute values common to the position and jacobian functions.</p>
+<p class="last">This function may be left unspecified.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">velocityClamp</span></tt> (Optional)</dt>
+<dd><p class="first">The function to be called when performing velocity iterations to detail additional clamping of impulses.</p>
+<p>This can be used to create things like Distance and Angle constraints, or ratchet type mechanisms.</p>
+<p class="last">This function may be left unspecified.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">positionClamp</span></tt> (Optional)</dt>
+<dd><p class="first">The function to be called when performing position iterations to detail additional clamping of impulses.</p>
+<p>This can be used to create things like Distance and Angle constraints, or ratchet type mechanisms.</p>
+<p class="last">This function may be left unspecified.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">debugDraw</span></tt> (Optional)</dt>
+<dd><p class="first">The function to be called when drawing this constraint in the Debug draw object.</p>
+<p>The <cite>debug</cite> parameter is a reference to the <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#physics2d-debug"><em>Physics2DDebugDraw</em></a> object drawing this constraint, and <cite>stiff</cite> whether constraint is presently stiff.</p>
+<p class="last">This function may be left unspecified.</p>
+</dd>
+</dl>
+<p>For common constructor parameters, see <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-constraint"><em>Constraint</em></a>.</p>
+<p>During physics update, methods of the CustomConstraint will be called in the following orders:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="c1">// Once per update.</span>
+<span class="nx">positionConstants</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">positionalContraint</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">stiff</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">position</span><span class="p">(..);</span>
+<span class="p">}</span>
+<span class="nx">jacobian</span><span class="p">(..);</span>
+
+<span class="c1">// In every velocity iteration</span>
+<span class="nx">velocityClamp</span><span class="p">(..);</span>
+
+<span class="c1">// In every position iteration (for stiff, positional constraints)</span>
+<span class="nx">positionConstants</span><span class="p">();</span>
+<span class="nx">position</span><span class="p">(..);</span>
+<span class="nx">jacobian</span><span class="p">(..);</span>
+<span class="nx">positionClamp</span><span class="p">(..);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="http://docs.turbulenz.com/genindex.html" title="General Index">index</a></li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2d_material_api.html" title="18.10. The Material Object">next</a> |</li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html" title="18.8. The Physics2DDebugDraw Object">previous</a> |</li>
+        <li><a href="http://docs.turbulenz.com/index.html">Turbulenz 0.28.0 documentation</a> »</li>
+          <li><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_api.html">18. Low Level 2D Physics API</a> »</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        © Copyright 2010-2014, Turbulenz Limited.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  
+</body></html>

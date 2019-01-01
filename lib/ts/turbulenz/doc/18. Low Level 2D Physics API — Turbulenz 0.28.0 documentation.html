@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0058)http://docs.turbulenz.com/jslibrary_api/physics2d_api.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <title>18. Low Level 2D Physics API — Turbulenz 0.28.0 documentation</title>
+    
+    <link rel="stylesheet" href="./18. Low Level 2D Physics API — Turbulenz 0.28.0 documentation_files/sphinxdoc.css" type="text/css">
+    <link rel="stylesheet" href="./18. Low Level 2D Physics API — Turbulenz 0.28.0 documentation_files/pygments.css" type="text/css">
+    
+    <script type="text/javascript" async="" src="./18. Low Level 2D Physics API — Turbulenz 0.28.0 documentation_files/ga.js.download"></script><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.28.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="./18. Low Level 2D Physics API — Turbulenz 0.28.0 documentation_files/jquery.js.download"></script>
+    <script type="text/javascript" src="./18. Low Level 2D Physics API — Turbulenz 0.28.0 documentation_files/underscore.js.download"></script>
+    <script type="text/javascript" src="./18. Low Level 2D Physics API — Turbulenz 0.28.0 documentation_files/doctools.js.download"></script>
+    <link rel="top" title="Turbulenz 0.28.0 documentation" href="http://docs.turbulenz.com/index.html">
+    <link rel="next" title="18.1. The Arbiter Object" href="http://docs.turbulenz.com/jslibrary_api/physics2d_arbiter_api.html">
+    <link rel="prev" title="17.30. The Video Object" href="http://docs.turbulenz.com/jslibrary_api/video_api.html">
+ 
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-10614584-10']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="http://docs.turbulenz.com/genindex.html" title="General Index" accesskey="I">index</a></li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2d_arbiter_api.html" title="18.1. The Arbiter Object" accesskey="N">next</a> |</li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/video_api.html" title="17.30. The Video Object" accesskey="P">previous</a> |</li>
+        <li><a href="http://docs.turbulenz.com/index.html">Turbulenz 0.28.0 documentation</a> »</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="http://docs.turbulenz.com/jslibrary_api/video_api.html" title="previous chapter">17.30. The Video Object</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_arbiter_api.html" title="next chapter">18.1. The Arbiter Object</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="http://docs.turbulenz.com/_sources/jslibrary_api/physics2d_api.txt" rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="">
+  <h3>Quick search</h3>
+    <form class="search" action="http://docs.turbulenz.com/search.html" method="get">
+      <input type="text" name="q">
+      <input type="submit" value="Go">
+      <input type="hidden" name="check_keywords" value="yes">
+      <input type="hidden" name="area" value="default">
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="low-level-2d-physics-api">
+<span id="physics2d-api"></span><h1>18. Low Level 2D Physics API<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_api.html#low-level-2d-physics-api" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_arbiter_api.html">18.1. The Arbiter Object</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_arbiter_api.html#methods">18.1.1. Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_arbiter_api.html#properties">18.1.2. Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_arbiter_api.html#the-contact-object">18.2. The Contact Object</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_arbiter_api.html#id2">18.2.1. Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_arbiter_api.html#id3">18.2.2. Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html">18.3. The RigidBody Object</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#constructor">18.3.1. Constructor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#methods">18.3.2. Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#properties">18.3.3. Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html">18.4. The Broadphase Object</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#constructor">18.4.1. Constructor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#methods">18.4.2. Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#the-broadphase-handle-object">18.5. The Broadphase Handle Object</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/broadphase_api.html#properties">18.5.1. Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_collisionutils_api.html">18.6. The CollisionUtils Object</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_collisionutils_api.html#constructor">18.6.1. Constructor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_collisionutils_api.html#methods">18.6.2. Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html">18.7. The Constraint Object</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#constructor">18.7.1. Constructor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#methods">18.7.2. Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#properties">18.7.3. Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html">18.8. The Physics2DDebugDraw Object</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#constructor">18.8.1. Constructor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#methods">18.8.2. Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html#properties">18.8.3. Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html">18.9. The Physics2DDevice Object</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#methods">18.9.1. Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_material_api.html">18.10. The Material Object</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_material_api.html#constructor">18.10.1. Constructor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_material_api.html#methods">18.10.2. Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_material_api.html#properties">18.10.3. Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html">18.11. The Shape Object</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#constructor">18.11.1. Constructor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#methods">18.11.2. Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#properties">18.11.3. Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html">18.12. The World Object</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#constructor">18.12.1. Constructor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#methods">18.12.2. Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#properties">18.12.3. Properties</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="http://docs.turbulenz.com/genindex.html" title="General Index">index</a></li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2d_arbiter_api.html" title="18.1. The Arbiter Object">next</a> |</li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/video_api.html" title="17.30. The Video Object">previous</a> |</li>
+        <li><a href="http://docs.turbulenz.com/index.html">Turbulenz 0.28.0 documentation</a> »</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        © Copyright 2010-2014, Turbulenz Limited.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  
+</body></html>

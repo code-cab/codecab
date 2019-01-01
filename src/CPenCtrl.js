@@ -2,6 +2,9 @@ import CController from './CController';
 import colorsys from 'colorsys';
 import * as PIXI from 'pixi.js';
 
+import Matrix from 'pixi.js/lib/core/math/Matrix';
+import GroupD8 from 'pixi.js/lib/core/math/GroupD8';
+
 
 export default class CPenCtrl extends CController {
     constructor() {
@@ -153,26 +156,71 @@ export default class CPenCtrl extends CController {
 
 }
 
+let canvasWorldTransform = new Matrix();
+
 function _stamp(add) {
-    if (!this._canvasSprite._canvasRenderer) {
-        this._canvasSprite._canvasRenderer = new PIXI.CanvasRenderer({
-            width: this._canvasSprite.width,
-            height: this._canvasSprite.height,
-            view: this._canvasSprite.canvas,
-            clearBeforeRender: false,
-            transparent: true
-        })
-    }
-    // Add new destination-out blendMode on the fly
-    if (!add) {
-        const substract = 100;
-        this.target._pixiObject.blendMode = substract;
-        this._canvasSprite._canvasRenderer.blendModes[substract] = 'destination-out';
+    this.target._pixiObject.updateTransform();
+
+    const texture = this.target._pixiObject.texture;
+    const context = this._canvasSprite.context;
+
+    const width = texture._frame.width;
+    const height = texture._frame.height;
+    let wt = this.target._pixiObject.transform.worldTransform;
+    let dx = 0;
+    let dy = 0;
+    if (!texture.valid || texture.orig.width <= 0 || texture.orig.height <= 0 || !texture.baseTexture.source) {
+        return;
     }
 
-    this.target._pixiObject.updateTransform();
-    this.target._pixiObject._renderCanvas(this._canvasSprite._canvasRenderer);
+    context.save();
+
+    if (texture.rotate) {
+        wt.copy(canvasWorldTransform);
+        wt = canvasWorldTransform;
+        GroupD8.matrixAppendRotationInv(wt, texture.rotate, dx, dy);
+        // the anchor has already been applied above, so lets set it to zero
+        dx = 0;
+        dy = 0;
+    }
+
+    dx -= width / 2;
+    dy -= height / 2;
+
+    const resolution = 1;
+
+    context.setTransform(wt.a, wt.b, wt.c, wt.d, wt.tx * resolution, wt.ty * resolution);
+
+    context.globalCompositeOperation = add ? 'source-over' : 'destination-out';
+    context.drawImage(
+        texture.baseTexture.source,
+        texture._frame.x * resolution, texture._frame.y * resolution,
+        width * resolution, height * resolution,
+        dx * resolution, dy * resolution,
+        width * resolution, height * resolution);
+
+    context.restore();
+
     this._canvasSprite.changed = true;
-    this.target._pixiObject.blendMode = PIXI.BLEND_MODES.NORMAL;
+
+    // let canvasRenderer = new PIXI.CanvasRenderer({
+    //         width: this._canvasSprite.width,
+    //         height: this._canvasSprite.height,
+    //         view: this._canvasSprite.canvas,
+    //         clearBeforeRender: false,
+    //         transparent: true
+    //     });
+    // // Add new destination-out blendMode on the fly
+    // if (!add) {
+    //     const substract = 100;
+    //     this.target._pixiObject.blendMode = substract;
+    //     canvasRenderer.blendModes[substract] = 'destination-out';
+    // }
+    //
+    // // this.target._pixiObject.updateTransform();
+    // this.target._pixiObject._renderCanvas(canvasRenderer);
+    // canvasRenderer.destroy();
+    // this._canvasSprite.changed = true;
+    // // this.target._pixiObject.blendMode = PIXI.BLEND_MODES.NORMAL;
 
 }

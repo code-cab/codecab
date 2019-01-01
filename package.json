@@ -1,6 +1,6 @@
 {
   "name": "codecab",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "main": "src/index.js",
   "dependencies": {
     "pixi.js": "^4.8.3",

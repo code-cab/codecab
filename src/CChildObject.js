@@ -221,7 +221,7 @@ export default class CChildObject extends CObject {
     }
 
     onClick(callback) {
-        this.on('click', callback);
+        this.on('pointertap', callback);
     }
 
     /**
@@ -293,7 +293,7 @@ function createPosition() {
                     point.y / this.stage._options.pixelsPerMeter
                 );
             }
-            this.emit('position', point);
+            this.emit('position', {x: point.x, y: point.y, rotation: this.rotation});
             // this.pen.draw(point);
         });
 }

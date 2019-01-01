@@ -1,0 +1,842 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0069)http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <title>18.7. The Constraint Object — Turbulenz 0.28.0 documentation</title>
+    
+    <link rel="stylesheet" href="./18.7. The Constraint Object — Turbulenz 0.28.0 documentation_files/sphinxdoc.css" type="text/css">
+    <link rel="stylesheet" href="./18.7. The Constraint Object — Turbulenz 0.28.0 documentation_files/pygments.css" type="text/css">
+    
+    <script type="text/javascript" async="" src="./18.7. The Constraint Object — Turbulenz 0.28.0 documentation_files/ga.js.download"></script><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.28.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="./18.7. The Constraint Object — Turbulenz 0.28.0 documentation_files/jquery.js.download"></script>
+    <script type="text/javascript" src="./18.7. The Constraint Object — Turbulenz 0.28.0 documentation_files/underscore.js.download"></script>
+    <script type="text/javascript" src="./18.7. The Constraint Object — Turbulenz 0.28.0 documentation_files/doctools.js.download"></script>
+    <link rel="top" title="Turbulenz 0.28.0 documentation" href="http://docs.turbulenz.com/index.html">
+    <link rel="up" title="18. Low Level 2D Physics API" href="http://docs.turbulenz.com/jslibrary_api/physics2d_api.html">
+    <link rel="next" title="18.8. The Physics2DDebugDraw Object" href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html">
+    <link rel="prev" title="18.6. The CollisionUtils Object" href="http://docs.turbulenz.com/jslibrary_api/physics2d_collisionutils_api.html">
+ 
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-10614584-10']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="http://docs.turbulenz.com/genindex.html" title="General Index" accesskey="I">index</a></li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html" title="18.8. The Physics2DDebugDraw Object" accesskey="N">next</a> |</li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2d_collisionutils_api.html" title="18.6. The CollisionUtils Object" accesskey="P">previous</a> |</li>
+        <li><a href="http://docs.turbulenz.com/index.html">Turbulenz 0.28.0 documentation</a> »</li>
+          <li><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_api.html" accesskey="U">18. Low Level 2D Physics API</a> »</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="http://docs.turbulenz.com/index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#">18.7. The Constraint Object</a><ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#constructor">18.7.1. Constructor</a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#methods">18.7.2. Methods</a><ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#configure">18.7.2.1. <cite>configure</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#wake">18.7.2.2. <cite>wake</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#sleep">18.7.2.3. <cite>sleep</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#isenabled">18.7.2.4. <cite>isEnabled</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#isdisabled">18.7.2.5. <cite>isDisabled</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#enable">18.7.2.6. <cite>enable</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#disable">18.7.2.7. <cite>disable</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#addeventlistener">18.7.2.8. <cite>addEventListener</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#removeeventlistener">18.7.2.9. <cite>removeEventListener</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#getimpulseforbody">18.7.2.10. <cite>getImpulseForBody</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#getanchora">18.7.2.11. <cite>getAnchorA</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#setanchora">18.7.2.12. <cite>setAnchorA</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#getanchorb">18.7.2.13. <cite>getAnchorB</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#setanchorb">18.7.2.14. <cite>setAnchorB</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#getanchorc">18.7.2.15. <cite>getAnchorC</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#setanchorc">18.7.2.16. <cite>setAnchorC</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#getanchord">18.7.2.17. <cite>getAnchorD</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#setanchord">18.7.2.18. <cite>setAnchorD</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#getaxis">18.7.2.19. <cite>getAxis</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#setaxis">18.7.2.20. <cite>setAxis</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#getlowerbound">18.7.2.21. <cite>getLowerBound</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#setlowerbound">18.7.2.22. <cite>setLowerBound</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#getupperbound">18.7.2.23. <cite>getUpperBound</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#setupperbound">18.7.2.24. <cite>setUpperBound</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#getratio">18.7.2.25. <cite>getRatio</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#setratio">18.7.2.26. <cite>setRatio</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#getrate">18.7.2.27. <cite>getRate</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#setrate">18.7.2.28. <cite>setRate</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#getphase">18.7.2.29. <cite>getPhase</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#setphase">18.7.2.30. <cite>setPhase</cite></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#properties">18.7.3. Properties</a><ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#type">18.7.3.1. <cite>type</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#world">18.7.3.2. <cite>world</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#sleeping">18.7.3.3. <cite>sleeping</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#userdata">18.7.3.4. <cite>userData</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#dimension">18.7.3.5. <cite>dimension</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#bodya">18.7.3.6. <cite>bodyA</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#bodyb">18.7.3.7. <cite>bodyB</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#bodyc">18.7.3.8. <cite>bodyC</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#bodyd">18.7.3.9. <cite>bodyD</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#bodies">18.7.3.10. <cite>bodies</cite></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_collisionutils_api.html" title="previous chapter">18.6. The CollisionUtils Object</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html" title="next chapter">18.8. The Physics2DDebugDraw Object</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="http://docs.turbulenz.com/_sources/jslibrary_api/physics2d_constraint_api.txt" rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="">
+  <h3>Quick search</h3>
+    <form class="search" action="http://docs.turbulenz.com/search.html" method="get">
+      <input type="text" name="q">
+      <input type="submit" value="Go">
+      <input type="hidden" name="check_keywords" value="yes">
+      <input type="hidden" name="area" value="default">
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="the-constraint-object">
+<span id="physics2d-custom"></span><span id="physics2d-motor"></span><span id="physics2d-angle"></span><span id="physics2d-pulley"></span><span id="physics2d-line"></span><span id="physics2d-distance"></span><span id="physics2d-weld"></span><span id="physics2d-point"></span><span id="physics2d-constraint"></span><h1>18.7. The Constraint Object<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#the-constraint-object" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="constructor">
+<h2>18.7.1. Constructor<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#constructor" title="Permalink to this headline">¶</a></h2>
+<p>A Constraint object can be constructed with one of:</p>
+<ul class="simple">
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#physics2ddevice-createpoint"><em>Physics2DDevice.createPointConstraint</em></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#physics2ddevice-createdistance"><em>Physics2DDevice.createDistanceConstraint</em></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#physics2ddevice-createangle"><em>Physics2DDevice.createAngleConstraint</em></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#physics2ddevice-createweld"><em>Physics2DDevice.createWeldConstraint</em></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#physics2ddevice-createpulley"><em>Physics2DDevice.createPulleyConstraint</em></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#physics2ddevice-createmotor"><em>Physics2DDevice.createMotorConstraint</em></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#physics2ddevice-createline"><em>Physics2DDevice.createLineConstraint</em></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#physics2ddevice-createcustom"><em>Physics2DDevice.createCustomConstraint</em></a></li>
+</ul>
+<p>Constructors for constraints take many common parameters which are listed below</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="nx">stiff</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="nx">frequency</span> <span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+   <span class="nx">damping</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+   <span class="nx">maxForce</span> <span class="o">:</span> <span class="nb">Number</span><span class="p">.</span><span class="nx">POSITIVE_INFINITY</span><span class="p">,</span>
+   <span class="nx">maxError</span> <span class="o">:</span> <span class="nb">Number</span><span class="p">.</span><span class="nx">POSITIVE_INFINITY</span><span class="p">,</span>
+   <span class="nx">removeOnBreak</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="nx">breakUnderForce</span> <span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+   <span class="nx">breakUnderError</span> <span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+   <span class="nx">ignoreInteractions</span> <span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+   <span class="nx">sleeping</span> <span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+   <span class="nx">disabled</span> <span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+   <span class="nx">userData</span> <span class="o">:</span> <span class="kc">null</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">stiff</span></tt> (Optional)</dt>
+<dd><p class="first">Defines whether a positional constraint has its positional errors solved rigidly together with contact errors, or whether positional errors are resolved through mutations of the velocity constraint making the constraint elastic.</p>
+<p>An elastic constraint is implemented in such a way that high frequency and damping will not cause the constraint to <cite>blow up</cite>.</p>
+<p>This parameter has no effect on <cite>velocity-only</cite> constraints such as the <cite>MotorConstraint</cite>.</p>
+<p class="last">Default value is <cite>true</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">frequency</span></tt> (Optional)</dt>
+<dd><p class="first">Defines the frequency of the constraint’s elastic behavior when positional constraint is non-stiff.</p>
+<p>This value must be strictly positive.</p>
+<p>This parameter has no effect on <cite>velocity-only</cite> constraints such as the <cite>MotorConstraint</cite>, or when a position constraint is <cite>stiff</cite>.</p>
+<p class="last">Default value is <cite>10</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">damping</span></tt> (Optional)</dt>
+<dd><p class="first">Defines the damping of the constraint’s elastic behavior when positional constraint is non-stiff.</p>
+<p>This value must be positive.</p>
+<p>This parameter has no effect on <cite>velocity-only</cite> constraints such as the <cite>MotorConstraint</cite>, or when a position constraint is <cite>stiff</cite>.</p>
+<p class="last">Default value is <cite>1</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">maxForce</span></tt> (Optional)</dt>
+<dd><p class="first">Defines for <cite>non-stiff</cite> positional constraints, and for <cite>velocity-only</cite> constraints the maximum amount of force that may be used
+when solving errors in velocity.</p>
+<p>This value must be positive.</p>
+<p>When such a constraint has also <cite>breakUnderForce</cite> set to <cite>true</cite>. This value defines the limit at which the constraint will be broken.</p>
+<p class="last">Default value is <cite>Number.POSITIVE_INFINITY</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">maxError</span></tt> (Optional)</dt>
+<dd><p class="first">Defines for <cite>positional</cite> constraints, the maximum amount of error which will either be solved (For <cite>non-stiff</cite> constraints) per second, or the limit at which the constraint will be broken if <cite>breakUnderError</cite> is also <cite>true</cite>.</p>
+<p>This parameter has no effect on <cite>velocity-only</cite> constraints such as the <cite>MotorConstraint</cite>.</p>
+<p>This value must be positive.</p>
+<p class="last">Default value is <cite>Number.POSITIVE_INFINITY</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">removeOnBreak</span></tt> (Optional)</dt>
+<dd><p class="first">Defines behavior for when this constraint is broken.</p>
+<p>When true, the constraint will be removed from the simulation <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#physics2d-world"><em>World</em></a> when broken.</p>
+<p>When false, the constraint will remain in the world, but will become disabled.</p>
+<p class="last">Default value is <cite>true</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">breakUnderForce</span></tt> (Optional)</dt>
+<dd><p class="first">For <cite>non-stiff</cite> positional constraints, and <cite>velocity-only</cite> constraints this parameter defines whether upon reaching the <cite>maxForce</cite> parameter, the constraint will either limit the amount of force it uses, or be broken.</p>
+<p class="last">Default value is <cite>false</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">breakUnderError</span></tt> (Optional)</dt>
+<dd><p class="first">For <cite>positional</cite> constraints, this parameter defines whether upon reaching the <cite>maxError</cite> parameter, the amount of error resolved will be clamped (For <cite>non-stiff</cite> constraints, otherwise ignored) or broken (Both <cite>stiff</cite> and <cite>non-stiff</cite> constraints).</p>
+<p class="last">Default value is <cite>false</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">ignoreInteractions</span></tt> (Optional)</dt>
+<dd><blockquote class="first">
+<div>Defines whether the participating <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> objects used by this constraint will be permitted to interact (Whether as sensors, or colliders).</div></blockquote>
+<p class="last">Default value is <cite>false</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">sleeping</span></tt> (Optional)</dt>
+<dd><p class="first">Define if the constraint is to be created in a sleeping state. When added to a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#physics2d-world"><em>World</em></a> object, the constraint will remain asleep until woken.</p>
+<p class="last">Default value is <cite>false</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">disabled</span></tt> (Optional).</dt>
+<dd><p class="first">Define whether the constraint will be created as already <cite>disabled</cite>.</p>
+<p>Disabling a constraint permits it to remain inside of a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#physics2d-world"><em>World</em></a>, but acting as though it is not, with no side effects beyond the constraint being present in the <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> object’s <cite>constraints</cite> list, and being removed when a related <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> is removed from the world.</p>
+<p class="last">Default value is <cite>false</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">userData</span></tt> (Optional).</dt>
+<dd><p class="first">A field in which to store whatever data you may like.</p>
+<p class="last">Default value is <cite>null</cite>.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="methods">
+<h2>18.7.2. Methods<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#methods" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="configure">
+<span id="index-1"></span><h3>18.7.2.1. <cite>configure</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#configure" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Configure common constraint parameters.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">constraint</span><span class="p">.</span><span class="nx">configure</span><span class="p">({</span>
+    <span class="nx">stiff</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">frequency</span> <span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="nx">damping</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nx">maxForce</span> <span class="o">:</span> <span class="nb">Number</span><span class="p">.</span><span class="nx">POSITIVE_INFINITY</span><span class="p">,</span>
+    <span class="nx">maxError</span> <span class="o">:</span> <span class="nb">Number</span><span class="p">.</span><span class="nx">POSITIVE_INFINITY</span><span class="p">,</span>
+    <span class="nx">removeOnBreak</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">breakUnderForce</span> <span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nx">breakUnderError</span> <span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nx">ignoreInteractions</span> <span class="o">:</span> <span class="kc">false</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>All parameters of the object are optional, and leaving unspecified will leave said parameter untouched.</p>
+</div>
+<div class="section" id="wake">
+<span id="index-2"></span><h3>18.7.2.2. <cite>wake</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#wake" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Manually wake this Constraint.</p>
+<p>Waking a constraint manually is not generally required. It is only ever required to manually wake a constraint, if you manually put it to sleep or added it as a sleeping constraint.</p>
+<p>Mutations to the constraint, and interactions with related rigid bodies in the world will otherwise automatically wake the constraint.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">constraint</span><span class="p">.</span><span class="nx">wake</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sleep">
+<span id="index-3"></span><h3>18.7.2.3. <cite>sleep</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#sleep" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Manually put this Constraint to sleep.</p>
+<p>This constraint will be woken as soon as it is interacted with in a World, or is mutated in any way that would require it to wake up in normal circumstances.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">constraint</span><span class="p">.</span><span class="nx">sleep</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="isenabled">
+<span id="index-4"></span><h3>18.7.2.4. <cite>isEnabled</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#isenabled" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Query whether this constraint is currently enabled.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">enabled</span> <span class="o">=</span> <span class="nx">constraint</span><span class="p">.</span><span class="nx">isEnabled</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="isdisabled">
+<span id="index-5"></span><h3>18.7.2.5. <cite>isDisabled</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#isdisabled" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Query whether this constraint is currently disabled.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">disabled</span> <span class="o">=</span> <span class="nx">constraint</span><span class="p">.</span><span class="nx">isDisabled</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="enable">
+<span id="index-6"></span><h3>18.7.2.6. <cite>enable</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#enable" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Enable this constraint.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">constraint</span><span class="p">.</span><span class="nx">enable</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="disable">
+<span id="index-7"></span><h3>18.7.2.7. <cite>disable</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#disable" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Disable this constraint.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">constraint</span><span class="p">.</span><span class="nx">disable</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="addeventlistener">
+<span id="index-8"></span><h3>18.7.2.8. <cite>addEventListener</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#addeventlistener" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Add a new event listener for this Constraint.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">success</span> <span class="o">=</span> <span class="nx">constraint</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="nx">eventType</span><span class="p">,</span> <span class="nx">handler</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">eventType</span></tt></dt>
+<dd><p class="first">One of:</p>
+<dl class="last docutils">
+<dt><cite>‘wake’</cite></dt>
+<dd>Issued when this constraint is woken. This event is not generated when using the wake() method manually.</dd>
+<dt><cite>‘sleep’</cite></dt>
+<dd>Issued when this constraint is put to sleep. This event is not generated when using the sleep() method manually.</dd>
+<dt><cite>‘break’</cite></dt>
+<dd>Issued when this constraint is broken.</dd>
+</dl>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">handler</span></tt></dt>
+<dd><p class="first">Function to be called when this event occurs (Noting that events as usual are deferred until the end of the world <cite>step()</cite>).</p>
+<p class="last">Function is called with no arguments, and with its <cite>this</cite> object as the <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#physics2d-constraint"><em>Constraint</em></a> to which the event relates.</p>
+</dd>
+</dl>
+<p>This function will fail, and return <cite>false</cite> if the event type was not accepted, or if the handler already exists for the given event type.</p>
+<p>Example:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">breakHandler</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Constraint named: "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">userData</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s2">"was broken :("</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">constraint</span><span class="p">.</span><span class="nx">userData</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">name</span> <span class="o">:</span> <span class="s2">"Constraint no. 1"</span>
+<span class="p">};</span>
+<span class="nx">constraint</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'break'</span><span class="p">,</span> <span class="nx">breakHandler</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>You may add as many handlers for a given event type as you wish, and handlers will be called in the same order in which they were added.</p>
+</div>
+<div class="section" id="removeeventlistener">
+<span id="index-9"></span><h3>18.7.2.9. <cite>removeEventListener</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#removeeventlistener" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Remove existing event listener from this Constraint.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">success</span> <span class="o">=</span> <span class="nx">constraint</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="nx">eventType</span><span class="p">,</span> <span class="nx">handler</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This function will fail, and return <cite>false</cite> if the event type was not accepted, or if the handler was not found on the constraint for the given event type.</p>
+</div>
+<div class="section" id="getimpulseforbody">
+<h3>18.7.2.10. <cite>getImpulseForBody</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#getimpulseforbody" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Query the impulse applied to the given <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> by this constraint in the previous simulation step.</p>
+<p>The impulse returned is of 3 dimensions, the third equal to the angular impulse the constraint applied.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">impulse</span> <span class="o">=</span> <span class="nx">constraint</span><span class="p">.</span><span class="nx">getImpulseForBody</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="c1">// or</span>
+<span class="nx">constraint</span><span class="p">.</span><span class="nx">getImpulseForBody</span><span class="p">(</span><span class="nx">body</span><span class="p">,</span> <span class="nx">impulse</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">impulse</span></tt> (Optional)</dt>
+<dd>If specified, the impulse will be stored in this array, otherwise a new array will be created to be returned.</dd>
+</dl>
+<p>Should the input body be unrelated to this constraint, the impulse returned will be <cite>[0, 0, 0]</cite></p>
+</div>
+<div class="section" id="getanchora">
+<span id="index-10"></span><h3>18.7.2.11. <cite>getAnchorA</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#getanchora" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Get local anchor point on first rigid body.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">anchor</span> <span class="o">=</span> <span class="nx">constraint</span><span class="p">.</span><span class="nx">getAnchorA</span><span class="p">();</span>
+<span class="c1">// or</span>
+<span class="nx">constraint</span><span class="p">.</span><span class="nx">getAnchorA</span><span class="p">(</span><span class="nx">anchor</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">anchor</span></tt> (Optional)</dt>
+<dd>If specified, the anchor will be stored in this array, otherwise a new array will be created to be returned.</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Available for constraint types: Point, Distance, Pulley, Weld, Line only.</p>
+</div>
+</div>
+<div class="section" id="setanchora">
+<span id="index-11"></span><h3>18.7.2.12. <cite>setAnchorA</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#setanchora" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the local anchor point on first rigid body.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">constraint</span><span class="p">.</span><span class="nx">setAnchorA</span><span class="p">(</span><span class="nx">anchor</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">anchor</span></tt></dt>
+<dd>The new anchor point for first rigid body in constraint.</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Available for constraint types: Point, Distance, Pulley, Weld, Line only.</p>
+</div>
+</div>
+<div class="section" id="getanchorb">
+<span id="index-12"></span><h3>18.7.2.13. <cite>getAnchorB</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#getanchorb" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Get local anchor point on second rigid body.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">anchor</span> <span class="o">=</span> <span class="nx">constraint</span><span class="p">.</span><span class="nx">getAnchorB</span><span class="p">();</span>
+<span class="c1">// or</span>
+<span class="nx">constraint</span><span class="p">.</span><span class="nx">getAnchorB</span><span class="p">(</span><span class="nx">anchor</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">anchor</span></tt> (Optional)</dt>
+<dd>If specified, the anchor will be stored in this array, otherwise a new array will be created to be returned.</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Available for constraint types: Point, Distance, Pulley, Weld, Line only.</p>
+</div>
+</div>
+<div class="section" id="setanchorb">
+<span id="index-13"></span><h3>18.7.2.14. <cite>setAnchorB</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#setanchorb" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the local anchor point on second rigid body.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">constraint</span><span class="p">.</span><span class="nx">setAnchorB</span><span class="p">(</span><span class="nx">anchor</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">anchor</span></tt></dt>
+<dd>The new anchor point for second rigid body in constraint.</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Available for constraint types: Point, Distance, Pulley, Weld, Line only.</p>
+</div>
+</div>
+<div class="section" id="getanchorc">
+<span id="index-14"></span><h3>18.7.2.15. <cite>getAnchorC</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#getanchorc" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Get local anchor point on third rigid body.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">anchor</span> <span class="o">=</span> <span class="nx">constraint</span><span class="p">.</span><span class="nx">getAnchorC</span><span class="p">();</span>
+<span class="c1">// or</span>
+<span class="nx">constraint</span><span class="p">.</span><span class="nx">getAnchorC</span><span class="p">(</span><span class="nx">anchor</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">anchor</span></tt> (Optional)</dt>
+<dd>If specified, the anchor will be stored in this array, otherwise a new array will be created to be returned.</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Available for constraint type Pulley only.</p>
+</div>
+</div>
+<div class="section" id="setanchorc">
+<span id="index-15"></span><h3>18.7.2.16. <cite>setAnchorC</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#setanchorc" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the local anchor point on third rigid body.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">constraint</span><span class="p">.</span><span class="nx">setAnchorC</span><span class="p">(</span><span class="nx">anchor</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">anchor</span></tt></dt>
+<dd>The new anchor point for third rigid body in constraint.</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Available for constraint type Pulley only.</p>
+</div>
+</div>
+<div class="section" id="getanchord">
+<span id="index-16"></span><h3>18.7.2.17. <cite>getAnchorD</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#getanchord" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Get local anchor point on fourth rigid body.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">anchor</span> <span class="o">=</span> <span class="nx">constraint</span><span class="p">.</span><span class="nx">getAnchorD</span><span class="p">();</span>
+<span class="c1">// or</span>
+<span class="nx">constraint</span><span class="p">.</span><span class="nx">getAnchorD</span><span class="p">(</span><span class="nx">anchor</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">anchor</span></tt> (Optional)</dt>
+<dd>If specified, the anchor will be stored in this array, otherwise a new array will be created to be returned.</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Available for constraint type Pulley only.</p>
+</div>
+</div>
+<div class="section" id="setanchord">
+<span id="index-17"></span><h3>18.7.2.18. <cite>setAnchorD</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#setanchord" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the local anchor point on fourth rigid body.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">constraint</span><span class="p">.</span><span class="nx">setAnchorD</span><span class="p">(</span><span class="nx">anchor</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">anchor</span></tt></dt>
+<dd>The new anchor point for fourth rigid body in constraint.</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Available for constraint type Pulley only.</p>
+</div>
+</div>
+<div class="section" id="getaxis">
+<span id="index-18"></span><h3>18.7.2.19. <cite>getAxis</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#getaxis" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Get local axis point on first rigid body for line direction.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">axis</span> <span class="o">=</span> <span class="nx">constraint</span><span class="p">.</span><span class="nx">getAxis</span><span class="p">();</span>
+<span class="c1">// or</span>
+<span class="nx">constraint</span><span class="p">.</span><span class="nx">getAxis</span><span class="p">(</span><span class="nx">axis</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">axis</span></tt> (Optional)</dt>
+<dd>If specified, the axis will be stored in this array, otherwise a new array will be created to be returned.</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Available for constraint type Line only.</p>
+</div>
+</div>
+<div class="section" id="setaxis">
+<span id="index-19"></span><h3>18.7.2.20. <cite>setAxis</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#setaxis" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set local axis point on first rigid body for line direction.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">constraint</span><span class="p">.</span><span class="nx">setAxis</span><span class="p">(</span><span class="nx">axis</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">axis</span></tt></dt>
+<dd>The new axis point for first rigid body in constraint.</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Available for constraint type Line only.</p>
+</div>
+</div>
+<div class="section" id="getlowerbound">
+<span id="index-20"></span><h3>18.7.2.21. <cite>getLowerBound</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#getlowerbound" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Query the lower bound for constraint.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">lowerBound</span> <span class="o">=</span> <span class="nx">constraint</span><span class="p">.</span><span class="nx">getLowerBound</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Available for constraint types: Distance, Angle, Line, Pulley only.</p>
+</div>
+</div>
+<div class="section" id="setlowerbound">
+<span id="index-21"></span><h3>18.7.2.22. <cite>setLowerBound</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#setlowerbound" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the lower bound on constraint.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">constraint</span><span class="p">.</span><span class="nx">setLowerBound</span><span class="p">(</span><span class="nx">lowerBound</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">lowerBound</span></tt></dt>
+<dd>The new lower bound for constraint. Restrictions may change depending on constraint type.</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Available for constraint types: Distance, Angle, Line, Pulley only.</p>
+</div>
+</div>
+<div class="section" id="getupperbound">
+<span id="index-22"></span><h3>18.7.2.23. <cite>getUpperBound</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#getupperbound" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Query the upper bound for constraint.,</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">upperBound</span> <span class="o">=</span> <span class="nx">constraint</span><span class="p">.</span><span class="nx">getUpperBound</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Available for constraint types: Distance, Angle, Line, Pulley only.</p>
+</div>
+</div>
+<div class="section" id="setupperbound">
+<span id="index-23"></span><h3>18.7.2.24. <cite>setUpperBound</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#setupperbound" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the upper bound on constraint.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">constraint</span><span class="p">.</span><span class="nx">setUpperBound</span><span class="p">(</span><span class="nx">upperBound</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">upperBound</span></tt></dt>
+<dd>The new upper bound for constraint. Restrictions may change depending on constraint type.</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Available for constraint types: Distance, Angle, Line, Pulley only.</p>
+</div>
+</div>
+<div class="section" id="getratio">
+<span id="index-24"></span><h3>18.7.2.25. <cite>getRatio</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#getratio" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Query the current ratio parameter on constraint.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">ratio</span> <span class="o">=</span> <span class="nx">constraint</span><span class="p">.</span><span class="nx">getRatio</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Available for constraint types: Angle, Motor, Pulley only.</p>
+</div>
+</div>
+<div class="section" id="setratio">
+<span id="index-25"></span><h3>18.7.2.26. <cite>setRatio</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#setratio" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the ratio parameter on constraint.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">constraint</span><span class="p">.</span><span class="nx">setRatio</span><span class="p">(</span><span class="nx">ratio</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">ratio</span></tt></dt>
+<dd>The new value for ratio parameter.</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Available for constraint types: Angle, Motor, Pulley only.</p>
+</div>
+</div>
+<div class="section" id="getrate">
+<span id="index-26"></span><h3>18.7.2.27. <cite>getRate</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#getrate" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Query the current motor rate parameter on constraint.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">rate</span> <span class="o">=</span> <span class="nx">constraint</span><span class="p">.</span><span class="nx">getRate</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Available for constraint type Motor only.</p>
+</div>
+</div>
+<div class="section" id="setrate">
+<span id="index-27"></span><h3>18.7.2.28. <cite>setRate</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#setrate" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the motor rate parameter on constraint.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">constraint</span><span class="p">.</span><span class="nx">setRate</span><span class="p">(</span><span class="nx">rate</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">rate</span></tt></dt>
+<dd>The new value for rate parameter.</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Available for constraint type Motor only.</p>
+</div>
+</div>
+<div class="section" id="getphase">
+<span id="index-28"></span><h3>18.7.2.29. <cite>getPhase</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#getphase" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Query the current angular phase parameter on constraint.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">phase</span> <span class="o">=</span> <span class="nx">constraint</span><span class="p">.</span><span class="nx">getPhase</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Available for constraint type Weld only.</p>
+</div>
+</div>
+<div class="section" id="setphase">
+<span id="index-29"></span><h3>18.7.2.30. <cite>setPhase</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#setphase" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the angular phase parameter on constraint.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">constraint</span><span class="p">.</span><span class="nx">setPhase</span><span class="p">(</span><span class="nx">phase</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">phase</span></tt></dt>
+<dd>The new value for phase parameter.</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Available for constraint type Weld only.</p>
+</div>
+</div>
+</div>
+<div class="section" id="properties">
+<h2>18.7.3. Properties<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#properties" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="type">
+<span id="index-30"></span><h3>18.7.3.1. <cite>type</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#type" title="Permalink to this headline">¶</a></h3>
+<p>A string identifying the type of this Constraint object, one of:</p>
+<ul class="simple">
+<li><cite>‘POINT’</cite></li>
+<li><cite>‘DISTANCE’</cite></li>
+<li><cite>‘ANGLE’</cite></li>
+<li><cite>‘WELD’</cite></li>
+<li><cite>‘LINE’</cite></li>
+<li><cite>‘PULLEY’</cite></li>
+<li><cite>‘MOTOR’</cite></li>
+<li><cite>‘CUSTOM’</cite></li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only</p>
+</div>
+</div>
+<div class="section" id="world">
+<span id="index-31"></span><h3>18.7.3.2. <cite>world</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#world" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>The current <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#physics2d-world"><em>World</em></a> object that this constraint is assigned to.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only</p>
+</div>
+</div>
+<div class="section" id="sleeping">
+<span id="index-32"></span><h3>18.7.3.3. <cite>sleeping</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#sleeping" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Whether this constraint object is currently sleeping in an ongoing simulation.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only</p>
+</div>
+</div>
+<div class="section" id="userdata">
+<span id="index-33"></span><h3>18.7.3.4. <cite>userData</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#userdata" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Field to which you may assign whatever data you wish.</p>
+</div>
+<div class="section" id="dimension">
+<span id="index-34"></span><h3>18.7.3.5. <cite>dimension</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#dimension" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>The dimension of this constraint.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only.</p>
+</div>
+</div>
+<div class="section" id="bodya">
+<span id="index-35"></span><h3>18.7.3.6. <cite>bodyA</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#bodya" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>The first <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> associated with this constraint.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only.
+Not defined for constraint type Custom.</p>
+</div>
+</div>
+<div class="section" id="bodyb">
+<span id="index-36"></span><h3>18.7.3.7. <cite>bodyB</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#bodyb" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>The second <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> associated with this constraint.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only.
+Not defined for constraint type Custom.</p>
+</div>
+</div>
+<div class="section" id="bodyc">
+<span id="index-37"></span><h3>18.7.3.8. <cite>bodyC</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#bodyc" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>The third <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> associated with this constraint.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only.
+Defined only for constraint type Pulley.</p>
+</div>
+</div>
+<div class="section" id="bodyd">
+<span id="index-38"></span><h3>18.7.3.9. <cite>bodyD</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#bodyd" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>The fourth <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> associated with this constraint.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only.
+Defined only for constraint type Pulley.</p>
+</div>
+</div>
+<div class="section" id="bodies">
+<span id="index-39"></span><h3>18.7.3.10. <cite>bodies</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_constraint_api.html#bodies" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set of <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> objects associated with this <cite>CustomConstraint</cite>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only.
+Defined only for constraint type Custom.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="http://docs.turbulenz.com/genindex.html" title="General Index">index</a></li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2d_debugdraw_api.html" title="18.8. The Physics2DDebugDraw Object">next</a> |</li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2d_collisionutils_api.html" title="18.6. The CollisionUtils Object">previous</a> |</li>
+        <li><a href="http://docs.turbulenz.com/index.html">Turbulenz 0.28.0 documentation</a> »</li>
+          <li><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_api.html">18. Low Level 2D Physics API</a> »</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        © Copyright 2010-2014, Turbulenz Limited.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  
+</body></html>

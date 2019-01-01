@@ -186,6 +186,19 @@ export default class CRigidBody extends CController {
         return this._freezeConstraint !== undefined;
     }
 
+    set material(material) {
+
+        if (material instanceof TURB.Physics2DMaterial) {
+            this._material = material;
+        } else {
+            this._material = CPhysicsCtrl.get().engine.createMaterial(material);
+        }
+    }
+
+    get material() {
+        return this._material;
+    }
+
     set elasticity(elasticity) {
         let m = this._material;
         this._material = CPhysicsCtrl.get().engine.createMaterial({
@@ -203,6 +216,7 @@ export default class CRigidBody extends CController {
     }
 
     set staticFriction(staticFriction) {
+        if (staticFriction <= 0) console.warn('Static friction should be > 0');
         let m = this._material;
         this._material = CPhysicsCtrl.get().engine.createMaterial({
             elasticity: m.getElasticity(),
@@ -219,6 +233,7 @@ export default class CRigidBody extends CController {
     }
 
     set dynamicFriction(dynamicFriction) {
+        if (dynamicFriction <= 0) console.warn('Dynamic friction should be > 0');
         let m = this._material;
         this._material = CPhysicsCtrl.get().engine.createMaterial({
             elasticity: m.getElasticity(),
@@ -235,6 +250,7 @@ export default class CRigidBody extends CController {
     }
 
     set rollingFriction(rollingFriction) {
+        if (rollingFriction <= 0) console.warn('Rolling friction should be > 0');
         let m = this._material;
         this._material = CPhysicsCtrl.get().engine.createMaterial({
             elasticity: m.getElasticity(),
@@ -448,15 +464,15 @@ export default class CRigidBody extends CController {
         let pos = this._worldPosition.get();
         pos.x *= CStage.get()._options.pixelsPerMeter;
         pos.y *= CStage.get()._options.pixelsPerMeter;
-        if (pos.x !== sprite.x || pos.y !== sprite.y) {
+        let rotation = this.rigidBody.getRotation();
+        if (pos.x !== sprite.x || pos.y !== sprite.y || rotation !== sprite.rotation) {
             sprite.x = pos.x;
             sprite.y = pos.y;
-            this._target.emit('position', {x: sprite.x, y: sprite.y});
+            sprite.rotation = rotation;
+            this._target.emit('position', {x: pos.x, y: pos.y, rotation: rotation});
+            if (this._target._destroyed) return;
         }
-        sprite.rotation = this.rigidBody.getRotation();
-
         showShapes.call(this);
-
     }
 
     destroy() {

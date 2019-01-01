@@ -31,7 +31,6 @@ const DEFAULT_OPTIONS = {
     origin: 'center',
     autoStart: true,
     antialias: true,
-    autoStopPropagation: true,
     // resolution: window.devicePixelRatio,
 
     // Effects options

@@ -1,0 +1,603 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0064)http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <title>18.11. The Shape Object — Turbulenz 0.28.0 documentation</title>
+    
+    <link rel="stylesheet" href="./18.11. The Shape Object — Turbulenz 0.28.0 documentation_files/sphinxdoc.css" type="text/css">
+    <link rel="stylesheet" href="./18.11. The Shape Object — Turbulenz 0.28.0 documentation_files/pygments.css" type="text/css">
+    
+    <script type="text/javascript" async="" src="./18.11. The Shape Object — Turbulenz 0.28.0 documentation_files/ga.js.download"></script><script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.28.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="./18.11. The Shape Object — Turbulenz 0.28.0 documentation_files/jquery.js.download"></script>
+    <script type="text/javascript" src="./18.11. The Shape Object — Turbulenz 0.28.0 documentation_files/underscore.js.download"></script>
+    <script type="text/javascript" src="./18.11. The Shape Object — Turbulenz 0.28.0 documentation_files/doctools.js.download"></script>
+    <link rel="top" title="Turbulenz 0.28.0 documentation" href="http://docs.turbulenz.com/index.html">
+    <link rel="up" title="18. Low Level 2D Physics API" href="http://docs.turbulenz.com/jslibrary_api/physics2d_api.html">
+    <link rel="next" title="18.12. The World Object" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html">
+    <link rel="prev" title="18.10. The Material Object" href="http://docs.turbulenz.com/jslibrary_api/physics2d_material_api.html">
+ 
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-10614584-10']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="http://docs.turbulenz.com/genindex.html" title="General Index" accesskey="I">index</a></li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html" title="18.12. The World Object" accesskey="N">next</a> |</li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2d_material_api.html" title="18.10. The Material Object" accesskey="P">previous</a> |</li>
+        <li><a href="http://docs.turbulenz.com/index.html">Turbulenz 0.28.0 documentation</a> »</li>
+          <li><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_api.html" accesskey="U">18. Low Level 2D Physics API</a> »</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="http://docs.turbulenz.com/index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#">18.11. The Shape Object</a><ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#constructor">18.11.1. Constructor</a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#methods">18.11.2. Methods</a><ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#getgroup">18.11.2.1. <cite>getGroup</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#setgroup">18.11.2.2. <cite>setGroup</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#getmask">18.11.2.3. <cite>getMask</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#setmask">18.11.2.4. <cite>setMask</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#getmaterial">18.11.2.5. <cite>getMaterial</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#setmaterial">18.11.2.6. <cite>setMaterial</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#computearea">18.11.2.7. <cite>computeArea</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#computemasslessinertia">18.11.2.8. <cite>computeMasslessInertia</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#computecenterofmass">18.11.2.9. <cite>computeCenterOfMass</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#clone">18.11.2.10. <cite>clone</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#addeventlistener">18.11.2.11. <cite>addEventListener</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#removeeventlistener">18.11.2.12. <cite>removeEventListener</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#scale">18.11.2.13. <cite>scale</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#translate">18.11.2.14. <cite>translate</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#rotate">18.11.2.15. <cite>rotate</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#transform">18.11.2.16. <cite>transform</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#getorigin">18.11.2.17. <cite>getOrigin</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#setorigin">18.11.2.18. <cite>setOrigin</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#getradius">18.11.2.19. <cite>getRadius</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#setradius">18.11.2.20. <cite>setRadius</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#setvertices">18.11.2.21. <cite>setVertices</cite></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#properties">18.11.3. Properties</a><ul>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#type">18.11.3.1. <cite>type</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#index-23">18.11.3.2. <cite>id</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#sensor">18.11.3.3. <cite>sensor</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#userdata">18.11.3.4. <cite>userData</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#arbiters">18.11.3.5. <cite>arbiters</cite></a></li>
+<li><a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#body">18.11.3.6. <cite>body</cite></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_material_api.html" title="previous chapter">18.10. The Material Object</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html" title="next chapter">18.12. The World Object</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="http://docs.turbulenz.com/_sources/jslibrary_api/physics2d_shape_api.txt" rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="">
+  <h3>Quick search</h3>
+    <form class="search" action="http://docs.turbulenz.com/search.html" method="get">
+      <input type="text" name="q">
+      <input type="submit" value="Go">
+      <input type="hidden" name="check_keywords" value="yes">
+      <input type="hidden" name="area" value="default">
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="the-shape-object">
+<span id="physics2d-polygon"></span><span id="physics2d-circle"></span><span id="physics2d-shape"></span><h1>18.11. The Shape Object<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#the-shape-object" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="constructor">
+<h2>18.11.1. Constructor<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#constructor" title="Permalink to this headline">¶</a></h2>
+<p>A Shape object can be constructed with <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#physics2ddevice-createcircle"><em>Physics2DDevice.createCircleShape</em></a> and <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#physics2ddevice-createpolygon"><em>Physics2DDevice.createPolygonShape</em></a>.</p>
+<p id="physics2d-shape-parameters">Constructors for shapes take many common parameters which are listed below</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+   <span class="nx">sensor</span> <span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+   <span class="nx">material</span> <span class="o">:</span> <span class="nx">mat</span><span class="p">,</span>
+   <span class="nx">group</span> <span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+   <span class="nx">mask</span> <span class="o">:</span> <span class="mh">0xffffffff</span><span class="p">,</span>
+   <span class="nx">userData</span> <span class="o">:</span> <span class="kc">null</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">sensor</span></tt> (Optional)</dt>
+<dd><p class="first">If true, shape will perform only collision detection, with no contact points generated. The shape will not physically collide.</p>
+<p class="last">Default value is <cite>false</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">material</span></tt> (Optional)</dt>
+<dd><p class="first">The <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_material_api.html#physics2d-material"><em>Material</em></a> object to assign to this shape.</p>
+<p class="last">Default value is <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2ddevice_api.html#physics2ddevice-getdefmat"><em>Physics2DDevice.getDefaultMaterial()</em></a>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">group</span></tt> (Optional)</dt>
+<dd><p class="first">The <cite>group</cite> bitmask for this shape. Two shapes will interact only if <cite>(a.group &amp; b.mask !== 0) &amp;&amp; (b.group &amp; a.mask !== 0)</cite>.</p>
+<p class="last">Default value is <cite>1</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">mask</span></tt> (Optional)</dt>
+<dd><p class="first">The <cite>mask</cite> bitmask for this shape. Two shapes will interact only if <cite>(a.group &amp; b.mask !== 0) &amp;&amp; (b.group &amp; a.mask !== 0)</cite>.</p>
+<p class="last">Default value is <cite>0xffffffff</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">userData</span></tt> (Optional)</dt>
+<dd><p class="first">Field for storing whatever data you wish.</p>
+<p class="last">Default value is <cite>null</cite>.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="methods">
+<h2>18.11.2. Methods<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#methods" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="getgroup">
+<span id="index-1"></span><h3>18.11.2.1. <cite>getGroup</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#getgroup" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Get the group bitmask for this Shape.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">group</span> <span class="o">=</span> <span class="nx">shape</span><span class="p">.</span><span class="nx">getGroup</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setgroup">
+<span id="index-2"></span><h3>18.11.2.2. <cite>setGroup</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#setgroup" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the group bitmask for this Shape.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">shape</span><span class="p">.</span><span class="nx">setGroup</span><span class="p">(</span><span class="nx">group</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">group</span></tt></dt>
+<dd>The new group bitmask for this Shape.</dd>
+</dl>
+</div>
+<div class="section" id="getmask">
+<span id="index-3"></span><h3>18.11.2.3. <cite>getMask</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#getmask" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Get the mask bitmask for this Shape.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">mask</span> <span class="o">=</span> <span class="nx">shape</span><span class="p">.</span><span class="nx">getMask</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setmask">
+<span id="index-4"></span><h3>18.11.2.4. <cite>setMask</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#setmask" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the mask bitmask for this Shape.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">shape</span><span class="p">.</span><span class="nx">setMask</span><span class="p">(</span><span class="nx">mask</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">mask</span></tt></dt>
+<dd>The new mask bitmask for this Shape.</dd>
+</dl>
+</div>
+<div class="section" id="getmaterial">
+<span id="index-5"></span><h3>18.11.2.5. <cite>getMaterial</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#getmaterial" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Get the current <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_material_api.html#physics2d-material"><em>Material</em></a> object assigned to this Shape.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">material</span> <span class="o">=</span> <span class="nx">shape</span><span class="p">.</span><span class="nx">getMaterial</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setmaterial">
+<span id="index-6"></span><h3>18.11.2.6. <cite>setMaterial</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#setmaterial" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_material_api.html#physics2d-material"><em>Material</em></a> object for this Shape.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">shape</span><span class="p">.</span><span class="nx">setMaterial</span><span class="p">(</span><span class="nx">material</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="computearea">
+<span id="index-7"></span><h3>18.11.2.7. <cite>computeArea</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#computearea" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Compute the area of this shape in units of squared meters.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">area</span> <span class="o">=</span> <span class="nx">shape</span><span class="p">.</span><span class="nx">computeArea</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="computemasslessinertia">
+<span id="index-8"></span><h3>18.11.2.8. <cite>computeMasslessInertia</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#computemasslessinertia" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Compute the moment of inertia of this shape, without multiplication by the shape mass.</p>
+<p>The full moment of inertia for this shape would be computed with <cite>shape.getArea() * shape.getMasslessInertia() * shape.getMaterial().getDensity()</cite>.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">masslessInertia</span> <span class="o">=</span> <span class="nx">shape</span><span class="p">.</span><span class="nx">computeMasslessInertia</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="computecenterofmass">
+<span id="index-9"></span><h3>18.11.2.9. <cite>computeCenterOfMass</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#computecenterofmass" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Compute the center of mass for this Shape in local coordinates.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">com</span> <span class="o">=</span> <span class="nx">shape</span><span class="p">.</span><span class="nx">computeCenterOfMass</span><span class="p">();</span>
+<span class="c1">// or</span>
+<span class="nx">shape</span><span class="p">.</span><span class="nx">computeCenterOfMass</span><span class="p">(</span><span class="nx">com</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">com</span></tt> (Optional)</dt>
+<dd>If specified, then the center of mass will be stored in this array. Otherwise a new array will be created.</dd>
+</dl>
+</div>
+<div class="section" id="clone">
+<span id="index-10"></span><h3>18.11.2.10. <cite>clone</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#clone" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Produce an exact clone of this Shape.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">clone</span> <span class="o">=</span> <span class="nx">shape</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="addeventlistener">
+<span id="index-11"></span><h3>18.11.2.11. <cite>addEventListener</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#addeventlistener" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Add a new event listener for this Shape.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">success</span> <span class="o">=</span> <span class="nx">shape</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="nx">eventType</span><span class="p">,</span> <span class="nx">handler</span><span class="p">,</span> <span class="nx">mask</span><span class="p">,</span> <span class="nx">isDeterministic</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">eventType</span></tt></dt>
+<dd><p class="first">One of:</p>
+<dl class="last docutils">
+<dt><cite>‘begin’</cite></dt>
+<dd>Issued when this shape has begun interacting with another.</dd>
+<dt><cite>‘end’</cite></dt>
+<dd>Issued when this shape has stopped interacting with another. This event is issued even when one of the interacting shapes is removed from the simulation world.</dd>
+<dt><cite>‘progress’</cite></dt>
+<dd>Issued for each simulation step between issue of the <cite>begin</cite> and <cite>end</cite> events for which the interaction is actively occurring, as well as a single issue for the simulation step in which the interaction is deactivated due to objects being put to sleep.</dd>
+<dt><cite>‘preSolve’</cite></dt>
+<dd><p class="first">A special event type. This event is <strong>not</strong> deferred until the end of a simulation step, and occurs during collision detection for collision type interactions only once contact points have been computed, but before any physics is performed.</p>
+<p>The handler for this event type is permitted only to mutate the <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_arbiter_api.html#physics2d-arbiter"><em>Arbiter</em></a> object it is supplied, and this is the only time such mutation is permitted.</p>
+<p class="last">This event is used to set friction and elasticity values on the <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_arbiter_api.html#physics2d-arbiter"><em>Arbiter</em></a> manually, as well as being able to ignore collisions for such things as one-way platforms.</p>
+</dd>
+</dl>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">handler</span></tt></dt>
+<dd><p class="first">Function to be called when event occurs.</p>
+<p class="last">This function is supplied with the <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_arbiter_api.html#physics2d-arbiter"><em>Arbiter</em></a> object for the interaction, and the other <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#physics2d-shape"><em>Shape</em></a> involved. The function’s <cite>this</cite> object will be set as the <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#physics2d-shape"><em>Shape</em></a> for which the event was generated.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">mask</span></tt> (Optional)</dt>
+<dd><p class="first">A bitmask to use to selectively decide what other <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#physics2d-shape"><em>Shape</em></a> objects this event should be issued for.</p>
+<p class="last">Default value is <cite>undefined</cite>, which is considered a separate listener instance and semantically has the same behavior as using a mask of <cite>0xffffffff</cite>.</p>
+</dd>
+<dt><tt class="docutils literal"><span class="pre">isDeterministic</span></tt> (Optional)</dt>
+<dd><p class="first">This parameter is only for use with <cite>preSolve</cite> type events.</p>
+<p>Default value is <cite>false</cite>.</p>
+<p>This parameter should be set to <cite>true</cite> if the handler for the <cite>preSolve</cite> event is a deterministic function.</p>
+<p>A handler is <cite>deterministic</cite>, if its side effects with respect to the <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_arbiter_api.html#physics2d-arbiter"><em>Arbiter</em></a> object are not dependent on any external information. The invocation of this function must have the exact same side effects for the same input.</p>
+<p>If a handler is <cite>deterministic</cite>, then Physics2D will permit rigid bodies which are interacting in a non-persistent state to go to sleep, whereas for a non-deterministic handler this cannot be permitted.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">deterministicHandler</span><span class="p">(</span><span class="nx">arbiter</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">normal</span> <span class="o">=</span> <span class="nx">arbiter</span><span class="p">.</span><span class="nx">getNormal</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">normal</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">arbiter</span><span class="p">.</span><span class="nx">setAcceptedState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">nonDeterministicHandler</span><span class="p">(</span><span class="nx">arbiter</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">TurbulenzEngine</span><span class="p">.</span><span class="nx">time</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">)</span> <span class="c1">// &lt;-- This condition makes handler non-deterministic</span>
+    <span class="p">{</span>
+        <span class="nx">arbiter</span><span class="p">.</span><span class="nx">setAcceptedState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the first case, Physics2D is permitted to put the objects to sleep as it can never be the case that the Arbiter’s normal will change, and that side effects of the handler will change as a result.</p>
+<p>In the second case however, Physics2D is not permitted to put the objects to sleep, as we cannot know when <cite>TurblenzEngine.time</cite> will pass 1000 and wake up the objects in an automated way.</p>
+<p>It is in most cases possible to transform a non-deterministic handler, into a set of deterministic ones in a finite state machine. In this example we could transform the logic into:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">Pre1000Handler</span><span class="p">(</span><span class="nx">arbiter</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+<span class="kd">function</span> <span class="nx">Post1000Handler</span><span class="p">(</span><span class="nx">arbiter</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">arbiter</span><span class="p">.</span><span class="nx">setAcceptedState</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>And use appropriate calls to <cite>addEventListener</cite> and <cite>removeEventListener</cite> when <cite>TurbulenzEngine.time &gt; 1000</cite> becomes <cite>true</cite>, noting that both handlers are now trivially deterministic.</p>
+<p class="last">If the handler always puts the <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_arbiter_api.html#physics2d-arbiter"><em>Arbiter</em></a> into a persistent state, then the determinism of the handler is no longer important, but it should still be set as a matter of good practice.</p>
+</dd>
+</dl>
+<p>This function will fail and return <cite>false</cite> if the event type was not recognized, or if an existing <cite>(handler, mask)</cite> pair exists for the given event type. We consider an <cite>undefined</cite> mask as being separate from it’s semantic equivalent <cite>0xffffffff</cite>.</p>
+<p>Example:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">function</span> <span class="nx">spikesOfDoomHandler</span><span class="p">(</span><span class="nx">arbiter</span><span class="p">,</span> <span class="nx">otherShape</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">bodyToRemove</span> <span class="o">=</span> <span class="nx">otherShape</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+    <span class="nx">bodyToRemove</span><span class="p">.</span><span class="nx">world</span><span class="p">.</span><span class="nx">removeRigidBody</span><span class="p">(</span><span class="nx">bodyToRemove</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">oneWayHandler</span><span class="p">(</span><span class="nx">arbiter</span><span class="p">,</span> <span class="nx">otherShape</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// May need to reverse direction of normal.</span>
+    <span class="kd">var</span> <span class="nx">flip</span> <span class="o">=</span> <span class="p">(</span><span class="nx">arbiter</span><span class="p">.</span><span class="nx">shapeA</span> <span class="o">!==</span> <span class="k">this</span><span class="p">);</span>
+
+    <span class="c1">// If object is colliding from below, ignore collision</span>
+    <span class="k">if</span> <span class="p">((</span><span class="nx">arbiter</span><span class="p">.</span><span class="nx">getNormal</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">!==</span> <span class="nx">flip</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">arbiter</span><span class="p">.</span><span class="nx">setAcceptedState</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+        <span class="nx">arbiter</span><span class="p">.</span><span class="nx">setPersistentState</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">spikeShape</span><span class="p">.</span><span class="nx">addEventlistener</span><span class="p">(</span><span class="s1">'begin'</span><span class="p">,</span> <span class="nx">spikesOfDoomHandler</span><span class="p">,</span> <span class="nx">PLAYER_GROUP</span><span class="p">);</span>
+<span class="nx">platformShape</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'preSolve'</span><span class="p">,</span> <span class="nx">oneWayHandler</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>As the <cite>begin</cite> event is deferred until the end of the simulation step, it is safe to remove rigid bodies from the world. We make use of the fact that <cite>this</cite> is set to the shape on which the event was defined to choose the player shape which collided with the spikes.</p>
+<p>The platform shape is given a <cite>preSolve</cite> event listener, which based on the direction of the contact normal decides to either continue as though nothing happened, or decide to ignore the collision in a persistent state meaning that the handler will no longer be called, and the interaction will be completely ignored until the objects seperate. We take care to reverse the logic depending on the order of the shapes using the knowledge that the <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_arbiter_api.html#physics2d-arbiter"><em>Arbiter</em></a> normal will always point from <cite>shapeA</cite> to <cite>shapeB</cite>.</p>
+<p>We use a mask of <cite>undefined</cite> (could equally use <cite>0xffffffff</cite>) so that every object will interact via this handler.</p>
+<p>As we do not set a persistent state in all cases, it’s important we define this handler as <cite>deterministic</cite> (which it is), so that should an object be resting on-top of the platform it will be permitted to go to sleep.</p>
+</div>
+<div class="section" id="removeeventlistener">
+<span id="index-12"></span><h3>18.11.2.12. <cite>removeEventListener</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#removeeventlistener" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Remove event listener from this shape.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">shape</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="nx">eventType</span><span class="p">,</span> <span class="nx">handler</span><span class="p">,</span> <span class="nx">mask</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="scale">
+<span id="index-13"></span><h3>18.11.2.13. <cite>scale</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#scale" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Apply a scaling transformation to the Shape in the local coordinate system.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">shape</span><span class="p">.</span><span class="nx">scale</span><span class="p">(</span><span class="nx">scaleX</span><span class="p">,</span> <span class="nx">scaleY</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">scaleX</span></tt></dt>
+<dd>The scaling in x-axis direction.</dd>
+<dt><tt class="docutils literal"><span class="pre">scaleY</span></tt> (Optional)</dt>
+<dd><p class="first">The scaling in y-axis direction, this parameter is ignored for Circle shapes.</p>
+<p class="last">If unspecified, is given the value of <cite>scaleX</cite> parameter.</p>
+</dd>
+</dl>
+<p>This method will fail if used on a shape belonging to a <cite>static</cite> type <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> which is inside of a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#physics2d-world"><em>World</em></a>.</p>
+</div>
+<div class="section" id="translate">
+<span id="index-14"></span><h3>18.11.2.14. <cite>translate</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#translate" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Apply a translation transformation to the Shape in the local coordinate system.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">shape</span><span class="p">.</span><span class="nx">translate</span><span class="p">(</span><span class="nx">translation</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">translation</span></tt></dt>
+<dd>The translation (x, y) to apply to the Shape.</dd>
+</dl>
+<p>This method will fail if used on a shape belonging to a <cite>static</cite> type <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> which is inside of a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#physics2d-world"><em>World</em></a>.</p>
+</div>
+<div class="section" id="rotate">
+<span id="index-15"></span><h3>18.11.2.15. <cite>rotate</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#rotate" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Apply a rotation transformation to the Shape in the local coordinate system.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">shape</span><span class="p">.</span><span class="nx">rotate</span><span class="p">(</span><span class="nx">clockwiseRadians</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">angle</span></tt></dt>
+<dd>The angle to rotate Shape by given in clockwise radians.</dd>
+</dl>
+<p>This method will fail if used on a shape belonging to a <cite>static</cite> type <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> which is inside of a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#physics2d-world"><em>World</em></a>.</p>
+</div>
+<div class="section" id="transform">
+<span id="index-16"></span><h3>18.11.2.16. <cite>transform</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#transform" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Apply a general 2D transformation matrix to the Shape in the local coordinate system.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">shape</span><span class="p">.</span><span class="nx">transform</span><span class="p">(</span><span class="nx">matrix</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">matrix</span></tt></dt>
+<dd><p class="first">The 2x3 transformation matrix (row-major order) to transform Shape by.</p>
+<p class="last">This matrix must not be singular, and for Circles should be such that any circle is transformed into any other circle (No non-equal scaling, or shearing). Circle radius is transformed by querying the determinant of the matrix so that this method will not fail when supplied with an ill-formed matrix.</p>
+</dd>
+</dl>
+<p>This method will fail if used on a shape belonging to a <cite>static</cite> type <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> which is inside of a <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html#physics2d-world"><em>World</em></a>.</p>
+</div>
+<div class="section" id="getorigin">
+<span id="index-17"></span><h3>18.11.2.17. <cite>getOrigin</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#getorigin" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Get the locally defined origin for Circle shape.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">origin</span> <span class="o">=</span> <span class="nx">circle</span><span class="p">.</span><span class="nx">getOrigin</span><span class="p">();</span>
+<span class="c1">// or</span>
+<span class="nx">circle</span><span class="p">.</span><span class="nx">getOrigin</span><span class="p">(</span><span class="nx">origin</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">origin</span></tt> (Optional)</dt>
+<dd>If specified, then the origin will be stored in this array. Otherwise a new array will be created.</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This method exists only for Circle shapes.</p>
+</div>
+</div>
+<div class="section" id="setorigin">
+<span id="index-18"></span><h3>18.11.2.18. <cite>setOrigin</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#setorigin" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the locally defined origin for Circle shape.</p>
+<p>This method is ignored should this Circle be part of a <cite>static</cite> body which is inside of a World, or if part of a body that is inside of a world and we are in the middle of a world step.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">origin</span> <span class="o">=</span> <span class="nx">circle</span><span class="p">.</span><span class="nx">getOrigin</span><span class="p">();</span>
+<span class="c1">// or</span>
+<span class="nx">circle</span><span class="p">.</span><span class="nx">getOrigin</span><span class="p">(</span><span class="nx">origin</span><span class="p">);</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">origin</span></tt> (Optional)</dt>
+<dd>If specified, then the origin will be stored in this array. Otherwise a new array will be created.</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This method exists only for Circle shapes.</p>
+</div>
+</div>
+<div class="section" id="getradius">
+<span id="index-19"></span><h3>18.11.2.19. <cite>getRadius</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#getradius" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Get the radius for Circle shape.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">radius</span> <span class="o">=</span> <span class="nx">circle</span><span class="p">.</span><span class="nx">getRadius</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This method exists only for Circle shapes.</p>
+</div>
+</div>
+<div class="section" id="setradius">
+<span id="index-20"></span><h3>18.11.2.20. <cite>setRadius</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#setradius" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the radius of the Circle shapes.</p>
+<p>This method is ignored should this Circle be part of a <cite>static</cite> body which is inside of a World, or if part of a body that is inside of a world and we are in the middle of a world step.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">circle</span><span class="p">.</span><span class="nx">setRadius</span><span class="p">(</span><span class="nx">radius</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This method exists only for Circle shapes.</p>
+</div>
+</div>
+<div class="section" id="setvertices">
+<span id="index-21"></span><h3>18.11.2.21. <cite>setVertices</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#setvertices" title="Permalink to this headline">¶</a></h3>
+<p><strong>Summary</strong></p>
+<p>Set the vertices of the Polygon shape.</p>
+<p>This method is ignored should this Polygon be part of a <cite>static</cite> body which is inside of a World, or if part of a body that is inside of a world and we are in the middle of a world step.</p>
+<p>This method is most efficient when the number of vertices is unchanged.</p>
+<p><strong>Syntax</strong></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">polygon</span><span class="p">.</span><span class="nx">setVertices</span><span class="p">(</span><span class="nx">newVertexList</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This method exists only for Polygon shapes.</p>
+</div>
+</div>
+</div>
+<div class="section" id="properties">
+<h2>18.11.3. Properties<a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#properties" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="type">
+<span id="index-22"></span><h3>18.11.3.1. <cite>type</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#type" title="Permalink to this headline">¶</a></h3>
+<p>A string identifying the type of this Shape object, one of:</p>
+<ul class="simple">
+<li><cite>‘CIRCLE’</cite></li>
+<li><cite>‘POLYGON’</cite></li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only</p>
+</div>
+</div>
+<div class="section" id="index-23">
+<span id="id"></span><h3>18.11.3.2. <cite>id</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#index-23" title="Permalink to this headline">¶</a></h3>
+<p>A unique integer identifier for this Shape object.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only</p>
+</div>
+</div>
+<div class="section" id="sensor">
+<span id="index-24"></span><h3>18.11.3.3. <cite>sensor</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#sensor" title="Permalink to this headline">¶</a></h3>
+<p>Whether this shape was created as a sensor, or collider.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only</p>
+</div>
+</div>
+<div class="section" id="userdata">
+<span id="index-25"></span><h3>18.11.3.4. <cite>userData</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#userdata" title="Permalink to this headline">¶</a></h3>
+<p>A field for any data you wish to store on this Shape.</p>
+</div>
+<div class="section" id="arbiters">
+<span id="index-26"></span><h3>18.11.3.5. <cite>arbiters</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#arbiters" title="Permalink to this headline">¶</a></h3>
+<p>An array of all <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_arbiter_api.html#physics2d-arbiter"><em>Arbiter</em></a> objects containing contact information about this Shape and its interactors.</p>
+<p>Removing a shape or body from the simulation world may mutate this list, and such actions should be avoided if iterating over it.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only</p>
+</div>
+</div>
+<div class="section" id="body">
+<span id="index-27"></span><h3>18.11.3.6. <cite>body</cite><a class="headerlink" href="http://docs.turbulenz.com/jslibrary_api/physics2d_shape_api.html#body" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="http://docs.turbulenz.com/jslibrary_api/physics2d_body_api.html#physics2d-body"><em>RigidBody</em></a> this Shape is presently assigned to.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Read Only</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="http://docs.turbulenz.com/genindex.html" title="General Index">index</a></li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2d_world_api.html" title="18.12. The World Object">next</a> |</li>
+        <li class="right">
+          <a href="http://docs.turbulenz.com/jslibrary_api/physics2d_material_api.html" title="18.10. The Material Object">previous</a> |</li>
+        <li><a href="http://docs.turbulenz.com/index.html">Turbulenz 0.28.0 documentation</a> »</li>
+          <li><a href="http://docs.turbulenz.com/jslibrary_api/physics2d_api.html">18. Low Level 2D Physics API</a> »</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        © Copyright 2010-2014, Turbulenz Limited.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  
+</body></html>
