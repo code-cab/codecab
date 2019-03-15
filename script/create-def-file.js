@@ -5,6 +5,8 @@ require('tern/plugin/webpack');
 let fs = require('fs');
 let path = require('path');
 
+const outputFilename = process.argv[process.argv.length - 1];
+console.log("Output: " + outputFilename);
 
 /*
  The original defs does not eat the path value well when used in a multi module environment
@@ -84,7 +86,7 @@ server.flush(function (err) {
     server.flush(function (err) {
         if (err) throw err;
         console.log('Def is ok');
-        fs.writeFileSync('./codecab-def.json', json, 'utf8');
+        fs.writeFileSync(outputFilename, json, 'utf8');
 
         process.exit(0);
     });
