@@ -1,0 +1,1291 @@
+{
+  "!name": "./src/windowscope.js",
+  "!define": {
+    "CStage.prototype.!proto": {
+      "_destroyed": "bool",
+      "_eventsCount": "number",
+      "destroy": "!modules.src/CObject`js.default.prototype.destroy",
+      "promise": "!modules.src/CObject`js.default.prototype.promise",
+      "__doStart": "!modules.src/CObject`js.default.prototype.__doStart",
+      "onStart": "!modules.src/CObject`js.default.prototype.onStart",
+      "on": "!modules.src/CObject`js.default.prototype.on",
+      "off": "!modules.src/CObject`js.default.prototype.off",
+      "onFrame": "!modules.src/CObject`js.default.prototype.onFrame",
+      "nextFrame": "!modules.src/CObject`js.default.prototype.nextFrame",
+      "delay": "!modules.src/CObject`js.default.prototype.delay",
+      "forever": "!modules.src/CObject`js.default.prototype.forever",
+      "repeat": "!modules.src/CObject`js.default.prototype.repeat",
+      "during": "!modules.src/CObject`js.default.prototype.during"
+    },
+    "CStage.prototype.tween.!0": {},
+    "CStage.prototype._on.!1": {
+      "rotation": "number",
+      "enable": "bool",
+      "stage": "+CStage",
+      "destroy": "!modules.src/CChildObject`js.default.prototype.destroy",
+      "goto": "!modules.src/CChildObject`js.default.prototype.goto",
+      "getDistanceTo": "!modules.src/CChildObject`js.default.prototype.getDistanceTo",
+      "getDirectionTo": "!modules.src/CChildObject`js.default.prototype.getDirectionTo",
+      "setEffect": "!modules.src/CChildObject`js.default.prototype.setEffect",
+      "clearEffects": "!modules.src/CChildObject`js.default.prototype.clearEffects",
+      "glideTo": "!modules.src/CChildObject`js.default.prototype.glideTo",
+      "tween": "!modules.src/CChildObject`js.default.prototype.tween",
+      "toFront": "!modules.src/CChildObject`js.default.prototype.toFront",
+      "isKeyPressed": "!modules.src/CChildObject`js.default.prototype.isKeyPressed",
+      "onKeyPress": "!modules.src/CChildObject`js.default.prototype.onKeyPress",
+      "onKeyDown": "!modules.src/CChildObject`js.default.prototype.onKeyDown",
+      "onKeyUp": "!modules.src/CChildObject`js.default.prototype.onKeyUp",
+      "onClick": "!modules.src/CChildObject`js.default.prototype.onClick",
+      "onPointerDown": "!modules.src/CChildObject`js.default.prototype.onPointerDown",
+      "onPointerUp": "!modules.src/CChildObject`js.default.prototype.onPointerUp",
+      "onPointerMove": "!modules.src/CChildObject`js.default.prototype.onPointerMove",
+      "on": "!modules.src/CChildObject`js.default.prototype.on",
+      "unbind": "!modules.src/CChildObject`js.default.prototype.unbind",
+      "broadcast": "!modules.src/CChildObject`js.default.prototype.broadcast",
+      "onStart": "!modules.src/CChildObject`js.default.prototype.onStart"
+    },
+    "CStage.prototype.addController.!ret": {
+      "__target": "+CStage"
+    },
+    "CSprite.prototype.!proto": {
+      "rotation": "number",
+      "enable": "bool",
+      "stage": "+CStage",
+      "destroy": "!modules.src/CChildObject`js.default.prototype.destroy",
+      "goto": "!modules.src/CChildObject`js.default.prototype.goto",
+      "getDistanceTo": "!modules.src/CChildObject`js.default.prototype.getDistanceTo",
+      "getDirectionTo": "!modules.src/CChildObject`js.default.prototype.getDirectionTo",
+      "setEffect": "!modules.src/CChildObject`js.default.prototype.setEffect",
+      "clearEffects": "!modules.src/CChildObject`js.default.prototype.clearEffects",
+      "glideTo": "!modules.src/CChildObject`js.default.prototype.glideTo",
+      "tween": "!modules.src/CChildObject`js.default.prototype.tween",
+      "toFront": "!modules.src/CChildObject`js.default.prototype.toFront",
+      "isKeyPressed": "!modules.src/CChildObject`js.default.prototype.isKeyPressed",
+      "onKeyPress": "!modules.src/CChildObject`js.default.prototype.onKeyPress",
+      "onKeyDown": "!modules.src/CChildObject`js.default.prototype.onKeyDown",
+      "onKeyUp": "!modules.src/CChildObject`js.default.prototype.onKeyUp",
+      "onClick": "!modules.src/CChildObject`js.default.prototype.onClick",
+      "onPointerDown": "!modules.src/CChildObject`js.default.prototype.onPointerDown",
+      "onPointerUp": "!modules.src/CChildObject`js.default.prototype.onPointerUp",
+      "onPointerMove": "!modules.src/CChildObject`js.default.prototype.onPointerMove",
+      "on": "!modules.src/CChildObject`js.default.prototype.on",
+      "unbind": "!modules.src/CChildObject`js.default.prototype.unbind",
+      "broadcast": "!modules.src/CChildObject`js.default.prototype.broadcast",
+      "onStart": "!modules.src/CChildObject`js.default.prototype.onStart"
+    },
+    "CSprite.prototype.addController.!ret": {
+      "__target": "+CSprite"
+    },
+    "CSprite.prototype.text.!1": {
+      "type": "string"
+    },
+    "CGroup.prototype.add.!0": "[?]",
+    "CGroup.prototype.remove.!0": "[?]",
+    "CGroup.!1": {},
+    "CJoint.prototype._updateOffset.!0": {
+      "lowerBound": "number",
+      "upperBound": "number",
+      "axis": "CJoint.!5.axis",
+      "anchorA": "CJoint.!5.anchorA"
+    },
+    "CJoint.!5": {
+      "axis": "[number]",
+      "lowerBound": "number",
+      "upperBound": "number",
+      "anchorA": "[number]"
+    },
+    "CMotorizedJoint.!7": {},
+    "!modules": {
+      "src/index`js": {
+        "CStage": "CStage",
+        "CSprite": "CSprite",
+        "CGroup": "CGroup",
+        "CGraphics": "CGraphics",
+        "CMath": "CMath",
+        "CText": "CText",
+        "CJoint": "CJoint",
+        "CMotorizedJoint": "CMotorizedJoint",
+        "CRotatingJoint": "CRotatingJoint",
+        "CSlidingJoint": "CSlidingJoint"
+      },
+      "src/lib/pixijs`js": {
+        "__esModule": "bool",
+        "accessibility": {
+          "default": {
+            "__esModule": "bool"
+          }
+        },
+        "extract": {
+          "default": {
+            "__esModule": "bool"
+          }
+        },
+        "extras": {
+          "default": {
+            "__esModule": "bool"
+          }
+        },
+        "filters": {
+          "default": {
+            "__esModule": "bool"
+          }
+        },
+        "interaction": {
+          "default": {
+            "__esModule": "bool"
+          }
+        },
+        "loaders": {
+          "default": {
+            "__esModule": "bool",
+            "shared": {
+              "destroy": "!modules.src/lib/pixijs`js.loader.destroy"
+            }
+          },
+          "shared": {
+            "destroy": "!modules.src/lib/pixijs`js.loader.destroy"
+          }
+        },
+        "mesh": {
+          "default": {
+            "__esModule": "bool"
+          }
+        },
+        "particles": {
+          "default": {
+            "__esModule": "bool"
+          }
+        },
+        "prepare": {
+          "default": {
+            "__esModule": "bool"
+          }
+        },
+        "loader": {
+          "destroy": "fn()"
+        }
+      },
+      "src/CStage`js": {
+        "default": "CStage"
+      },
+      "src/CSprite`js": {
+        "default": "CSprite"
+      },
+      "src/CGroup`js": {
+        "default": "CGroup"
+      },
+      "src/CGraphics`js": {
+        "default": "CGraphics"
+      },
+      "src/CMath`js": {
+        "default": "CMath"
+      },
+      "src/CText`js": {
+        "default": "CText"
+      },
+      "src/CJoint`js": {
+        "CJoint": "CJoint",
+        "CMotorizedJoint": "CMotorizedJoint",
+        "CRotatingJoint": "CRotatingJoint",
+        "CSlidingJoint": "CSlidingJoint"
+      },
+      "node_modules/pixi`js/lib/index`js": {
+        "__esModule": "bool",
+        "accessibility": "!modules.src/lib/pixijs`js.accessibility",
+        "extract": "!modules.src/lib/pixijs`js.extract",
+        "extras": "!modules.src/lib/pixijs`js.extras",
+        "filters": "!modules.src/lib/pixijs`js.filters",
+        "interaction": "!modules.src/lib/pixijs`js.interaction",
+        "loaders": "!modules.src/lib/pixijs`js.loaders",
+        "mesh": "!modules.src/lib/pixijs`js.mesh",
+        "particles": "!modules.src/lib/pixijs`js.particles",
+        "prepare": "!modules.src/lib/pixijs`js.prepare",
+        "loader": "!modules.src/lib/pixijs`js.loader"
+      },
+      "src/CObject`js": {
+        "default": {
+          "prototype": {
+            "destroy": "fn()",
+            "promise": "fn(callback: fn(resolve: ?)|fn(resolve: ?, reject: ?))",
+            "__doStart": "fn()",
+            "onStart": "fn(callback: ?)",
+            "on": "fn(eventName: string, callback: ?)",
+            "off": "fn(eventName: ?, callback: ?)",
+            "onFrame": "fn(callback: ?)",
+            "nextFrame": "fn()",
+            "delay": "fn(seconds: ?)",
+            "forever": "fn(callback: ?)",
+            "repeat": "fn(count: ?, callback: ?)",
+            "during": "fn(seconds: ?, callback: ?)",
+            "_destroyed": "bool",
+            "_eventsCount": "number",
+            "!proto": "!modules.node_modules/eventemitter3/index`js.prototype"
+          },
+          "!type": "fn(delayedStart: bool)"
+        }
+      },
+      "src/CPhysicsCtrl`js": {
+        "default": {
+          "prototype": {
+            "destroy": "fn()",
+            "timer": "number",
+            "stageToWorld": "fn(point: ?, newPoint: +!modules.src/CPoint`js.default) -> !1",
+            "worldToStage": "fn(point: ?, newPoint: +!modules.src/CPoint`js.default) -> !1",
+            "setBorder": "fn(type: string)",
+            "_enableDragging": "fn()",
+            "_update": "fn(delta: ?)",
+            "!proto": "!modules.src/CController`js.default.prototype"
+          },
+          "get": "fn() -> +!modules.src/CPhysicsCtrl`js.default",
+          "!type": "fn(options: ?)",
+          "_endTimeMsec": "number",
+          "_startTimeMsec": "number",
+          "_draggingInit": "bool"
+        }
+      },
+      "src/CSoundCtrl`js": {
+        "default": {
+          "prototype": {
+            "play": "fn(source: ?, startSec: ?, endSec: ?)",
+            "stopAll": "fn()",
+            "volume": "number",
+            "_removeInstance": "fn(instance: !modules.src/CSoundCtrl`js.default.prototype._removeInstance.!0)",
+            "destroy": "fn()",
+            "!proto": "!modules.src/CController`js.default.prototype"
+          },
+          "!type": "fn()",
+          "_volume": "number",
+          "_instances": "[?]",
+          "__target": "+CSprite"
+        }
+      },
+      "src/CController`js": {
+        "default": {
+          "prototype": {
+            "destroy": "fn()"
+          },
+          "!type": "fn()"
+        }
+      },
+      "src/CMouse`js": {
+        "default": {
+          "prototype": {
+            "position": {
+              "x": "number",
+              "y": "number"
+            },
+            "x": "number",
+            "y": "number",
+            "worldPosition": {
+              "x": "number",
+              "y": "number"
+            },
+            "worldX": "number",
+            "worldY": "number",
+            "!proto": "!modules.src/CObject`js.default.prototype"
+          },
+          "!type": "fn()",
+          "id": "string",
+          "_destroyed": "bool",
+          "__notStarted": "bool",
+          "_eventsCount": "number"
+        }
+      },
+      "src/CTween`js": {
+        "default": {
+          "prototype": {
+            "to": "fn(props: CStage.prototype.tween.!0, seconds: ?, ease: ?)",
+            "yoyo": "fn(props: CStage.prototype.tween.!0, seconds: ?, ease: ?)",
+            "stop": "fn()",
+            "_doTween": "fn(tween: +!modules.node_modules/tween`js/src/Tween`js.Tween)"
+          },
+          "!type": "fn(target: +CStage|+!modules.src/CChildObject`js.default)"
+        }
+      },
+      "src/misc/canvassprite`js": {
+        "default": {
+          "prototype": {
+            "canvas": {
+              "width": "number",
+              "height": "number"
+            },
+            "setCanvasChanged": "fn()"
+          },
+          "create": "fn(width: number, height: number) -> +!modules.src/misc/canvassprite`js.default",
+          "!type": "fn(canvas: !modules.src/misc/canvassprite`js.default._canvas)",
+          "_canvas": {
+            "width": "number",
+            "height": "number"
+          },
+          "x": "number",
+          "y": "number"
+        }
+      },
+      "src/impl/stage-keymanager`js": {
+        "default": {
+          "prototype": {
+            "isKeyEvent": "fn(event: ?)",
+            "onKeyEvent": "fn(keyEventName: string, context: +CStage|+!modules.src/CChildObject`js.default, key: string, callback: string)",
+            "_onKeyPress": "fn(event: ?)",
+            "_onKeyDown": "fn(event: ?)",
+            "_onKeyUp": "fn(event: ?)",
+            "isKeyPressed": "fn(key: ?) -> bool",
+            "_mapKey": "fn(key: ?) -> string"
+          },
+          "!type": "fn(target: +CStage)",
+          "_keysDown": {
+            "<i>": "bool"
+          }
+        }
+      },
+      "src/impl/mouse-events`js": {
+        "setStage": "fn(_stage: +CStage)",
+        "isMouseEvent": "fn(eventName: string) -> bool",
+        "registerMouseEvent": "fn(eventName: string)",
+        "unregisterMouseEvent": "fn(eventName: ?)",
+        "destroy": "fn()"
+      },
+      "src/impl/filter`js": {
+        "clearFilters": "fn(pixiObject: !modules.src/impl/filter`js.clearFilters.!0)",
+        "setFilter": "fn(pixiObject: ?, name: ?, amount: ?) -> !modules.src/impl/filter`js.setFilter.!ret"
+      },
+      "src/tracer/resource_loader`js": {
+        "isResourceLoadedAndTraced": "fn(resourceName: ?) -> bool",
+        "loadAndTraceResource": "fn(resourceName: ?, resourceUrl: ?, options: ?)",
+        "loadWebFont": "fn(origin: ?, family: ?)",
+        "init": "fn(stage: ?, callback: ?)",
+        "reset": "fn()",
+        "traceTexture": "fn(texture: ?, options: ?, callback: fn(arrayOfVertices: ?))",
+        "getResource": "fn(resourceUrl: ?)"
+      },
+      "src/misc/util`js": {
+        "firstDefined": "fn(val0: ?, val1: ?) -> !0",
+        "startWith": "fn(str: ?, prefix: ?) -> bool",
+        "regExPEscape": "fn(s: ?)",
+        "ASSERT": {
+          "debug": "bool",
+          "error": "fn(msg: ?)",
+          "validationError": "fn(msg: string)",
+          "isString": "fn(value: ?, name: ?)",
+          "isNumber": "fn(value: ?, name: ?)",
+          "isFunction": "fn(value: ?, name: ?)",
+          "isObject": "fn(value: ?, name: ?)",
+          "isInstanceOf": "fn(instance: fn(), value: CStage.prototype.addController.!ret|CSprite.prototype.addController.!ret, name: string)",
+          "isTypeOf": "fn(type: string, value: ?, name: ?)",
+          "isOneOf": "fn(allowedValues: [string], value: ?, name: string)"
+        },
+        "UTIL": {
+          "set_property": "fn(proto: ?, name: ?, def: ?)"
+        }
+      },
+      "node_modules/tween`js/src/Tween`js": {
+        "getAll": "fn() -> [?]",
+        "removeAll": "fn()",
+        "add": "fn(tween: !modules.node_modules/tween`js/src/Tween`js)",
+        "remove": "fn(tween: +!modules.node_modules/tween`js/src/Tween`js.Tween)",
+        "update": "fn(time: number, preserve: ?) -> bool",
+        "now": "fn() -> number",
+        "Tween": {
+          "!type": "fn(object: +CStage|+!modules.src/CChildObject`js.default)",
+          "update": "fn(time: number) -> bool"
+        },
+        "to": "fn(properties: CStage.prototype.tween.!0, duration: number) -> !this",
+        "start": "fn(time: ?) -> !this",
+        "stop": "fn() -> !this",
+        "end": "fn() -> !this",
+        "stopChainedTweens": "fn()",
+        "delay": "fn(amount: ?) -> !this",
+        "repeat": "fn(times: number) -> !this",
+        "repeatDelay": "fn(amount: ?) -> !this",
+        "yoyo": "fn(yoyo: ?) -> !this",
+        "easing": "fn(easing: fn(k: ?)) -> !this",
+        "interpolation": "fn(interpolation: ?) -> !this",
+        "chain": "fn() -> !this",
+        "onStart": "fn(callback: ?) -> !this",
+        "onUpdate": "fn(callback: ?) -> !this",
+        "onComplete": "fn(callback: ?) -> !this",
+        "onStop": "fn(callback: ?) -> !this",
+        "Easing": {
+          "Linear": {
+            "None": "fn(k: number) -> !0"
+          },
+          "Quadratic": {
+            "In": "fn(k: ?) -> number",
+            "Out": "fn(k: ?) -> number",
+            "InOut": "fn(k: number) -> number"
+          },
+          "Cubic": {
+            "In": "fn(k: ?) -> number",
+            "Out": "fn(k: ?) -> number",
+            "InOut": "fn(k: number) -> number"
+          },
+          "Quartic": {
+            "In": "fn(k: ?) -> number",
+            "Out": "fn(k: ?) -> number",
+            "InOut": "fn(k: number) -> number"
+          },
+          "Quintic": {
+            "In": "fn(k: ?) -> number",
+            "Out": "fn(k: ?) -> number",
+            "InOut": "fn(k: number) -> number"
+          },
+          "Sinusoidal": {
+            "In": "fn(k: ?) -> number",
+            "Out": "fn(k: ?)",
+            "InOut": "fn(k: ?) -> number"
+          },
+          "Exponential": {
+            "In": "fn(k: ?) -> number",
+            "Out": "fn(k: ?) -> number",
+            "InOut": "fn(k: number) -> number"
+          },
+          "Circular": {
+            "In": "fn(k: ?) -> number",
+            "Out": "fn(k: ?)",
+            "InOut": "fn(k: number) -> number"
+          },
+          "Elastic": {
+            "In": "fn(k: ?) -> number",
+            "Out": "fn(k: ?) -> number",
+            "InOut": "fn(k: number) -> number"
+          },
+          "Back": {
+            "In": "fn(k: ?) -> number",
+            "Out": "fn(k: ?) -> number",
+            "InOut": "fn(k: number) -> number"
+          },
+          "Bounce": {
+            "In": "fn(k: number) -> number",
+            "Out": "fn(k: number) -> number",
+            "InOut": "fn(k: ?) -> number"
+          }
+        },
+        "Interpolation": {
+          "Linear": "fn(v: number, k: number)",
+          "Bezier": "fn(v: ?, k: ?) -> number",
+          "CatmullRom": "fn(v: ?, k: ?) -> number",
+          "Utils": {
+            "Linear": "fn(p0: ?, p1: ?, t: number)",
+            "Bernstein": "fn(n: number, i: number) -> number",
+            "Factorial": "fn(n: number) -> number",
+            "CatmullRom": "fn(p0: ?, p1: ?, p2: ?, p3: ?, t: number)"
+          }
+        }
+      },
+      "src/CPoint`js": {
+        "default": {
+          "!type": "fn(x: number, y: number)",
+          "x": "number",
+          "y": "number"
+        }
+      },
+      "src/CRect`js": {
+        "default": {
+          "prototype": {
+            "top": "number",
+            "bottom": "number",
+            "topLeft": "+!modules.src/CPoint`js.default",
+            "applyTransform": "fn(matrix: ?)",
+            "applyInverseTransform": "fn(matrix: ?)",
+            "normalize": "fn() -> !this",
+            "bottomRight": "+!modules.src/CPoint`js.default"
+          },
+          "createFromRect": "fn(rect: ?) -> +!modules.src/CRect`js.default",
+          "createFromPoints": "fn(topLeft: +!modules.src/CPoint`js.default, bottomRight: +!modules.src/CPoint`js.default) -> +!modules.src/CRect`js.default",
+          "!type": "fn(x: number, y: number, width: number, height: number)",
+          "x": "number",
+          "y": "number",
+          "width": "number",
+          "height": "number"
+        }
+      },
+      "src/CChildObject`js": {
+        "default": {
+          "prototype": {
+            "destroy": "fn()",
+            "goto": "fn(x: ?, y: ?) -> !this",
+            "rotation": "number",
+            "getDistanceTo": "fn(point: ?)",
+            "getDirectionTo": "fn(point: ?) -> number",
+            "setEffect": "fn(effect: ?, amount: ?)",
+            "clearEffects": "fn()",
+            "glideTo": "fn(x: ?, y: ?, seconds: ?)",
+            "tween": "fn(props: CStage.prototype.tween.!0, seconds: ?, ease: ?, yoyo: ?)",
+            "enable": "bool",
+            "toFront": "fn()",
+            "isKeyPressed": "fn(key: ?) -> bool",
+            "onKeyPress": "fn(key: ?, callback: ?)",
+            "onKeyDown": "fn(key: ?, callback: ?)",
+            "onKeyUp": "fn(key: ?, callback: ?)",
+            "onClick": "fn(callback: ?)",
+            "onPointerDown": "fn(callback: ?)",
+            "onPointerUp": "fn(callback: ?)",
+            "onPointerMove": "fn(callback: ?)",
+            "on": "fn(eventName: string, callback: ?)",
+            "unbind": "fn(eventName: ?, callback: ?)",
+            "broadcast": "fn(eventName: ?)",
+            "onStart": "fn(callback: ?)",
+            "!proto": "!modules.src/CObject`js.default.prototype",
+            "stage": "+CStage"
+          },
+          "get": "fn(id: ?) -> +!modules.src/CMouse`js.default",
+          "!type": "fn(delayedStart: bool, options: !modules.src/CChildObject`js.default.!1)",
+          "_destroyed": "bool",
+          "__notStarted": "bool",
+          "<i>": "number",
+          "_eventsCount": "number",
+          "_eventMap": {
+            "<i>": "CGroup._eventMap.<i>"
+          }
+        }
+      },
+      "src/CRigidBodyCtrl`js": {},
+      "src/CPenCtrl`js": {
+        "default": {
+          "prototype": {
+            "_init": "fn()",
+            "clear": "fn()",
+            "up": "fn()",
+            "down": "fn()",
+            "setColor": "fn(red: number, green: number, blue: number)",
+            "width": "number",
+            "stamp": "fn()",
+            "unstamp": "fn()",
+            "_getTargetPos": "fn(pos: ?)",
+            "!proto": "!modules.src/CController`js.default.prototype"
+          },
+          "!type": "fn()",
+          "_prevPos": {
+            "x": "number",
+            "y": "number"
+          },
+          "_lineWidth": "number",
+          "opacity": "number",
+          "_isDown": "bool",
+          "_subscribed": "bool",
+          "color": {
+            "r": "number",
+            "g": "number",
+            "b": "number"
+          }
+        }
+      },
+      "src/impl/sprite-text`js": {},
+      "src/misc/math`js": {
+        "deg2rad": "fn(deg: number) -> number",
+        "rad2deg": "fn(rad: ?) -> number",
+        "rangeDeg": "fn(deg: number) -> !0",
+        "round": "fn(value: number, digits: number) -> number"
+      },
+      "src/tracer/GraphicsToVerticeRenderer`js": {
+        "default": {
+          "prototype": {
+            "render": "fn(g: ?)"
+          },
+          "!type": "fn()"
+        }
+      },
+      "node_modules/colorsys/colorsys`js": {
+        "rgb2Hsl": "fn(r: number, g: number, b: number) -> !modules.node_modules/colorsys/colorsys`js.rgb2Hsl.!ret",
+        "rgb2Hsv": "fn(r: number, g: number, b: number) -> !modules.node_modules/colorsys/colorsys`js.rgb2Hsv.!ret",
+        "hsl2Rgb": "fn(h: number, s: number, l: number) -> !modules.node_modules/colorsys/colorsys`js.hsl2Rgb.!ret",
+        "hsv2Rgb": "fn(h: number, s: number, v: number) -> !modules.node_modules/colorsys/colorsys`js.hsv2Rgb.!ret",
+        "rgb2Hex": "fn(r: string, g: string, b: string) -> string",
+        "hex2Rgb": "fn(hex: ?) -> !modules.node_modules/colorsys/colorsys`js.hex2Rgb.!ret",
+        "hsv2Hex": "fn(h: ?, s: ?, v: ?) -> string",
+        "hex2Hsv": "fn(hex: ?) -> !modules.node_modules/colorsys/colorsys`js.rgb2Hsv.!ret",
+        "hsl2Hex": "fn(h: ?, s: ?, l: ?) -> string",
+        "hex2Hsl": "fn(hex: ?) -> !modules.node_modules/colorsys/colorsys`js.rgb2Hsl.!ret",
+        "rgb2Cmyk": "fn(r: ?, g: ?, b: ?) -> !modules.node_modules/colorsys/colorsys`js.rgb2Cmyk.!ret",
+        "cmyk2Rgb": "fn(c: ?, m: ?, y: ?, k: ?) -> !modules.node_modules/colorsys/colorsys`js.cmyk2Rgb.!ret",
+        "hsv2Hsl": "fn(h: ?, s: number, v: ?) -> !modules.node_modules/colorsys/colorsys`js.hsv2Hsl.!ret",
+        "hsl2Hsv": "fn(h: ?, s: number, l: ?) -> !modules.node_modules/colorsys/colorsys`js.hsl2Hsv.!ret",
+        "parseCss": "fn(cssString: ?) -> !modules.node_modules/colorsys/colorsys`js.hex2Rgb.!ret",
+        "stringify": "fn(obj: ?) -> string",
+        "random": "fn() -> string",
+        "rotateHue": "fn(hue: ?, amount: number) -> number",
+        "rgbToHsl": "!modules.node_modules/colorsys/colorsys`js.rgb2Hsl",
+        "rgb_to_hsl": "!modules.node_modules/colorsys/colorsys`js.rgb2Hsl",
+        "rgbToHsv": "!modules.node_modules/colorsys/colorsys`js.rgb2Hsv",
+        "rgb_to_hsv": "!modules.node_modules/colorsys/colorsys`js.rgb2Hsv",
+        "hslToRgb": "!modules.node_modules/colorsys/colorsys`js.hsl2Rgb",
+        "hsl_to_rgb": "!modules.node_modules/colorsys/colorsys`js.hsl2Rgb",
+        "hsv_to_rgb": "!modules.node_modules/colorsys/colorsys`js.hsv2Rgb",
+        "hsvToRgb": "!modules.node_modules/colorsys/colorsys`js.hsv2Rgb",
+        "rgbToHex": "!modules.node_modules/colorsys/colorsys`js.rgb2Hex",
+        "rgb_to_hex": "!modules.node_modules/colorsys/colorsys`js.rgb2Hex",
+        "hexToRgb": "!modules.node_modules/colorsys/colorsys`js.hex2Rgb",
+        "hex_to_rgb": "!modules.node_modules/colorsys/colorsys`js.hex2Rgb",
+        "hsv_to_hex": "!modules.node_modules/colorsys/colorsys`js.hsv2Hex",
+        "hsvToHex": "!modules.node_modules/colorsys/colorsys`js.hsv2Hex",
+        "hexToHsv": "!modules.node_modules/colorsys/colorsys`js.hex2Hsv",
+        "hex_to_hsv": "!modules.node_modules/colorsys/colorsys`js.hex2Hsv",
+        "hslToHex": "!modules.node_modules/colorsys/colorsys`js.hsl2Hex",
+        "hsl_to_hex": "!modules.node_modules/colorsys/colorsys`js.hsl2Hex",
+        "hexToHsl": "!modules.node_modules/colorsys/colorsys`js.hex2Hsl",
+        "hex_to_hsl": "!modules.node_modules/colorsys/colorsys`js.hex2Hsl",
+        "rgbToCmyk": "!modules.node_modules/colorsys/colorsys`js.rgb2Cmyk",
+        "rgb_to_cmyk": "!modules.node_modules/colorsys/colorsys`js.rgb2Cmyk",
+        "cmykToRgb": "!modules.node_modules/colorsys/colorsys`js.cmyk2Rgb",
+        "cmyk_to_rgb": "!modules.node_modules/colorsys/colorsys`js.cmyk2Rgb",
+        "hsvToHsl": "!modules.node_modules/colorsys/colorsys`js.hsv2Hsl",
+        "hsv_to_hsl": "!modules.node_modules/colorsys/colorsys`js.hsv2Hsl",
+        "hslToHsv": "!modules.node_modules/colorsys/colorsys`js.hsl2Hsv",
+        "hsl_to_hsv": "!modules.node_modules/colorsys/colorsys`js.hsl2Hsv",
+        "parse_css": "!modules.node_modules/colorsys/colorsys`js.parseCss"
+      },
+      "src/physics/turbulenz/CJoint`js": {
+        "CFixedJoint": "fn(ownerObject: ?, otherObject: ?, ownerOffsetX: ?, ownerOffsetY: ?)",
+        "CJoint": "CJoint",
+        "CMotorizedJoint": "CMotorizedJoint",
+        "CRotatingJoint": "CRotatingJoint",
+        "CSlidingJoint": "CSlidingJoint"
+      },
+      "node_modules/pixi`js/lib/core/index`js": {
+        "__esModule": "bool",
+        "utils": {
+          "default": {
+            "__esModule": "bool",
+            "rgb2hex": {},
+            "premultiplyRgba": {},
+            "premultiplyTintToRgba": {},
+            "isMobile": "!modules.node_modules/pixi`js/lib/core/utils/index`js.isMobile",
+            "mixins": "!modules.node_modules/pixi`js/lib/core/utils/index`js.mixins",
+            "uid": "!modules.node_modules/pixi`js/lib/core/utils/index`js.uid",
+            "hex2rgb": "!modules.node_modules/pixi`js/lib/core/utils/index`js.hex2rgb",
+            "hex2string": "!modules.node_modules/pixi`js/lib/core/utils/index`js.hex2string",
+            "getResolutionOfUrl": "!modules.node_modules/pixi`js/lib/core/utils/index`js.getResolutionOfUrl",
+            "decomposeDataUri": "!modules.node_modules/pixi`js/lib/core/utils/index`js.decomposeDataUri",
+            "getUrlFileExtension": "!modules.node_modules/pixi`js/lib/core/utils/index`js.getUrlFileExtension",
+            "getSvgSize": "!modules.node_modules/pixi`js/lib/core/utils/index`js.getSvgSize",
+            "skipHello": "!modules.node_modules/pixi`js/lib/core/utils/index`js.skipHello",
+            "sayHello": "!modules.node_modules/pixi`js/lib/core/utils/index`js.sayHello",
+            "isWebGLSupported": "!modules.node_modules/pixi`js/lib/core/utils/index`js.isWebGLSupported",
+            "sign": "!modules.node_modules/pixi`js/lib/core/utils/index`js.sign",
+            "destroyTextureCache": "!modules.node_modules/pixi`js/lib/core/utils/index`js.destroyTextureCache",
+            "clearTextureCache": "!modules.node_modules/pixi`js/lib/core/utils/index`js.clearTextureCache",
+            "correctBlendMode": "!modules.node_modules/pixi`js/lib/core/utils/index`js.correctBlendMode",
+            "premultiplyTint": "!modules.node_modules/pixi`js/lib/core/utils/index`js.premultiplyTint"
+          },
+          "rgb2hex": {},
+          "premultiplyRgba": {},
+          "premultiplyTintToRgba": {},
+          "isMobile": "!modules.node_modules/pixi`js/lib/core/utils/index`js.isMobile",
+          "mixins": "!modules.node_modules/pixi`js/lib/core/utils/index`js.mixins",
+          "uid": "!modules.node_modules/pixi`js/lib/core/utils/index`js.uid",
+          "hex2rgb": "!modules.node_modules/pixi`js/lib/core/utils/index`js.hex2rgb",
+          "hex2string": "!modules.node_modules/pixi`js/lib/core/utils/index`js.hex2string",
+          "getResolutionOfUrl": "!modules.node_modules/pixi`js/lib/core/utils/index`js.getResolutionOfUrl",
+          "decomposeDataUri": "!modules.node_modules/pixi`js/lib/core/utils/index`js.decomposeDataUri",
+          "getUrlFileExtension": "!modules.node_modules/pixi`js/lib/core/utils/index`js.getUrlFileExtension",
+          "getSvgSize": "!modules.node_modules/pixi`js/lib/core/utils/index`js.getSvgSize",
+          "skipHello": "!modules.node_modules/pixi`js/lib/core/utils/index`js.skipHello",
+          "sayHello": "!modules.node_modules/pixi`js/lib/core/utils/index`js.sayHello",
+          "isWebGLSupported": "!modules.node_modules/pixi`js/lib/core/utils/index`js.isWebGLSupported",
+          "sign": "!modules.node_modules/pixi`js/lib/core/utils/index`js.sign",
+          "destroyTextureCache": "!modules.node_modules/pixi`js/lib/core/utils/index`js.destroyTextureCache",
+          "clearTextureCache": "!modules.node_modules/pixi`js/lib/core/utils/index`js.clearTextureCache",
+          "correctBlendMode": "!modules.node_modules/pixi`js/lib/core/utils/index`js.correctBlendMode",
+          "premultiplyTint": "!modules.node_modules/pixi`js/lib/core/utils/index`js.premultiplyTint"
+        },
+        "ticker": {}
+      },
+      "node_modules/pixi`js/lib/deprecation`js": {
+        "__esModule": "bool",
+        "default": "fn(core: !modules.node_modules/pixi`js/lib/index`js)"
+      },
+      "node_modules/pixi`js/lib/accessibility/index`js": {
+        "__esModule": "bool"
+      },
+      "node_modules/pixi`js/lib/extract/index`js": {
+        "__esModule": "bool"
+      },
+      "node_modules/pixi`js/lib/extras/index`js": {
+        "__esModule": "bool"
+      },
+      "node_modules/pixi`js/lib/filters/index`js": {
+        "__esModule": "bool"
+      },
+      "node_modules/pixi`js/lib/interaction/index`js": {
+        "__esModule": "bool"
+      },
+      "node_modules/pixi`js/lib/loaders/index`js": {
+        "__esModule": "bool",
+        "shared": "!modules.src/lib/pixijs`js.loader"
+      },
+      "node_modules/pixi`js/lib/mesh/index`js": {
+        "__esModule": "bool"
+      },
+      "node_modules/pixi`js/lib/particles/index`js": {
+        "__esModule": "bool"
+      },
+      "node_modules/pixi`js/lib/prepare/index`js": {
+        "__esModule": "bool"
+      },
+      "src/physics/turbulenz/CPhysicsCtrl`js": {
+        "default": "!modules.src/CPhysicsCtrl`js.default"
+      },
+      "node_modules/pixi-filters/lib/pixi-filters`cjs`js": {},
+      "src/tracer/TracerWorkers`js": {
+        "default": {
+          "traceAndConvexify": "fn(imgData: ?|!modules.src/tracer/TracerWorkers`js.default.traceAndConvexify.!0, callback: fn(err: ?, arrayOfVertices: ?))",
+          "startWorkers": "fn()",
+          "getImageData": "fn(img: ?, options: !modules.src/tracer/TracerWorkers`js.default.getImageData.!1) -> !modules.src/tracer/TracerWorkers`js.default.traceAndConvexify.!0",
+          "!type": "fn()"
+        }
+      },
+      "node_modules/eventemitter3/index`js": {
+        "prototype": {
+          "eventNames": "fn() -> [?]",
+          "listeners": "fn(event: ?, exists: ?) -> ?",
+          "emit": "fn(event: string, a1: ?, a2: ?, a3: ?, a4: ?, a5: ?) -> bool",
+          "on": "fn(event: string, fn: ?, context: ?) -> !this",
+          "once": "fn(event: ?, fn: ?, context: ?) -> !this",
+          "removeListener": "fn(event: string, fn: ?, context: ?, once: bool) -> !this",
+          "removeAllListeners": "fn(event: ?) -> !this",
+          "setMaxListeners": "fn() -> !this",
+          "off": "!modules.node_modules/eventemitter3/index`js.prototype.removeListener",
+          "addListener": "!modules.node_modules/eventemitter3/index`js.prototype.on"
+        },
+        "!type": "fn()",
+        "_eventsCount": "number"
+      },
+      "src/core/CTargetPoint`js": {
+        "default": {
+          "prototype": {
+            "setPoint": "fn(point: ?)",
+            "set": "fn(x: ?, y: ?)",
+            "get": "fn() -> !modules.src/core/CTargetPoint`js.default._getter.!ret",
+            "copy": "fn() -> !modules.src/core/CTargetPoint`js.default.prototype.copy.!ret",
+            "x": "number",
+            "y": "number"
+          },
+          "!type": "fn(getter: fn() -> !modules.src/core/CTargetPoint`js.default._getter.!ret, setter: fn(point: !modules.src/core/CTargetPoint`js.default._tempPoint))",
+          "_getter": "fn() -> !modules.src/core/CTargetPoint`js.default._getter.!ret",
+          "_setter": "fn(point: !modules.src/core/CTargetPoint`js.default._tempPoint)",
+          "_tempPoint": {
+            "x": "number",
+            "y": "number"
+          }
+        }
+      },
+      "node_modules/pixi`js/lib/core/const`js": {
+        "__esModule": "bool",
+        "VERSION": "string",
+        "PI_2": "number",
+        "RAD_TO_DEG": "number",
+        "DEG_TO_RAD": "number",
+        "RENDERER_TYPE": {
+          "UNKNOWN": "number",
+          "WEBGL": "number",
+          "CANVAS": "number"
+        },
+        "BLEND_MODES": {
+          "NORMAL": "number",
+          "ADD": "number",
+          "MULTIPLY": "number",
+          "SCREEN": "number",
+          "OVERLAY": "number",
+          "DARKEN": "number",
+          "LIGHTEN": "number",
+          "COLOR_DODGE": "number",
+          "COLOR_BURN": "number",
+          "HARD_LIGHT": "number",
+          "SOFT_LIGHT": "number",
+          "DIFFERENCE": "number",
+          "EXCLUSION": "number",
+          "HUE": "number",
+          "SATURATION": "number",
+          "COLOR": "number",
+          "LUMINOSITY": "number",
+          "NORMAL_NPM": "number",
+          "ADD_NPM": "number",
+          "SCREEN_NPM": "number"
+        },
+        "DRAW_MODES": {
+          "POINTS": "number",
+          "LINES": "number",
+          "LINE_LOOP": "number",
+          "LINE_STRIP": "number",
+          "TRIANGLES": "number",
+          "TRIANGLE_STRIP": "number",
+          "TRIANGLE_FAN": "number"
+        },
+        "SCALE_MODES": {
+          "LINEAR": "number",
+          "NEAREST": "number"
+        },
+        "WRAP_MODES": {
+          "CLAMP": "number",
+          "REPEAT": "number",
+          "MIRRORED_REPEAT": "number"
+        },
+        "GC_MODES": {
+          "AUTO": "number",
+          "MANUAL": "number"
+        },
+        "SHAPES": {
+          "POLY": "number",
+          "RECT": "number",
+          "CIRC": "number",
+          "ELIP": "number",
+          "RREC": "number"
+        },
+        "PRECISION": {
+          "LOW": "string",
+          "MEDIUM": "string",
+          "HIGH": "string"
+        },
+        "TRANSFORM_MODE": {
+          "STATIC": "number",
+          "DYNAMIC": "number"
+        },
+        "TEXT_GRADIENT": {
+          "LINEAR_VERTICAL": "number",
+          "LINEAR_HORIZONTAL": "number"
+        },
+        "UPDATE_PRIORITY": {
+          "INTERACTION": "number",
+          "HIGH": "number",
+          "NORMAL": "number",
+          "LOW": "number",
+          "UTILITY": "number"
+        },
+        "DATA_URI": "?",
+        "SVG_SIZE": "?"
+      },
+      "node_modules/pixi`js/lib/core/utils/index`js": {
+        "__esModule": "bool",
+        "isMobile": {},
+        "mixins": {},
+        "uid": "fn() -> number",
+        "hex2rgb": "fn(hex: ?, out: [number]) -> [number]",
+        "hex2string": "fn(hex: ?) -> string",
+        "rgb2hex": "fn(rgb: ?) -> number",
+        "getResolutionOfUrl": "fn(url: ?, defaultValue: ?) -> !1",
+        "decomposeDataUri": "fn(dataUri: ?) -> !modules.node_modules/pixi`js/lib/core/utils/index`js.decomposeDataUri.!ret",
+        "getUrlFileExtension": "fn(url: ?)",
+        "getSvgSize": "fn(svgString: ?) -> !modules.node_modules/pixi`js/lib/core/utils/index`js.getSvgSize.!ret",
+        "skipHello": "fn()",
+        "sayHello": "fn(type: ?)",
+        "isWebGLSupported": "fn() -> bool",
+        "sign": "fn(n: ?) -> number",
+        "destroyTextureCache": "fn()",
+        "clearTextureCache": "fn()",
+        "correctBlendMode": "fn(blendMode: ?, premultiplied: ?)",
+        "premultiplyTint": "fn(tint: ?, alpha: ?) -> number",
+        "premultiplyRgba": "fn(rgb: ?, alpha: ?, out: !modules.node_modules/pixi`js/lib/core/utils/index`js.premultiplyRgba.!2, premultiply: ?) -> !2",
+        "premultiplyTintToRgba": "fn(tint: ?, alpha: ?, out: !modules.node_modules/pixi`js/lib/core/utils/index`js.premultiplyTintToRgba.!2, premultiply: ?) -> !2"
+      },
+      "node_modules/pixi`js/lib/core/graphics/webgl/utils/buildLine`js": {
+        "__esModule": "bool",
+        "default": "fn(graphicsData: ?, webGLData: !modules.node_modules/pixi`js/lib/core/graphics/webgl/utils/buildLine`js.default.!1, webGLDataNativeLines: ?)"
+      },
+      "node_modules/pixi`js/lib/accessibility/accessibleTarget`js": {
+        "__esModule": "bool",
+        "default": {
+          "accessible": "bool",
+          "tabIndex": "number",
+          "_accessibleActive": "bool",
+          "_accessibleDiv": "bool"
+        }
+      },
+      "generate/codecab-worker`js": {
+        "default": "string"
+      }
+    },
+    "!modules.src/CObject`js.default.prototype.promise.!0": "fn(resolve: ?, reject: ?)",
+    "!modules.src/CPhysicsCtrl`js.default.prototype.stageToWorld.!ret": {
+      "x": "number",
+      "y": "number"
+    },
+    "!modules.src/CPhysicsCtrl`js.default.prototype.worldToStage.!ret": {
+      "x": "number",
+      "y": "number"
+    },
+    "!modules.src/CSoundCtrl`js.default.prototype._removeInstance.!0": {
+      "_cancel": "fn()"
+    },
+    "!modules.src/CTween`js.default.!0": "+!modules.src/CChildObject`js.default",
+    "!modules.src/impl/filter`js.clearFilters.!0": {
+      "filters": "[?]"
+    },
+    "!modules.src/impl/filter`js.setFilter.!0": {
+      "filters": "[?]"
+    },
+    "!modules.src/impl/filter`js.setFilter.!ret": {},
+    "!modules.src/tracer/resource_loader`js.traceTexture.!2": "fn(arrayOfVertices: ?)",
+    "!modules.src/misc/util`js.ASSERT.isOneOf.!0": "[string]",
+    "!modules.src/misc/util`js.UTIL.set_property.!2": {
+      "set": "fn()",
+      "get": "fn()"
+    },
+    "!modules.node_modules/tween`js/src/Tween`js.getAll.!ret": "[?]",
+    "!modules.node_modules/tween`js/src/Tween`js.add.!0": "+!modules.node_modules/tween`js/src/Tween`js.Tween",
+    "!modules.node_modules/tween`js/src/Tween`js.easing.!0": "fn(k: ?)",
+    "!modules.node_modules/tween`js/src/Tween`js.Interpolation.CatmullRom.!0": "[?, !modules.node_modules/tween`js/src/Tween`js.Interpolation.CatmullRom.!0.0]",
+    "!modules.node_modules/tween`js/src/Tween`js.Interpolation.CatmullRom.!0.0": {
+      "once": "bool",
+      "context": "!modules.node_modules/eventemitter3/index`js.prototype"
+    },
+    "!modules.src/CChildObject`js.default.prototype.getDistanceTo.!0": "+!modules.src/core/CTargetPoint`js.default",
+    "!modules.src/CChildObject`js.default.!1": {
+      "id": "string"
+    },
+    "!modules.node_modules/colorsys/colorsys`js.rgb2Hsl.!ret": {},
+    "!modules.node_modules/colorsys/colorsys`js.rgb2Hsv.!ret": {},
+    "!modules.node_modules/colorsys/colorsys`js.hsl2Rgb.!ret": {},
+    "!modules.node_modules/colorsys/colorsys`js.hsv2Rgb.!ret": {},
+    "!modules.node_modules/colorsys/colorsys`js.hex2Rgb.!ret": {},
+    "!modules.node_modules/colorsys/colorsys`js.rgb2Cmyk.!ret": {},
+    "!modules.node_modules/colorsys/colorsys`js.cmyk2Rgb.!ret": {},
+    "!modules.node_modules/colorsys/colorsys`js.hsv2Hsl.!ret": {
+      "s": "number",
+      "l": "number"
+    },
+    "!modules.node_modules/colorsys/colorsys`js.hsl2Hsv.!2": "number",
+    "!modules.node_modules/colorsys/colorsys`js.hsl2Hsv.!ret": {},
+    "!modules.node_modules/colorsys/colorsys`js.rotateHue.!0": "number",
+    "!modules.node_modules/pixi`js/lib/core/index`js.utils.default.rgb2hex.!0": {
+      "0": {
+        "parent": "string",
+        "target": "string"
+      },
+      "1": {
+        "parent": "string",
+        "target": "string"
+      },
+      "2": {
+        "parent": "string",
+        "target": "string"
+      },
+      "3": {
+        "parent": "string",
+        "target": "string"
+      },
+      "4": {
+        "parent": "string",
+        "target": "string"
+      }
+    },
+    "!modules.node_modules/pixi`js/lib/core/index`js.utils.default.premultiplyRgba.!2": {
+      "<i>": "number"
+    },
+    "!modules.node_modules/pixi`js/lib/core/index`js.utils.default.premultiplyTintToRgba.!2": {
+      "<i>": "number"
+    },
+    "!modules.node_modules/pixi`js/lib/core/index`js.utils.rgb2hex.!0": {
+      "0": {
+        "parent": "string",
+        "target": "string"
+      },
+      "1": {
+        "parent": "string",
+        "target": "string"
+      },
+      "2": {
+        "parent": "string",
+        "target": "string"
+      },
+      "3": {
+        "parent": "string",
+        "target": "string"
+      },
+      "4": {
+        "parent": "string",
+        "target": "string"
+      }
+    },
+    "!modules.node_modules/pixi`js/lib/core/index`js.utils.premultiplyRgba.!2": {
+      "<i>": "number"
+    },
+    "!modules.node_modules/pixi`js/lib/core/index`js.utils.premultiplyTintToRgba.!2": {
+      "<i>": "number"
+    },
+    "!modules.src/tracer/TracerWorkers`js.default.traceAndConvexify.!0": {
+      "tolerance": "number",
+      "scale": "number",
+      "margin": "number",
+      "weaklySimple": "bool",
+      "backgroundColor": "number",
+      "options": {
+        "tolerance": "number",
+        "limitSize": "number",
+        "noHoles": "bool"
+      }
+    },
+    "!modules.src/tracer/TracerWorkers`js.default.traceAndConvexify.!1": "fn(err: ?, arrayOfVertices: ?)",
+    "!modules.src/tracer/TracerWorkers`js.default.getImageData.!1": {
+      "tolerance": "number",
+      "limitSize": "number",
+      "noHoles": "bool"
+    },
+    "!modules.node_modules/eventemitter3/index`js.prototype.eventNames.!ret": "[?]",
+    "!modules.node_modules/eventemitter3/index`js.prototype.once.!2": "+!modules.node_modules/eventemitter3/index`js",
+    "!modules.src/core/CTargetPoint`js.default.prototype.setPoint.!0": {
+      "x": "number",
+      "y": "number"
+    },
+    "!modules.src/core/CTargetPoint`js.default.prototype.get.!ret": {
+      "x": "number",
+      "y": "number"
+    },
+    "!modules.src/core/CTargetPoint`js.default.prototype.copy.!ret": {
+      "x": "number",
+      "y": "number"
+    },
+    "!modules.node_modules/pixi`js/lib/core/utils/index`js.hex2rgb.!1": "[number]",
+    "!modules.node_modules/pixi`js/lib/core/utils/index`js.rgb2hex.!0": "[!modules.node_modules/pixi`js/lib/core/utils/index`js.rgb2hex.!0.0, !modules.node_modules/pixi`js/lib/core/utils/index`js.rgb2hex.!0.1, !modules.node_modules/pixi`js/lib/core/utils/index`js.rgb2hex.!0.2, !modules.node_modules/pixi`js/lib/core/utils/index`js.rgb2hex.!0.3, !modules.node_modules/pixi`js/lib/core/utils/index`js.rgb2hex.!0.4]",
+    "!modules.node_modules/pixi`js/lib/core/utils/index`js.rgb2hex.!0.0": {
+      "parent": "string",
+      "target": "string"
+    },
+    "!modules.node_modules/pixi`js/lib/core/utils/index`js.rgb2hex.!0.1": {
+      "parent": "string",
+      "target": "string"
+    },
+    "!modules.node_modules/pixi`js/lib/core/utils/index`js.rgb2hex.!0.2": {
+      "parent": "string",
+      "target": "string"
+    },
+    "!modules.node_modules/pixi`js/lib/core/utils/index`js.rgb2hex.!0.3": {
+      "parent": "string",
+      "target": "string"
+    },
+    "!modules.node_modules/pixi`js/lib/core/utils/index`js.rgb2hex.!0.4": {
+      "parent": "string",
+      "target": "string"
+    },
+    "!modules.node_modules/pixi`js/lib/core/utils/index`js.decomposeDataUri.!ret": {},
+    "!modules.node_modules/pixi`js/lib/core/utils/index`js.getSvgSize.!ret": {},
+    "!modules.node_modules/pixi`js/lib/core/utils/index`js.premultiplyRgba.!2": {
+      "<i>": "number"
+    },
+    "!modules.node_modules/pixi`js/lib/core/utils/index`js.premultiplyTintToRgba.!2": {
+      "<i>": "number"
+    },
+    "!modules.node_modules/pixi`js/lib/core/graphics/webgl/utils/buildLine`js.default.!0": {
+      "points": "[?]"
+    },
+    "!modules.node_modules/pixi`js/lib/core/graphics/webgl/utils/buildLine`js.default.!1": {
+      "points": "[?]",
+      "indices": "[?]",
+      "circles": "[?]"
+    },
+    "!modules.src/core/CTargetPoint`js.default._getter.!ret": {
+      "x": "number",
+      "y": "number"
+    },
+    "!modules.src/core/CTargetPoint`js.default._setter.!0": {
+      "x": "number",
+      "y": "number"
+    },
+    "CStage.prototype.!proto.!proto": {
+      "off": "!modules.node_modules/eventemitter3/index`js.prototype.removeListener",
+      "addListener": "!modules.node_modules/eventemitter3/index`js.prototype.on",
+      "eventNames": "!modules.node_modules/eventemitter3/index`js.prototype.eventNames",
+      "listeners": "!modules.node_modules/eventemitter3/index`js.prototype.listeners",
+      "emit": "!modules.node_modules/eventemitter3/index`js.prototype.emit",
+      "on": "!modules.node_modules/eventemitter3/index`js.prototype.on",
+      "once": "!modules.node_modules/eventemitter3/index`js.prototype.once",
+      "removeListener": "!modules.node_modules/eventemitter3/index`js.prototype.removeListener",
+      "removeAllListeners": "!modules.node_modules/eventemitter3/index`js.prototype.removeAllListeners",
+      "setMaxListeners": "!modules.node_modules/eventemitter3/index`js.prototype.setMaxListeners"
+    },
+    "!modules.src/CObject`js.default.prototype.!proto": {
+      "off": "!modules.node_modules/eventemitter3/index`js.prototype.removeListener",
+      "addListener": "!modules.node_modules/eventemitter3/index`js.prototype.on",
+      "eventNames": "!modules.node_modules/eventemitter3/index`js.prototype.eventNames",
+      "listeners": "!modules.node_modules/eventemitter3/index`js.prototype.listeners",
+      "emit": "!modules.node_modules/eventemitter3/index`js.prototype.emit",
+      "on": "!modules.node_modules/eventemitter3/index`js.prototype.on",
+      "once": "!modules.node_modules/eventemitter3/index`js.prototype.once",
+      "removeListener": "!modules.node_modules/eventemitter3/index`js.prototype.removeListener",
+      "removeAllListeners": "!modules.node_modules/eventemitter3/index`js.prototype.removeAllListeners",
+      "setMaxListeners": "!modules.node_modules/eventemitter3/index`js.prototype.setMaxListeners"
+    },
+    "!modules.src/CPhysicsCtrl`js.default.prototype.!proto": {
+      "destroy": "!modules.src/CController`js.default.prototype.destroy"
+    }
+  },
+  "CStage": {
+    "prototype": {
+      "_start": "fn()",
+      "_stop": "fn()",
+      "x": "number",
+      "y": "number",
+      "tween": "fn(props: ?, seconds: ?, ease: ?, yoyo: ?)",
+      "destroy": "fn()",
+      "width": "number",
+      "height": "number",
+      "setBackground": "fn(source: ?, type: ?)",
+      "onClick": "fn(callback: ?)",
+      "onPointerDown": "fn(callback: ?)",
+      "onPointerUp": "fn(callback: ?)",
+      "onPointerMove": "fn(callback: ?)",
+      "isKeyPressed": "fn(key: ?) -> bool",
+      "onKeyPress": "fn(key: ?, callback: ?)",
+      "onKeyDown": "fn(key: ?, callback: ?)",
+      "onKeyUp": "fn(key: ?, callback: ?)",
+      "_on": "fn(eventName: string, context: ?, callback: string)",
+      "broadcast": "fn(eventName: ?)",
+      "_init": "fn()",
+      "_frame": "fn(deltaSec: ?)",
+      "timer": "number",
+      "stageRect": "+!modules.src/CRect`js.default",
+      "nextFrame": "fn(callback: ?)",
+      "addController": "fn(controller: +!modules.src/CSoundCtrl`js.default|+!modules.src/CPhysicsCtrl`js.default) -> !0",
+      "watch": "fn(x: ?, y: ?, name: ?, callback: ?)",
+      "removeWatch": "fn(name: ?)",
+      "mouse": "+!modules.src/CMouse`js.default",
+      "setEffect": "fn(effect: ?, amount: ?)",
+      "clearEffects": "fn()",
+      "!proto": "!modules.src/CObject`js.default.prototype",
+      "_balloonsGroup": "+CGroup",
+      "foregroundGroup": "+CGroup",
+      "backgroundGroup": "+CGroup",
+      "physics": "+!modules.src/CPhysicsCtrl`js.default",
+      "mainGroup": "+CGroup",
+      "sound": "+!modules.src/CSoundCtrl`js.default"
+    },
+    "get": "fn() -> +CStage",
+    "$": "+CStage",
+    "load": "fn(resource: ?, resourceUrl: ?, options: ?)",
+    "loadFont": "fn(origin: ?, family: ?)",
+    "childById": "fn(id: ?) -> +!modules.src/CMouse`js.default",
+    "!type": "fn(options: ?)",
+    "_penCanvas": "+!modules.src/misc/canvassprite`js.default",
+    "_dummy": "number",
+    "_nextFrameCallbacks": "[?]",
+    "_controllers": "[?]",
+    "_physics": "+!modules.src/CPhysicsCtrl`js.default",
+    "_keyManager": "+!modules.src/impl/stage-keymanager`js.default",
+    "_updateFn": "fn()",
+    "_running": "bool",
+    "_mainGroup": "+CGroup",
+    "_sound": "+!modules.src/CSoundCtrl`js.default",
+    "_destroyed": "bool",
+    "__notStarted": "bool",
+    "<i>": "number",
+    "_eventsCount": "number"
+  },
+  "CSprite": {
+    "prototype": {
+      "removeMe": "fn(test: ?)",
+      "direction": "number",
+      "_onAnchorUpdate": "fn()",
+      "move": "fn(distance: ?)",
+      "turn": "fn(degrees: ?)",
+      "pointTowards": "fn(point: ?)",
+      "bounceOnEdge": "fn() -> bool",
+      "addController": "fn(controller: +!modules.src/CSoundCtrl`js.default|+!modules.src/CPenCtrl`js.default) -> !0",
+      "on": "fn(eventName: ?, callback: ?)",
+      "say": "fn(text: ?, seconds: ?)",
+      "think": "fn(text: ?, seconds: ?)",
+      "text": "fn(text: ?, options: ?, seconds: ?)",
+      "_updateSpriteToBody": "fn()",
+      "_renderCollisionBody": "fn()",
+      "destroy": "fn()",
+      "!proto": "!modules.src/CChildObject`js.default.prototype",
+      "sound": "+!modules.src/CSoundCtrl`js.default",
+      "pen": "+!modules.src/CPenCtrl`js.default"
+    },
+    "!type": "fn(source: ?, options: ?)",
+    "_controllers": "[?]",
+    "_direction": "number",
+    "_pen": "+!modules.src/CPenCtrl`js.default",
+    "direction": "number",
+    "_destroyed": "bool",
+    "__notStarted": "bool",
+    "_eventsCount": "number"
+  },
+  "CGroup": {
+    "prototype": {
+      "children": "[?]",
+      "add": "fn(objects: ?)",
+      "remove": "fn(objects: ?)",
+      "destroy": "fn()",
+      "!proto": "!modules.src/CChildObject`js.default.prototype"
+    },
+    "!type": "fn(objects: ?, options: ?)",
+    "_destroyed": "bool",
+    "__notStarted": "bool",
+    "_frameCallbacks": "[?]",
+    "_eventMap": {
+      "<i>": "[?]"
+    },
+    "_eventsCount": "number"
+  },
+  "CText": {
+    "prototype": {
+      "setFillColor": "fn(red: ?, green: ?, blue: ?)",
+      "setLineColor": "fn(red: ?, green: ?, blue: ?)",
+      "!proto": "!modules.src/CChildObject`js.default.prototype"
+    },
+    "!type": "fn(text: ?, size: ?, family: ?)"
+  },
+  "CGraphics": {
+    "prototype": {
+      "_init": "fn()",
+      "setLineColor": "fn(red: number, green: number, blue: number)",
+      "setFillColor": "fn(red: number, green: number, blue: number)",
+      "setNoFill": "fn()",
+      "moveTo": "fn(x: ?, y: ?)",
+      "lineTo": "fn(x: ?, y: ?)",
+      "closePath": "fn()",
+      "rect": "fn(x: ?, y: ?, width: ?, height: ?)",
+      "roundedRect": "fn(x: ?, y: ?, width: ?, height: ?, radius: ?)",
+      "circle": "fn(x: ?, y: ?, radius: ?)",
+      "ellipse": "fn(x: ?, y: ?, width: ?, height: ?)",
+      "polygon": "fn(path: ?)",
+      "quadraticCurveTo": "fn(cpX: ?, cpY: ?, toX: ?, toY: ?)",
+      "bezierCurveTo": "fn(cpX: ?, cpY: ?, cpX2: ?, cpY2: ?, toX: ?, toY: ?)",
+      "arcTo": "fn(x1: ?, y1: ?, x2: ?, y2: ?, radius: ?)",
+      "arc": "fn(cx: ?, cy: ?, radius: ?, startAngle: ?, endAngle: ?, anticlockwise: ?)",
+      "_beginFill": "fn()",
+      "_endFill": "fn()",
+      "clear": "fn()",
+      "_rgbValue": "fn(rgb: ?) -> !0",
+      "!proto": "!modules.src/CChildObject`js.default.prototype"
+    },
+    "!type": "fn()"
+  },
+  "CMath": {
+    "randomBetween": "fn(min: ?, max: ?)",
+    "round": "fn(value: ?)",
+    "floor": "fn(value: ?)",
+    "abs": "fn(value: ?)",
+    "square": "fn(value: ?) -> number",
+    "sqrt": "fn(value: ?)",
+    "sin": "fn(degrees: ?)",
+    "cos": "fn(degrees: ?)",
+    "tan": "fn(degrees: ?)",
+    "asin": "fn(value: ?) -> number",
+    "acos": "fn(value: ?) -> number",
+    "atan": "fn(value: ?) -> number",
+    "atan2": "fn(x: ?, y: ?) -> number",
+    "ln": "fn(value: ?)",
+    "log10": "fn(value: ?)",
+    "exp": "fn(value: ?)",
+    "pow10": "fn(value: ?)",
+    "!type": "fn()"
+  },
+  "CJoint": {
+    "prototype": {
+      "setOffset": "fn(x: ?, y: ?)",
+      "_updateOffset": "fn(options: CJoint.!5, ownerOffsetX: ?, ownerOffsetY: ?)",
+      "_getBody": "fn(object: ?) -> !0"
+    },
+    "!type": "fn(constraintType: string, ownerObject: ?, otherObject: ?, ownerOffsetX: ?, ownerOffsetY: ?, options: CJoint.!5)"
+  },
+  "CMotorizedJoint": {
+    "prototype": {
+      "_createMotorConstraint": "fn()",
+      "speed": "number",
+      "!proto": "CJoint.prototype"
+    },
+    "!type": "fn(constraintType: string, motorConstraintType: string, ownerObject: ?, otherObject: ?, ownerOffsetX: ?, ownerOffsetY: ?, options: CJoint.!5, motorOptions: ?)"
+  },
+  "CRotatingJoint": "fn(ownerObject: ?, otherObject: ?, ownerOffsetX: ?, ownerOffsetY: ?)",
+  "CSlidingJoint": "fn(ownerObject: ?, otherObject: ?, ownerOffsetX: ?, ownerOffsetY: ?, direction: ?, distance: ?)"
+}

@@ -29,6 +29,12 @@ export default class CChildObject extends CObject {
     set _pixiObject(pixiObject) {
         let parentPixiObject = CStage.get()._childrenContainer;
         if (this.__pixiObject) {
+            // Copy properties
+            this.__pixiObject.localTransform.copy(pixiObject.localTransform);
+            pixiObject.alpha = this.__pixiObject.alpha;
+            pixiObject.rotation = this.__pixiObject.rotation;
+            pixiObject.visible = this.__pixiObject.visible;
+
             parentPixiObject = this.__pixiObject.parent;
             parentPixiObject.removeChild(this.__pixiObject);
             this.__pixiObject.destroy();

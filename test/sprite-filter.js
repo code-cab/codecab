@@ -1,5 +1,5 @@
 'use strict';
-
+debugger;
 const testutil = require('./lib/testutil');
 
 const MockPointer = require('./lib/MockPointer');

@@ -23,6 +23,9 @@ var START = 255;
 var TRACED = 254;
 var IGNORED = 253;
 var INTERSECTION = 0x08;
+
+const SHAPE_CIRCLE = -1;
+
 //
 //  +---+---+---+
 //  | 1 | 0 | 7 |
@@ -982,11 +985,16 @@ export function convexToArray(convexLists, offset) {
         convexList = convexLists[l];
         for (i = 0; i < convexList.length; i++) {
             v = convexList[i];
-            index++; // position for vertices length
-            do {
-                index += 2; // x and y position
-                v = v.next;
-            } while (v != convexList[i]);
+            if (v.circleRadius !== undefined) {
+                index += 4; // type, x, y, and radius
+            } else {
+                index++; // position for vertices length
+                do {
+                    index += 2; // x and y position
+
+                    v = v.next;
+                } while (v != convexList[i]);
+            }
         }
     }
 
@@ -998,12 +1006,19 @@ export function convexToArray(convexLists, offset) {
         for (i = 0; i < convexList.length; i++) {
             verticesLengthPos = index++;
             v = convexList[i];
-            do {
+            if (v.circleRadius !== undefined) {
                 array[index++] = v.x + offset;
                 array[index++] = v.y + offset;
-                v = v.next;
-            } while (v != convexList[i]);
-            array[verticesLengthPos] = (index - verticesLengthPos - 1) / 2;
+                array[index++] = v.circleRadius;
+                array[verticesLengthPos] = SHAPE_CIRCLE;
+            } else {
+                do {
+                    array[index++] = v.x + offset;
+                    array[index++] = v.y + offset;
+                    v = v.next;
+                } while (v != convexList[i]);
+                array[verticesLengthPos] = (index - verticesLengthPos - 1) / 2;
+            }
             shapeCount += 1;
         }
     }

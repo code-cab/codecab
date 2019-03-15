@@ -31,9 +31,8 @@ const filters = {
             shadowAlpha: 0.5
         }),
         amount: (filter, amount) => {
-            filter.thickness = Math.abs(amount) / 2
+            filter.thickness = Math.abs(amount)
             filter.rotation = amount > 0 ? 45 : 225;
-            console.log(filter.rotation);
         }
     },
     bloom: {

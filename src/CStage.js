@@ -50,16 +50,6 @@ const DEFAULT_OPTIONS = {
 var _instance;
 
 export default class CStage extends CObject {
-    /**
-     *
-     *
-     *
-     * @param {object} [options]
-     * @param {boolean} [options.pixelsPerMeter] - Set world scale
-     */
-    static create(options) {
-        return new CStage(options);
-    }
 
     static get() {
         if (!_instance) {
@@ -74,8 +64,10 @@ export default class CStage extends CObject {
 
     /**
      *
-     * @privatesta
-     * @param options
+     *
+     * @param {object} [options] CStage options
+     * @param {number} [options.pixelsPerMeter=60] - The amount of pixels in 1 meter in real world.
+     * @param {string} [options.border='bowl'] - Shape of the physical border
      */
     constructor(options) {
         super();
@@ -160,14 +152,14 @@ export default class CStage extends CObject {
         // Render once to set background
         this._app.render();
         if (autoStartCc) {
-            setTimeout(() => this.start(), 0);
+            setTimeout(() => this._start(), 0);
         }
 
     }
 
 
 
-    start() {
+    _start() {
         let self = this;
         return new Promise(resolve => {
             this._init().then(() => {
@@ -180,7 +172,7 @@ export default class CStage extends CObject {
         });
     }
 
-    stop() {
+    _stop() {
         this._running = false;
         if (this._updateFn && this._app.ticker) {
             this._app.ticker.remove(this._updateFn);
@@ -217,6 +209,14 @@ export default class CStage extends CObject {
         return this._stageZoomContainer.scale.x;
     }
 
+    /**
+     * Tween something
+     * @param props
+     * @param seconds
+     * @param ease
+     * @param yoyo
+     * @returns {*}
+     */
     tween(props, seconds, ease, yoyo) {
         let tween = new CTween(this);
         if (!yoyo) {
@@ -261,11 +261,11 @@ export default class CStage extends CObject {
         return this._mainGroup;
     }
 
-    get balloonsGroup() {
-        if (!this._balloonsGroup) {
-            this._balloonsGroup = new CGroup(null, {pixiObject: this._textContainer});
+    get _balloonsGroup() {
+        if (!this.__balloonsGroup) {
+            this.__balloonsGroup = new CGroup(null, {pixiObject: this._textContainer});
         }
-        return this._balloonsGroup;
+        return this.__balloonsGroup;
     }
 
     get foregroundGroup() {
@@ -400,7 +400,7 @@ export default class CStage extends CObject {
             obj.emit(eventName);
         }
         this._foregroundGroup && emitRecursive(this._foregroundGroup);
-        this._balloonsGroup && emitRecursive(this._balloonsGroup);
+        this.__balloonsGroup && emitRecursive(this.__balloonsGroup);
         emitRecursive(this);
         this._backgroundGroup && emitRecursive(this._backgroundGroup);
     }

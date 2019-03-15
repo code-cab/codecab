@@ -1,9 +1,9 @@
 {
   "name": "codecab",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "main": "src/index.js",
   "dependencies": {
-    "pixi.js": "^4.8.3",
+    "pixi.js": "^4.8.4",
     "bit-twiddle": "^1.0.2",
     "colorsys": "^1.0.20",
     "earcut": "^2.0.7",
@@ -43,10 +43,11 @@
     "typescript": "^2.6.2",
     "watchify": "^3.9.0",
     "cpy-cli": "^2.0.0",
-    "mocha": "^5.2.0",
     "sinon": "^7.2.2",
     "webpack": "^4.28.1",
     "webpack-cli": "^3.1.2",
+    "tern": "^0.23.0",
+    "mocha": "^5.2.0",
     "electron": "^1.8.8",
     "electron-mocha": "^6.0.4"
   },
@@ -57,6 +58,7 @@
     "generate.turbulenz": "tsc lib/ts/turbulenz/index.ts --module ES2015 --target ES2015 --outDir generate/lib",
     "generate.worker": "browserify src/tracer/codecab_tracer_runner.js -o generate/codecab-worker.js -t [ brfs-babel ] -t [ babelify ] && node script/generate-worker.js",
     "generate": "rimraf generate && mkdirp generate/lib && npm run generate.turbulenz && npm run generate.worker",
+    "def": "node script/create-def-file.js",
     "browserify": "browserify src/windowscope.js -o build/codecab-%npm_package_version%.js -t [ brfs-babel ] -t [ babelify ]",
     "browserify-linux": "browserify src/windowscope.js -o build/codecab-$npm_package_version.js -t [ brfs-babel ] -t [ babelify ]",
     "webpack": "webpack",

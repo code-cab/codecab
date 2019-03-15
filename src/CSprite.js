@@ -103,6 +103,14 @@ export default class CSprite extends CChildObject {
         this.source = source;
     }
 
+    /**
+     *
+     * @param {Object} test - Some test value
+     * @param {string} test.name - Test name
+     */
+    removeMe(test) {
+
+    }
 
     get options() {
         return this._options;
@@ -144,6 +152,7 @@ export default class CSprite extends CChildObject {
     }
 
     get source() {
+        if (typeof this._source === 'function') return this._source();
         return this._source;
     }
 
@@ -381,6 +390,13 @@ function setSource(value) {
     if (value instanceof CGraphics) {
         this.anchor.set(0, 0);
         this._pixiObject = value._pixiObject.clone();
+        this._source = () => { let g = new CGraphics(); g._pixiObject = this._pixiObject; return g; }
+        // PIXI fix: clone lineAlignment too
+        let pold = value._pixiObject;
+        let pnew = this._pixiObject;
+        for (let i = 0; i < pold.graphicsData.length; i += 1) {
+            pnew.graphicsData[i].lineAlignment = pold.graphicsData[i].lineAlignment;
+        }
         this._pixiObject._generateArrayOfVertices = value._pixiObject._generateArrayOfVertices;
         this._pixiObject.updateTransform();
         // Set anchor to 0, 0 since graphics object has no anchor
@@ -401,6 +417,7 @@ function setSource(value) {
         traceTexture(texture, {}, (arrayOfVertices) => {
             texture.baseTexture.arrayOfVertices = arrayOfVertices;
             this._pixiObject = new PIXI.Sprite(texture);
+            this._source = this._pixiObject;
             this._pixiObject.updateTransform();
             this.anchor.set(0.5, 0.5);
             this._body._sourceChanged();

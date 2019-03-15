@@ -15,6 +15,7 @@ import {deg2rad, rad2deg} from '../../misc/math';
 import * as PIXI from 'pixi.js';
 import {ASSERT} from '../../misc/util';
 
+const SHAPE_CIRCLE = -1;
 /**
 
  // body
@@ -503,20 +504,36 @@ function arrayOfVerticesToShapes(arrayOfVertices, owner, material, sensor) {
     let index = 1;
     for (let l = 0; l < Math.round(arrayOfVertices[0]); l++) {
         let verticesCount = Math.round(arrayOfVertices[index++]);
-        let vertices = [];
-        for (let v = 0; v < verticesCount; v++) {
+
+        if (verticesCount === SHAPE_CIRCLE) {
             let x = arrayOfVertices[index++];
             let y = arrayOfVertices[index++];
+            let radius = arrayOfVertices[index++];
+            let shape = CPhysicsCtrl.get().engine.createCircleShape({
+                radius: radius,
+                origin: [x, y],
+                material: material,
+                sensor: sensor
+            });
+            shapes.push(shape);
 
-            vertices.push([x, y]);
+        } else {
+            let vertices = [];
+            for (let v = 0; v < verticesCount; v++) {
+                let x = arrayOfVertices[index++];
+                let y = arrayOfVertices[index++];
 
-            if (vertices.length === 8 ||
-                (vertices.length >= 6 && verticesCount - v === 3)) {
-                pushVerticesAsShape(vertices);
-                vertices = [vertices[0], vertices[vertices.length - 1]];
+                vertices.push([x, y]);
+
+                if (vertices.length === 8 ||
+                    (vertices.length >= 6 && verticesCount - v === 3)) {
+                    pushVerticesAsShape(vertices);
+                    vertices = [vertices[0], vertices[vertices.length - 1]];
+                }
             }
+            if (vertices.length) pushVerticesAsShape(vertices);
         }
-        if (vertices.length) pushVerticesAsShape(vertices);
+
 
 
     }
